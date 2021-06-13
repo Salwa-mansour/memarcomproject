@@ -1,0 +1,597 @@
+ /*   IN THE NAME OF ALLAH
+     MEMARCOM PROJECT   */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    direction: rtl;
+}
+body{
+    min-width: 100vw;
+}
+
+/* ------------------- The navbar markup ------------------ */
+.nav{
+    grid-area: nav;
+    position: absolute;
+    /* border-bottom: 2px solid rgba(0, 0, 0, 0.432); */
+    width: 100%;
+    height: 80px;
+    color:rgb(42, 54, 165);
+    background-color: rgba(55, 63, 173, 0.164);
+    z-index: 40;
+}
+#nav-check{
+    display: none;
+}
+.nav-header{
+    display: inline-block;
+    padding: 1rem;
+    padding-bottom: 0;
+    font-size: 1.5rem;
+    text-shadow: #ffffff 2px 2px 2px;
+}
+.nav-header a
+{
+    color: inherit;
+    text-decoration: none;
+}
+.nav-btn{
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 1rem;
+   
+}
+.nav-btn label{
+    display: block;
+    height: 25px;
+    width: 25px;
+    background-color: rgba(243, 230, 188, 0.507);
+    padding: 10px;
+}
+.nav-btn label span{
+    height: 8px;
+    width: 25px;
+    display: block;
+    border-top: 3px solid rgb(79, 42, 165);
+}
+.nav-links{
+    position: absolute;
+    /* width: 100%; */
+    top: 70px;
+    left: 0;
+    /* background-color: rgba(173, 122, 55, 0.616); */
+    font-size: 1.1rem;
+    transition: all .3s ease-in;
+    height: 0;
+    overflow-y: hidden;
+    z-index: 0;
+   
+}
+.nav-links a{
+    display: block;
+    padding:5px  10px;
+    margin: 8px 0;
+    text-shadow: #ffffff 2px 2px 2px;
+    text-decoration: none;
+    color: rgb(6, 13, 77);
+    /* background-color: red; */
+}
+
+
+.nav-links a{
+    background-color: rgba(253, 253, 253, 0.63);
+}
+.nav-links a:hover{
+    background-color: rgba(253, 253, 253, 0.856);
+}
+/* --------------lognin log out links----------- */
+.nav-links .goast-link{
+    padding: 3px ;
+    border:3px solid  rgba(253, 253, 253, 0.63);
+    background-color: transparent;
+    color: white;
+     text-shadow: #0f0f0f 2px 2px 2px;
+}
+.nav-links .user-circle{
+    width: 1.80rem;
+    height: 1.80rem;
+    border-radius: 50%;
+    background-size: cover;
+    transform: translate3d(0,50%,0);
+    box-shadow:#0f0f0f 2px 2px 20px ;
+}
+/* --------- */
+.nav #nav-check:checked ~ .nav-links{
+    height: 50vh;
+}
+@media (min-width:600px){
+    .nav-btn{
+        display: none;
+    }
+    .nav-links a{
+        display: inline-block;
+        border-bottom: 0;
+    }
+   .nav-links{
+        height:auto;
+        top: 0;
+        left: 0;
+        width: auto;
+        padding: 1rem;
+    }
+    .nav #nav-check:checked ~ .nav-links{
+        height: auto;
+    }
+    .nav a::before{
+        content: "";
+        
+    }
+}
+
+
+/* /////////////////flex box styleings///////////////// */
+.container{
+    display: flex;
+  width: 100%;
+    flex-wrap: wrap;
+  align-items: flex-start;
+    justify-content: space-around;
+    
+}
+@media screen and (min-width:1240px){
+    .container{
+        justify-content: space-evenly;
+    }
+}
+.main-f-box{
+    min-width: 200px;
+    max-width: 300px; 
+    /* min-width: 350px; */
+    /* max-width: 25px; */
+    /* padding: 1rem; */
+    /* margin: 1rem; */
+    background-color: rgba(55, 0, 128, 0.164);
+    margin-bottom: 4rem ;
+}
+.features h3{
+    text-align: center;
+    /* padding-bottom:1.5rem; */
+}
+
+.feature-img{
+    min-height: 14rem;
+    background-color: rgba(55, 0, 128, 0.164);
+}
+/* /////////////////------///////////////////////////// */
+/* here complete the feature section tylings ans positniong */
+.feature-details{
+       padding: 1rem;
+}
+.feed{
+    padding-top: 4rem;
+}
+/* ----------------gallury section ------------- */
+.gallery{
+    position: relative;
+    /* height: 1000px; */
+    /* width: 100%; */
+      /* background-color: rgb(0, 81, 128); */
+    /* text-align: center; */
+}
+.gallery-item{
+  
+   /* background-image: url(./images/3.jpg); */
+   background-color: rgba(0, 0, 139, 0.144);
+   background-size: cover;
+    position: relative;
+    min-width: 12.275rem;
+    min-height: 12.275rem;
+    max-width: 250px;
+    margin: 1rem;
+    border-radius: 15px;
+}
+.gallery-item img{
+    border-radius: 15px;
+    position: relative;
+    height: inherit;
+    /* z-index: 10; */
+}
+.gallery-item p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%,-50%,0);
+    color: white;
+    text-shadow: 0 0 10px black;
+    font-size: calc(1.5rem + .3vw);
+    
+    white-space: nowrap;
+}
+.section-title{
+    text-align: center;
+    padding: 1rem 0;
+}
+
+/* ------------------banner------------------------- */
+.banner{
+    width: 100%;
+    position: relative;
+    padding: 15% 0;
+    position: relative;
+    height:40vw;
+    background-image: url(./images/eng1.jpg);
+    background-size: cover;
+    background-position: bottom;
+    /* background-attachment: fixed; */
+    background-color: rgba(0, 0, 139, 0.445);
+}
+.banner-highlights{
+     display: flex;
+    transform: translate3d(0,-25%,0);
+    position: absolute;
+    width: 100%;
+    top: 40%;
+    background-color: rgba(0, 0, 0, 0.699);
+    color: #fff;
+    padding: calc(.8rem + .5rem);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: flex-start;
+    height: 20vw;
+}
+.emtycolor-btn{
+    width:calc(5rem + .25vw) ;/*100px desktopview */
+   padding: calc(.2rem + .25vw)  ; /* 8px */
+   /* width: 100px; */
+  transform: TranslateY(1.6rem)  ;
+    outline: none;
+    border: 2px solid rgb(252, 252, 252);
+    border-radius: 50px;
+   background: transparent;
+   color: white;
+   font-size: 1rem;
+   cursor: pointer;
+}
+.banner-btn{
+    transform: translate3d(0,-10%,0);
+    display: inline-block;
+    min-height: 2rem;
+   /* min-width: fit-content; */
+   min-width: 6rem;
+   margin: 1.5rem;
+}
+/* ---------------hero image------------- */
+.hero{
+    background-image: url(./images/hero3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+ 
+}
+.hero .banner-highlights{
+    transform: translate3d(0,0,0);
+}
+/* ---------------hidden input from stylings------------- */
+.trasperant-container{
+    background-color:rgba(0, 0, 0, 0.404);
+    /* border: red 3px solid; */
+    position: fixed;
+    width:100% ;
+    height: 100vh;
+    top: 0;
+    transform: translate3d(0,-100%,0);
+    /* transform: translate3d(0,0,0); */
+    transition: all .8s ease-in-out;
+    z-index: 50;
+}
+.formdiv{
+    /* min-width: 12rem;
+    min-height: 13rem; */
+    position: relative;
+    background-color: rebeccapurple;
+   width: fit-content;
+   padding: 3rem 2rem;
+   line-height: 3;
+   text-align: center;
+   max-width: 80%;
+   margin: auto;
+   margin-top: calc(3rem + 10vw);
+   border-radius: 15px;
+}
+.close-button{
+    border: none;
+    outline: none;
+    background-color: rgba(245, 245, 245, 0.274);
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 6px;
+    font-size: 1.75rem;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+/* -----------------users feedback------------------ */
+.users-feedback{
+    padding: 3.25;
+    text-align: center;
+}
+.user-review-item{
+    position: relative;
+    max-width: 250px;
+    margin: 2rem;
+    text-align: justify;
+}
+.usersfeedback h1{
+    padding-top:1.5rem ;
+    /* background-color: darkblue; */
+    text-align: center;
+}
+.user-review{
+    box-shadow: 0 0 10px 0 rgba(0, 0, 100, 0.2);
+    padding: 2rem;
+}
+.user-review-item img{
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translate3d(-50%,50%,0);
+    border-radius: 50%;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 100, 0.274);
+}
+
+.user-review p{
+    padding-top:1rem ;
+}
+.user-review p::before{
+    /* content: '\201d'; */
+    display: block;
+    position: absolute;
+    font-size: 6rem;
+    color: rgb(94, 94, 253);
+    left: 44%;
+    top: -.5rem;
+    font-family: sans-serif;
+}
+/* -------------------footer--------------- */
+.footer{
+    grid-area: footer;
+    padding: 3rem 1.2rem;
+    /* background-image:linear-gradient(#2d557d,#9610fd) ; */
+    background-color: rgba(0, 0, 255, 0.425);
+    text-align: center;
+    line-height: 1.5;
+    /* position: relative; */
+    /* top: 100%; */
+}
+.ft-item{
+    position: relative;
+    margin: 1.5rem;
+    padding: .5rem;
+    /* background-color: orange; */
+}
+.ft-item h4{
+   position: relative;
+  text-align: start;
+ }
+ /* this is not working */
+ .ft-item p:first-child{
+     margin-top: 5rem;
+     /* font-size: calc(.7rem + .5vw); */
+ } 
+ /* ///////////////control panel main section//////////////////// */
+.layoutgrid{
+    display: grid;
+    grid-template-areas: 
+    "nav"
+    " main"
+    "footer";
+    grid-template-rows: auto auto auto;
+}
+
+.main{
+    grid-area: main;
+    min-height:100vh ;
+    /* border: #7d2d2d solid 3px; */
+ 
+ width: 100vw;
+padding-top:calc(80px) ;
+ /* height:clac(auto - 80px) ; */
+
+}
+.main-flex{
+    display: flex;
+    min-height: 100%;
+}
+.aside{
+    min-width: 13.75rem;
+    padding:3rem 0;
+    background-color: rgba(55, 63, 173, 0.075);
+}
+.aside ul {
+    line-height: 3;
+    text-align: center;
+    list-style: none;
+}
+.aside ul li{
+    width: 100%;
+    border-bottom: rgb(218, 218, 218) 1px solid;
+}
+.aside ul li a{
+    display: block;
+    text-decoration: none;
+    
+}
+.aside ul li a:hover{
+    background-color: white;
+}
+.aside ul li a:active{
+    background-color: white;
+    color: black;
+}
+.mian-section{
+   flex: 1;
+}
+/* //////-------control panel table styilings-------///////// */
+.admintable{
+    /* spacing */
+margin:5.5rem calc(2.5rem + .75vw) ;
+
+    table-layout: fixed;
+   border: 1px solid rgb(203, 203, 236);
+    border-collapse: collapse;
+    box-shadow: rgba(0, 0, 0, 0.438) .125px .125px 20px;
+  }
+  
+  .admintable thead th:nth-child(1) {
+    width: 10%;
+  }
+  
+  .admintable thead th {
+    width: 20%;
+    
+  }
+  .admintable thead,.admintable th {
+      background-color: rgb(181, 181, 250);
+
+  }
+  .admintable th{
+    border: 1px solid rgb(159, 159, 252);
+  }
+  .admintable th, td {
+    
+    padding: 20px;
+    text-align: center;
+  }
+.admintable td{
+    border: 1px solid rgb(193, 193, 235);
+}
+ .admintable tbody tr:nth-child(odd) {
+    background-color: #cacfec;
+  }
+  
+ .admintable tbody tr:nth-child(even) {
+    background-color: #daddf1;
+  }
+  .admintable caption{
+      padding-bottom: 1.5rem;
+  }
+  .conrol-btn{
+     min-width: 3rem;
+      background-color: blue;
+      color: white;
+      font-size: 1.125rem;
+      border: none;
+      outline: none;
+      padding: 3px ;
+      margin-right: 0;
+  }
+  /* -------------search div styling control admin panel */
+  .admin-search-div{
+      text-align: end;
+      background-color: rebeccapurple;
+      display: inline-block;
+      position: absolute;
+      left: 0;top:calc(80px + 1rem) ;
+      padding: 1rem;
+  }
+  .admin-search-div input[type="search"]{
+    margin-left: 0;
+  }
+ /* --------------request feed stylings--------- */
+ .requests-wraper{
+     /* border: 3px red solid; */
+    width: 60vw ;
+    margin:3rem auto;
+    
+ }
+ .requests-wraper ul{
+     list-style: none;
+ }
+ .requests-wraper ul li.wide-box,
+ div.wide-box{
+     border: 1px solid rgb(215, 225, 247);
+     box-shadow: rgb(225, 232, 245) .5px .5px 20px;
+     margin-bottom: .2rem;
+ }
+ .request-contianer{
+     /* border: 3px solid blue; */
+        display: flex;
+        align-items: flex-start;
+ }
+ .request-contianer .request-img-div,
+ .work-detial-div .request-img-div {
+     /* border: blueviolet 3px solid; */
+    min-height: 4rem;
+   min-width: 4rem;
+     border-radius: 50%;
+     background-color: rgb(209, 220, 240);
+     margin: .5rem;
+     background-size: cover;
+ }
+ .request-contianer .request-data{
+     padding: .5rem;
+ }
+ .request-contianer .prife-description{
+     padding: .8rem  0rem;
+ }
+/* -------------offers page------------- */
+
+.request-detail  {
+    padding: 3rem;
+    width: 60vw;
+    margin: auto;
+}
+.request-detail .requst-custemr{
+    padding-bottom: 2rem;
+    border-bottom:  rgb(209, 220, 240) 1px solid;
+    
+}
+.request-detail p{
+    padding-top: 1.5rem;
+}
+h3.offers-list-title{
+    text-align: center;
+    padding: 2rem 0;
+}
+.buttons-div{
+    text-align: center;
+    padding-top: 1.5rem;
+}
+.buttons-div button{
+    margin: 0 3rem;
+}
+.request-detail textarea{
+    display: block;
+    margin: 1rem 0;
+    width: 90%;
+}
+/* ------------------ previus work details page ----------------- */
+.work-detial-div{
+    text-align: center;
+    margin: 3rem ;
+}
+.previus-work-archtict{
+    width: 6rem;
+    height: 6rem;
+    margin: 1rem auto !important;
+}
+.work-imgs-detailed{
+    padding: 1rem calc(1rem + .5vw) 2rem;
+    text-align: center;
+}
+.work-imgs-detailed .work-img{
+
+    width: 50vw;
+    height: 50vw;
+    margin:2rem auto;
+    background-size: cover;
+    background-color: rgb(209, 220, 240);
+    /* border: red 3px solid; */
+}
