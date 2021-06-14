@@ -2,7 +2,7 @@
  <nav class="nav">
         <input type="checkbox" id="nav-check">
         <div class="nav-header">
-            <h1> <a href="#">معماركوم</a> </h1>
+            <h1> <a href="./defaultpage.php">معماركوم</a> </h1>
         </div>
     
 
