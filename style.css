@@ -5,9 +5,11 @@
     margin: 0;
     box-sizing: border-box;
     direction: rtl;
+   
 }
 body{
     min-width: 100vw;
+   
 }
 
 /* ------------------- The navbar markup ------------------ */
@@ -596,4 +598,13 @@ h3.offers-list-title{
     background-size: cover;
     background-color: rgb(209, 220, 240);
     /* border: red 3px solid; */
+}
+/*------------------------ genral styings -----------------*/
+a.inner-link{
+    color: inherit;
+    text-decoration: none;
+    display:inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
 }

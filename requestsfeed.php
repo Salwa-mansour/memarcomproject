@@ -39,7 +39,7 @@
                               <div class="request-img-div" style="background-image: url(./images/p1.jpg);">
                               <!-- <img src="./images/p1.jpg" alt="" class="request-img"> -->
                               </div>
-                          <a href="./requestsdetails.php" >
+                          <a href="./requestsdetails.php" class="inner-link">
                               <div class="request-data">
                                   <h3 class="request-title">reuwest titel</h3>
                                   <div class="custemr-n-div">
@@ -57,7 +57,7 @@
                               <div class="request-img-div" style="background-image: url(./images/userplacehoder.jpg);">
                               <!-- <img src="./images/p1.jpg" alt="" class="request-img"> -->
                               </div>
-                          
+                          <a href="./requestsdetails.php" class="inner-link">
                               <div class="request-data">
                                   <h3 class="request-title">reuwest titel</h3>
                                   <div class="custemr-n-div">
@@ -66,8 +66,11 @@
                                   </div>
                                   <p class="prife-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente ipsa doloremque quo voluptates repellendus unde?</p>
                              </div>
+                         </a>
                       </div>
                   </li>
+                 
+                 
                  
               </ul>
           </div>

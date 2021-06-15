@@ -4,7 +4,7 @@
 <head>
 
    <?php require_once("./parts/meta.php")?>
-   
+   <?php //$_GET['n']="" ?>
     <title>Document</title>
 </head>
 <body>
@@ -23,22 +23,33 @@
                     <p>هنا افضل المعماريين لنقدم افضل التصاميم والخدمات الهندسية </p>
                    
                 </div>
-                <button  class="banner-btn emtycolor-btn show-btn">سجل طلبك</button>
+                <button  class="banner-btn emtycolor-btn ">سجل طلبك</button>
             <!-- </div> -->
         </div>
-         <!--///////////////////// the popup windwo for input form markup ///////////////////////-->
-    <div class="trasperant-container">
-        <div class="formdiv">
-           <button data-close-button class="close-button">&times;</button>
-            <form action="" method="post">
-                <ul>
-                    <li><label for="name">name</label><input type="text" name="name" id=""></li>
-                    <li><label for="name">name</label><input type="text" name="name" id=""></li>
-                    <li><label for="name">name</label><input type="text" name="name" id=""></li>
-                    <li><label for="name">name</label><input type="text" name="name" id=""></li>
-                    <input type="submit" value="submit">
-                </ul>
-            </form>
+     
+           <!--///////////////////// the popup windwo for input form markup ///////////////////////-->
+           <div class="trasperant-container">
+                <div class="formdiv">
+                <button data-close-button class="close-button">&times;</button>
+                <?php 
+                $from=$_GET['n'];
+               if($from=="addArch"):
+                 ?>
+
+                    <form action="" method="post">
+                        <ul>
+                            <li><label for="ArchName">name</label><input type="text" name="ArchName" id=""></li>
+                            <li><label for="phoneNumber">phoneNumber</label><input type="text" name="phoneNumber" id=""></li>
+                            <li><label for="passWrod">passWrod</label><input type="password" name="password" id=""></li>
+                            <li><label for="address">address</label><input type="text" name="address" id=""></li>
+                            <input type="submit" value="archSave">
+                        </ul>
+                    </form>
+
+                    <?php endif; ?>
+
+                </div>
+         
         </div>
     </section>
    
@@ -79,7 +90,14 @@
                     <p>  متخصص في المجال المعماري وتبحث عن اعمال تناسب تخصصك كن عضوا في معمار كوم وأبدأ العمل معنا </p>
                    
                 </div>
-                <button  class="banner-btn emtycolor-btn">ابدأ الان</button>
+                <!-- <button  class="banner-btn emtycolor-btn show-btn">
+                      ابدأ الان
+            </button> -->
+                <button  class="banner-btn emtycolor-btn show-btn">
+                     <a href="./addarchitect.php?n=addArch" class=" inner-link "> ابدأ الان
+                    
+                     </a>
+            </button>
             <!-- </div> -->
         </div>
     </section>
@@ -117,7 +135,7 @@
         </div>
     </section>
     <!-- ////////////////////////////////////// -->
-  
+
 <?php require_once("./parts/footer.php")?>
 
     <!-- hello I'm javaScript -->

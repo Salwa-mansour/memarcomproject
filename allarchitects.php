@@ -2,7 +2,7 @@
      MEMARCOM PROJECT  -->
 <?php  
     include_once("./config/opratoins.config.php");
-    $architects=getdata("SELECT * FROM `architect` ORDER BY `architect number`");
+    $architects=getdata("SELECT * FROM `architect` ORDER BY `architect number` limit  10;");
    
 ?>
 

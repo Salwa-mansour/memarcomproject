@@ -1,14 +1,18 @@
 <?php
-require_once("./config/db.config.php");
+include_once("./config/db.config.php");
 
 $con=dbconnect();
 
 
 // function calls
 
-// if(isset($_POST['save'])){
-//     createData();
-// }
+if(isset($_POST['archSave'])){
+    $archName = textboxValue("archName");//article_title is the input field name
+    $phoneNumber = textboxValue("phoneNumber");//article_title is the input field name
+    $password = textboxValue("password");
+    $address = textboxValue("address");
+    createData("INSERT INTO `architect`(`name`,`phone`,`password`,`address`) VALUES ('$archName' ,' $phoneNumber',' $password','$address');");
+}
 // if(isset($_POST['update'])){
 //    // echo"function faired  ";
 //    //  print_r($_POST['editId'] )  ;
@@ -25,7 +29,41 @@ $con=dbconnect();
 // $articles=getData();
 
 ////////////////////////////////-----CURD functions------////////////////////////////////////////////////
-    // showing data in browser
+    //save function
+function createData($sql){
+   
+    //echo"<pre>".print_r($_FILES)."</pre>";
+    // echo"<pre>".print_r($_FILES['article_img'])."</pre>";
+    // $articleImageName =time()."_". $_FILES['article_img']['name'];
+    // $target ='./images/'. $articleImageName;
+   
+    if($GLOBALS['archName'] && $GLOBALS['phoneNumber'] && $GLOBALS['password'] && $GLOBALS['address']){
+        // $sql = "
+        //     INSERT INTO articles(
+        //         ArchName,phoneNumber,password,address,articleImgName)
+        //     VALUES('$ArchName','$phoneNumber','$password','$address');
+        // ";
+
+    if(mysqli_query($GLOBALS['con'],$sql)){
+        textNode("","created scussesfully");
+    }else{echo('record not saved'.mysqli_error($GLOBALS['con']));}
+    }else{textNode('',"txtbox are emptey");}
+}
+//getting the input feilds current value
+function textboxValue($value){
+    $textbox = mysqli_real_escape_string($GLOBALS['con'],trim($_POST[$value]));
+    if(empty($textbox)){
+        return false;
+    }else{
+        return $textbox;
+    }
+}
+// massgess function
+function textNode($class,$massege){
+    $elemnt="<h6 calss='$class'>$massege</h6>";
+    echo $elemnt;
+}
+// showing data in browser
     // function getData0($tableName,$order){
     //     $sql = sprintf("SELECT * FROM %t ORDER BY %o DESC ;",$tableName,$order);
     //     getData($sql);

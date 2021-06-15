@@ -20,14 +20,14 @@
         <a href="./allarchitects.php">مهندسونا</a>
         <a href="./aboutus.php" >من نحن</a>
         <!-- log in links -->
-        <!-- <a href="#1" class="goast-link" >sing in </a>
-        <a href="#1"  class="goast-link"  >sign up </a> -->
+        <a href="#1" class="goast-link " >sing in </a>
+        <a href="#1"  class="goast-link "  >sign up </a>
         <!-- loged in links -->
-        <a href="#1" class="user-circle" style="background-image: url(./images/p2.jpg);">
+         <!-- <a href="#1" class="user-circle" style="background-image: url(./images/p2.jpg);"> -->
             <!-- <div class="user-circle" style="background-image: url(./images/p2.jpg);">
 
             </div> -->
-        </a>
-        <a href="#1"  class="goast-link"  >sign out </a>
+        <!-- </a> -->
+        <!-- <a href="#1"  class="goast-link "  >sign out </a> --> 
     </div>
     </nav>
