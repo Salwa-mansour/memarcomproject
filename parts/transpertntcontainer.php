@@ -3,8 +3,8 @@
                 <div class="formdiv">
                 <button data-close-button class="close-button">&times;</button>
                 <?php 
-                $from=$_GET['n'];
-               if($from=="addArch"):
+               // $from=$_GET['n'];
+              // if($from=="addArch"):
                  ?>
 
                     <form action="" method="post">
@@ -13,11 +13,12 @@
                             <li><label for="phoneNumber">phoneNumber</label><input type="text" name="phoneNumber" id=""></li>
                             <li><label for="passWrod">passWrod</label><input type="password" name="password" id=""></li>
                             <li><label for="address">address</label><input type="text" name="address" id=""></li>
-                            <input type="submit" value="archSave">
+                            <!-- <input type="submit" value="archSave" name="archSave"> -->
+                            <button type="" name="archSave" value="archSave">archSave</button>
                         </ul>
                     </form>
 
-                    <?php endif; ?>
+                    <?php // endif; ?>
 
                 </div>
          

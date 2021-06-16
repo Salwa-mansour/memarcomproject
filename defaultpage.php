@@ -28,29 +28,7 @@
         </div>
      
            <!--///////////////////// the popup windwo for input form markup ///////////////////////-->
-           <div class="trasperant-container">
-                <div class="formdiv">
-                <button data-close-button class="close-button">&times;</button>
-                <?php 
-                $from=$_GET['n'];
-               if($from=="addArch"):
-                 ?>
-
-                    <form action="" method="post">
-                        <ul>
-                            <li><label for="ArchName">name</label><input type="text" name="ArchName" id=""></li>
-                            <li><label for="phoneNumber">phoneNumber</label><input type="text" name="phoneNumber" id=""></li>
-                            <li><label for="passWrod">passWrod</label><input type="password" name="password" id=""></li>
-                            <li><label for="address">address</label><input type="text" name="address" id=""></li>
-                            <input type="submit" value="archSave">
-                        </ul>
-                    </form>
-
-                    <?php endif; ?>
-
-                </div>
-         
-        </div>
+          <?php include("./parts/transpertntcontainer.php") ?>
     </section>
    
 
@@ -94,16 +72,23 @@
                       ابدأ الان
             </button> -->
                 <button  class="banner-btn emtycolor-btn show-btn">
+                    <!-- addarchitecht page redirect code -->
                      <a href="./addarchitect.php?n=addArch" class=" inner-link "> ابدأ الان
-                    
                      </a>
+                    <!-- transperant div problem  -->
+                     <!-- <a href="./defaultpage.php?n=addArch" class=" inner-link "> ابدأ الان
+                     </a> -->
+                    <!-- transperant div is working be forphp redirecting  -->
+                     <!-- <a href="#?n=addArch" class=" inner-link "> ابدأ الان
+                     </a> -->
+                    
             </button>
             <!-- </div> -->
         </div>
     </section>
     <!-- ////////////////////////////////// -->
     <section class="usersfeedback">
-        <h1>uesers review</h1>
+        <h1>مهندسونا</h1>
         <div class="container">
             <div class="user-review-item">
                 <div class="user-review">

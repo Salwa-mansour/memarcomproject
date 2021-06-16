@@ -27,12 +27,12 @@
  
    
     <!-- ////////////////////////////////////// -->
-    <div class="">
+    <div class="form-container">
                 <div class="formdiv">
-                <button data-close-button class="close-button">&times;</button>
+                <!-- <button data-close-button class="close-button">&times;</button> -->
                 <?php 
-            //     $from=$_GET['n'];
-            //    if($from=="addArch"):
+              //  $from=$_GET['n'];
+             //  if($from=="addArch"):
                  ?>
 
                     <form action="./addarchitect.php" method="post">
@@ -41,7 +41,7 @@
                             <li><label for="phoneNumber">phoneNumber</label><input type="text" name="phoneNumber" id=""></li>
                             <li><label for="passwrod">passWrod</label><input type="password" name="password" id=""></li>
                             <li><label for="address">address</label><input type="text" name="address" id=""></li>
-                            <input type="submit" value="archSave" name="archSave">
+                            <input type="submit" class="conrol-btn" value="archSave" name="archSave">
                         </ul>
                     </form>
 

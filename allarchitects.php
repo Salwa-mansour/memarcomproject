@@ -37,25 +37,27 @@
                <li><a href="#">Lorem, ipsum.</a></li>
            </ul>
        </aside>
-       <section class="mian-section">
+       <section class="mian-section ">
          
-        <div class="usersfeedback">
-            <!-- <h1>uesers review</h1> -->
-            <?php foreach($architects as $architect): ?>
+        <div class="usersfeedback ">
             <div class="container feed">
-                <div class="user-review-item">
-                    <div class="user-review">
-                        <p><?php echo $architect["address"] ?></p>
-                        <h4> <?php echo $architect["name"] ?> </h4>
-                      
+                <!-- <h1>uesers review</h1> -->
+                <?php foreach($architects as $architect): ?>
+            
+                    <div class="user-review-item">
+                        <div class="user-review">
+                            <p><?php echo $architect["address"] ?></p>
+                            <h4> <?php echo $architect["name"] ?> </h4>
                         
+                            
+                        </div>
+                        <img src="./images/<?php echo $architect["photo"] ?>" style="width: 60px; height: 60px;" alt="">
                     </div>
-                    <img src="./images/<?php echo $architect["photo"] ?>" style="width: 60px; height: 60px;" alt="">
-                </div>
-               
-                   
+                
+                    
+            
+                <?php endforeach; ?>
             </div>
-            <?php endforeach; ?>
         </div>
        </section>
     <!-- ////////////////////////////////////// -->
