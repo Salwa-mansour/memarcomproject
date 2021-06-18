@@ -1,7 +1,7 @@
 // popup widow code
-let showbtn = document.querySelector('.show-btn')
-let hidenContainer= document.querySelector(".trasperant-container")
-let closeBtn= document.querySelector(".close-button")
+// let showbtn = document.querySelector('.show-btn')
+// let hidenContainer= document.querySelector(".trasperant-container")
+// let closeBtn= document.querySelector(".close-button")
 function showform(){
     showbtn.addEventListener("click",function(){
         // alert("You Awsom!");
@@ -12,6 +12,7 @@ function hidefrom(){
     closeBtn.addEventListener("click",function(){
     hidenContainer.style.transform = " translate3d(0,-100%,0)"} )
    }
-showform();
-hidefrom();
+// showform();
+// hidefrom();
 // console.log(hidenContainer.innerHTML)
+console.log(document.getElementsByClassName('show-btn'));
