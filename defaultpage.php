@@ -73,7 +73,7 @@
             </button> -->
                 <button  class="banner-btn emtycolor-btn show-btn">
                     <!-- addarchitecht page redirect code -->
-                     <a href="./addarchitect.php?n=addArch" class=" inner-link "> ابدأ الان
+                     <a href="./dataupdateing.php?n=addArch" class=" inner-link "> ابدأ الان
                      </a>
                     <!-- transperant div problem  -->
                      <!-- <a href="./defaultpage.php?n=addArch" class=" inner-link "> ابدأ الان

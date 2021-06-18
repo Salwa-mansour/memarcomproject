@@ -11,19 +11,15 @@ if(isset($_POST['archSave'])){
     $phoneNumber = textboxValue("phoneNumber");//article_title is the input field name
     $password = textboxValue("password");
     $address = textboxValue("address");
-    createData("INSERT INTO `architect`(`name`,`phone`,`password`,`address`) VALUES ('$archName' ,' $phoneNumber',' $password','$address');");
+    if($GLOBALS['archName'] && $GLOBALS['phoneNumber'] && $GLOBALS['password'] && $GLOBALS['address']){
+   //call the save function
+        createData("INSERT INTO `architect`(`name`,`phone`,`password`,`address`) VALUES ('$archName' ,' $phoneNumber',' $password','$address');");
+   }else{textNode('',"txtbox are emptey");}
 }
-// if(isset($_POST['update'])){
-//    // echo"function faired  ";
-//    //  print_r($_POST['editId'] )  ;
-//     updateData($_POST['editId']);
-
-// }//else{echo"functions not faired";}
-// if(isset($_POST['delete'])){
-//     deleteData($_POST['editId']);
-
-// }
-
+if(isset($_POST['udpateArch'])){
+    
+    achtivateAccount($_GET['archId']);
+}
 // the read function has to be the least called so thet it get us the most updated veiw after any add or delete or updates******
 
 // $articles=getData();
@@ -31,23 +27,11 @@ if(isset($_POST['archSave'])){
 ////////////////////////////////-----CURD functions------////////////////////////////////////////////////
     //save function
 function createData($sql){
-   
-    //echo"<pre>".print_r($_FILES)."</pre>";
-    // echo"<pre>".print_r($_FILES['article_img'])."</pre>";
-    // $articleImageName =time()."_". $_FILES['article_img']['name'];
-    // $target ='./images/'. $articleImageName;
-   
-    if($GLOBALS['archName'] && $GLOBALS['phoneNumber'] && $GLOBALS['password'] && $GLOBALS['address']){
-        // $sql = "
-        //     INSERT INTO articles(
-        //         ArchName,phoneNumber,password,address,articleImgName)
-        //     VALUES('$ArchName','$phoneNumber','$password','$address');
-        // ";
-
+  
     if(mysqli_query($GLOBALS['con'],$sql)){
         textNode("","created scussesfully");
     }else{echo('record not saved'.mysqli_error($GLOBALS['con']));}
-    }else{textNode('',"txtbox are emptey");}
+   
 }
 //getting the input feilds current value
 function textboxValue($value){
@@ -63,28 +47,38 @@ function textNode($class,$massege){
     $elemnt="<h6 calss='$class'>$massege</h6>";
     echo $elemnt;
 }
-// showing data in browser
-    // function getData0($tableName,$order){
-    //     $sql = sprintf("SELECT * FROM %t ORDER BY %o DESC ;",$tableName,$order);
-    //     getData($sql);
-    // }
+// getting the whole table to show up the data
 function getData($sql){
-    // $sql = '
-    // SELECT * FROM `$tableName` ORDER BY `$order` DESC ;
-    // ';
-   // $sql = sprintf("There are %u million bicycles in %s.",$number,$str);
-    // $sql = sprintf("SELECT * FROM %t ORDER BY %o DESC ;",$tableName,$order);
-    //store the returend record in $result
-    $result =   mysqli_query($GLOBALS['con'], $sql);//or die(mysqli_error($GLOBALS['con']))
-  // $result =   mysqli_query($GLOBALS['con'], sprintf("SELECT * FROM %t ORDER BY %o DESC ;",$tableName,$order));//or die(mysqli_error($GLOBALS['con']))
-    // print_r (mysqli_fetch_row($result));
-    if(mysqli_num_rows($result)>0){
-        // $result = mysqli_query($GLOBALS['con'],$sql);
+  //  echo $sql; 
+    $result =   mysqli_query($GLOBALS['con'], $sql)or die(mysqli_error($GLOBALS['con']));
+  if(mysqli_num_rows($result)>0){
         $allresults = mysqli_fetch_all($result, MYSQLI_ASSOC);
         return $allresults;
     }
     else{return("table is empty");}
 }
-// getdata0("architect","architect number");
-// print_r (getdata("SELECT * FROM `architect` ORDER BY `architect number`"));
-// print_r (getdata0("architect","architect number"));
+// the update function
+function achtivateAccount($id){
+    $accoutState=$_POST['activateAccount'];
+    $cvFileName =time()."_". $_FILES['archfile']['name'];
+    $target ='./cvfiles/'. $cvFileName;
+        move_uploaded_file($_FILES['archfile']['tmp_name'],$target);
+        $sql = "
+        UPDATE architect SET cv='$cvFileName',status=' $accoutState' 
+        WHERE `architect number`='$id';
+        ";
+    if(mysqli_query($GLOBALS['con'],$sql)){
+        textNode("","updated scussesfully");
+    }else{echo('record not saved'.mysqli_error($GLOBALS['con']));}
+}
+
+//bring text of selected row to the input fiedls when clicking the edit button
+function gitselectedrow($sql){
+    // $sql="
+    // SELECT * FROM articles WHERE articleId='$id';
+    // ";
+    $result=mysqli_query($GLOBALS['con'],$sql);
+   
+    $myResult=mysqli_fetch_array($result);
+    return $myResult;
+}
