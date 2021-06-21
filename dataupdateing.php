@@ -36,24 +36,43 @@
                 if(isset($_GET['n'])):
                 $from=$_GET['n'];
                 //    <!--  ************************************ -->
-               if($from=="addArch"):
+               if($from=="ordersdata"):
+                $id=$_GET['orderId'];
+                $orders=gitselectedrow( "SELECT `orderId`,`orederTitle`,`orderDetails`,`published` FROM `orders` WHERE `orderId`='$id';");
+            
                  ?>
 
-                    <form action="./dataupdateing.php?n=addArch" method="post">
+                    <form action="./dataupdateing.php?n=ordersdata&orderId=<?php echo $orders['orderId'] ?>" method="post">
                         <ul>
-                            <li><label for="ArchName">name</label><input type="text" name="archName" id=""></li>
-                            <li><label for="phoneNumber">phoneNumber</label><input type="text" name="phoneNumber" id=""></li>
-                            <li><label for="passwrod">passWrod</label><input type="password" name="password" id=""></li>
-                            <li><label for="address">address</label><input type="text" name="address" id=""></li>
-                            <input type="submit" class="conrol-btn" value="archSave" name="archSave">
+                            <li><h5><?php echo $orders['orederTitle'] ?></h5></li>
+                         
+                           <li><label for="workType">workType</label><?php include('./parts/workTypelist.php') ?></li>
+                            <li><label for="orderDetails">orderDetails</label><textarea name="orderDetails" class="details-texteara" rows="10"> <?php echo $orders['orderDetails'] ?> </textarea></li>
+                            
+                           
+                                <div class="radio-div">
+                                     <p>publish this order</p>
+                                       <ul>
+                                            <?php if($architect['status']=='disabled'):?>
+                                          <li><label for="publish">publish</label><input type="radio" name="publish" value="true" checked></li>
+                                          <li><label for="publish">not publish</label><input type="radio" name="publish" value="false" ></li>
+                                         <?php else: ?>
+                                            <li><label for="publish">publish</label><input type="radio" name="publish" value="true" ></li>
+                                          <li><label for="publish">not publish</label><input type="radio" name="publish" value="false" checked></li>
+                                          <?php endif;  //if($orders['published']=='true'):?>
+                                        </ul>
+                                 </div>
+                         
+                          
+                            <input type="submit" class="conrol-btn" value=" orderUpdate" name="orderUpdate">
                         </ul>
                     </form>
 
-                    <?php   endif; //if($from=="addArch"):?>
+                    <?php  // endif; //if($from=="addArch"):?>
                    <!--  ************************************ -->
                        <?php
              
-                   if($from=="updateArch"):
+                   elseif($from=="updateArch"):
                     $id=$_GET['archId'];
                     $architect=gitselectedrow(" SELECT `architect number`,`name`,`cv`,`status` FROM architect WHERE `architect number`='$id';");
                 //   print_r($architect);
@@ -64,12 +83,25 @@
                         <ul>
                           <p><?php echo $architect['name']; ?></p>
                             <li><label for="archfile">docments</label><input type="file" name="archfile" value="<?php echo $architect['name']; ?>"></li>
-                            <?php if($architect['status']=='disabled'):?>
-                            <li><label for="activateAccount">activateAccount</label><input type="checkbox" name="activateAccount" value="inable"></li>
-                            <?php else: ?>
-                            <li><label for="activateAccount">activateAccount</label><input type="checkbox" name="activateAccount" value="inable" checked="checked"></li>
+                            <?php // if($architect['status']=='disabled'):?>
+                            <!-- <li><label for="activateAccount">activateAccount</label><input type="checkbox" name="activateAccount" value="inable"></li> -->
+                            <?php //else: ?>
+                            <!-- <li><label for="activateAccount">activateAccount</label><input type="checkbox" name="activateAccount" value="inable" checked="checked"></li> -->
                          
-                            <?php endif;  //if($architect['status']=='disabled'):?>
+                            <?php //endif;  //if($architect['status']=='disabled'):?>
+                                <div class="radio-div">
+                                     <p>Activate this account</p>
+                                       <ul>
+                                            <?php if($architect['status']=='disabled'):?>
+                                          <li><label for="activateAccount">activateAccount</label><input type="radio" name="activateAccount" value="inable" ></li>
+                                          <li><label for="activateAccount">not activateAccount</label><input type="radio" name="activateAccount" value="disabled" checked></li>
+                                         <?php else: ?>
+                                            <li><label for="activateAccount">activateAccount</label><input type="radio" name="activateAccount" value="inable" checked></li>
+                                          <li><label for="activateAccount">not activateAccount</label><input type="radio" name="activateAccount" value="disabled" ></li>
+                                          <?php endif;  //if($architect['status']=='disabled'):?>
+                                        </ul>
+                                 </div>
+                         
                             <input type="submit" class="conrol-btn" value="udpateArch" name="udpateArch">
                         </ul>
                     </form>

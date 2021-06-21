@@ -571,7 +571,7 @@ h3.offers-list-title{
 .buttons-div button{
     margin: 0 3rem;
 }
-.request-detail textarea{
+.request-detail .details-texteara{
     display: block;
     margin: 1rem 0;
     width: 90%;

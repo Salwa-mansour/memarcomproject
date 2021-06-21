@@ -70,7 +70,7 @@
             <?php
                $tab= $_GET['tab'];
                   if($tab=="ordersdata"):
-                    $orders=getdata("SELECT `orderId`,`orederTitle`,`orderDetails`,`orderDate`,`published` FROM `orders` ORDER BY `orderDate` DESC");//
+                    $orders=getdata("SELECT `orderId`,`orederTitle`,`orderDetails`,`orderType`,`published` FROM `orders` ORDER BY `orderDate` DESC");//
                     //print_r($architects);
                
                   ?>
@@ -82,7 +82,7 @@
                 <th scope="col">  </th>
                 <th scope="col">order title</th>
                 <th scope="col">oreder details</th>
-                <th scope="col">date</th>
+                <th scope="col">orderType</th>
                 <th scope="col">published?</th>
               
                 <th scope="col">edit</th>
@@ -138,12 +138,12 @@
           if(isset($orders)):
              foreach($orders as $order): ?>
               <tr>
-                <th scope="row"> <input type="hidden" name="id" value="<?php echo $order['orderId']; ?>"> </th>
+                <th scope="row"> <input type="hidden" name="id" value="<?php //echo $order['orderId']; ?>"> </th>
                 <td> <?php echo $order['orederTitle']; ?></td>
                 <td><?php echo $order['orderDetails']; ?></td>
-                <td><?php echo $order['orderDate']; ?></td>
+               <td><?php echo $order['orderType']; ?></td>
                 <td><?php echo $order['published']; ?></td>
-                <td><button class="conrol-btn">edit</button></td>
+                <td><button class="conrol-btn"><a href="./dataupdateing.php?n=ordersdata&orderId=<?php echo $order['orderId']; ?>" class="inner-link">edit</a> </button></td>
               </tr>
             <?php 
           endforeach;//end foreach($orders as $client)

@@ -18,7 +18,7 @@
         <a href="./previusworksfeed.php" >اعمالنا</a>
         <a href="./requestsfeed.php"  >الطلبات</a>
         <a href="./allarchitects.php">مهندسونا</a>
-        <a href="./aboutus.php" >من نحن</a>
+        <a href="./Cpanel.php" >c panel </a>
         <!-- log in links -->
         <a href="#1" class="goast-link " >sing in </a>
         <a href="#1"  class="goast-link "  >sign up </a>

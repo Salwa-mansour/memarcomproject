@@ -52,7 +52,7 @@
               <div class="request-detail  wide-box">
                        <h3> apply an offer</h3>
                        <form method="POST" class="buttons-div">
-                        <textarea name="" id="" cols="0" rows="10"></textarea>
+                        <textarea name="" id="" cols="0" rows="10" class="details-texteara"></textarea>
                       <button class="conrol-btn">apply</button>
                        </form>
                      

@@ -20,6 +20,10 @@ if(isset($_POST['udpateArch'])){
     
     achtivateAccount($_GET['archId']);
 }
+if (isset($_POST['orderUpdate'])){
+    updateOrderFunction($_GET['orderId']);
+}
+
 // the read function has to be the least called so thet it get us the most updated veiw after any add or delete or updates******
 
 // $articles=getData();
@@ -29,7 +33,7 @@ if(isset($_POST['udpateArch'])){
 function createData($sql){
   
     if(mysqli_query($GLOBALS['con'],$sql)){
-        textNode("","created scussesfully");
+        textNode("","تمت العملية بنجاح");
     }else{echo('record not saved'.mysqli_error($GLOBALS['con']));}
    
 }
@@ -57,7 +61,7 @@ function getData($sql){
     }
     else{return("table is empty");}
 }
-// the update function
+// the update function for architect account
 function achtivateAccount($id){
     $accoutState=$_POST['activateAccount'];
     $cvFileName =time()."_". $_FILES['archfile']['name'];
@@ -71,13 +75,29 @@ function achtivateAccount($id){
         textNode("","updated scussesfully");
     }else{echo('record not saved'.mysqli_error($GLOBALS['con']));}
 }
-
+//update function for eding and publishing the order
+function updateOrderFunction($id){
+    $details=textboxValue("orderDetails");
+    $publish=$_POST['publish'];
+   // print_r($_POST);
+    if(isset($_POST['udpateArch'])){
+        $type=$_POST['workType'];
+      $sql= " UPDATE `orders` SET `orderDetails`='$details',`published`=' $publish',`orderType`='$type'
+        WHERE `orderId`='$id';";
+    }else{
+        $sql= " UPDATE `orders` SET `orderDetails`='$details',`published`=' $publish'
+        WHERE `orderId`='$id';";
+    }
+    if(mysqli_query($GLOBALS['con'],$sql)){
+        textNode("","تمت العملية بنجاح");
+    }else{echo('record not saved'.mysqli_error($GLOBALS['con']));}
+}
 //bring text of selected row to the input fiedls when clicking the edit button
 function gitselectedrow($sql){
     // $sql="
     // SELECT * FROM articles WHERE articleId='$id';
     // ";
-    $result=mysqli_query($GLOBALS['con'],$sql);
+    $result=mysqli_query($GLOBALS['con'],$sql)or die(mysqli_error($GLOBALS['con']));
    
     $myResult=mysqli_fetch_array($result);
     return $myResult;
