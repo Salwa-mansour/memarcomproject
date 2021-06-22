@@ -31,12 +31,30 @@
     <!-- ////////////////////////////////////// -->
     <div class="form-container">
                 <div class="formdiv">
+              <?php  if(isset($_GET['n'])): ?>
                 <!-- <button data-close-button class="close-button">&times;</button> -->
                 <?php 
-                if(isset($_GET['n'])):
+             $from=$_GET['n'];
+              if($from=="addArch"):
+                 ?>
+
+                    <form action="./dataupdateing.php?n=addArch" method="post">
+                        <ul>
+                            <li><label for="ArchName">name</label><input type="text" name="archName" id=""></li>
+                            <li><label for="phoneNumber">phoneNumber</label><input type="text" name="phoneNumber" id=""></li>
+                            <li><label for="passwrod">passWrod</label><input type="password" name="password" id=""></li>
+                            <li><label for="address">address</label><input type="text" name="address" id=""></li>
+                            <input type="submit" class="conrol-btn" value="archSave" name="archSave">
+                        </ul>
+                    </form>
+
+                    <?php   endif; // if($from=="addArch"): ?>
+                <!-- **************************************** -->
+                <?php 
+            
                 $from=$_GET['n'];
                 //    <!--  ************************************ -->
-               if($from=="ordersdata"):
+               elseif($from=="ordersdata"):
                 $id=$_GET['orderId'];
                 $orders=gitselectedrow( "SELECT `orderId`,`orederTitle`,`orderDetails`,`published` FROM `orders` WHERE `orderId`='$id';");
             
@@ -106,7 +124,7 @@
                         </ul>
                     </form>
 
-                    <?php   endif; //if($from=="addArch"):?>
+                    <?php  // endif; //if($from=="addArch"):?>
                       
                     <?php   endif; //isset($_GET['n']))?>
                   
