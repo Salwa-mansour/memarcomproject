@@ -48,11 +48,11 @@
                         </ul>
                     </form>
 
-                    <?php   endif; // if($from=="addArch"): ?>
+                    <?php  // endif; // if($from=="addArch"): ?>
                 <!-- **************************************** -->
                 <?php 
             
-                $from=$_GET['n'];
+               // $from=$_GET['n'];
                 //    <!--  ************************************ -->
                elseif($from=="ordersdata"):
                 $id=$_GET['orderId'];
@@ -93,14 +93,14 @@
                    elseif($from=="updateArch"):
                     $id=$_GET['archId'];
                     $architect=gitselectedrow(" SELECT `architect number`,`name`,`cv`,`status` FROM architect WHERE `architect number`='$id';");
-                //   print_r($architect);
-                //     echo $architect['architect number'];
+                //  print_r($architect);
+                 //  echo $architect['architect number'];
                     ?>
 
                     <form action="./dataupdateing.php?n=updateArch&archId=<?php echo $architect['architect number']; ?>" method="post" enctype="multipart/form-data">
                         <ul>
                           <p><?php echo $architect['name']; ?></p>
-                            <li><label for="archfile">docments</label><input type="file" name="archfile" value="<?php echo $architect['name']; ?>"></li>
+                            <li><label for="archfile">docments</label><input type="file" accept=".pdf" name="archfile" value="<?php echo $architect['name']; ?>"></li>
                             <?php // if($architect['status']=='disabled'):?>
                             <!-- <li><label for="activateAccount">activateAccount</label><input type="checkbox" name="activateAccount" value="inable"></li> -->
                             <?php //else: ?>
@@ -124,7 +124,7 @@
                         </ul>
                     </form>
 
-                    <?php  // endif; //if($from=="addArch"):?>
+                    <?php   endif; //if($from=="addArch"):?>
                       
                     <?php   endif; //isset($_GET['n']))?>
                   
