@@ -48,7 +48,7 @@
                         </ul>
                     </form>
 
-                    <?php   endif; // if($from=="addArch"): ?>
+                    <?php  // endif; // if($from=="addArch"): ?>
                 <!-- **************************************** -->
                 <?php 
             
@@ -124,7 +124,7 @@
                         </ul>
                     </form>
 
-                    <?php  // endif; //if($from=="addArch"):?>
+                    <?php  endif; //if($from=="addArch"):?>
                       
                     <?php   endif; //isset($_GET['n']))?>
                   
