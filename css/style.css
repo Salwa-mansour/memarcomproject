@@ -651,3 +651,19 @@ div.formdiv form .btn{
 	background: gray;
 	color: white;
 }
+/* ---------------------dashbord stylings----------------- */
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  tbody, td, tfoot, th, thead, tr{
+    line-height: 3 !important;
+  }
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
