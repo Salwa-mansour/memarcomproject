@@ -13,7 +13,7 @@
     
 
     <!-- Bootstrap core CSS -->
-    <?php require_once("./parts/meta.php")?>
+    <?php require_once('./parts/meta.php')?>
 <!-- <!- <link rel="stylesheet" href="../assets/dist/css/bootstrap-theme.css"> --> -->
     <style>
       
@@ -21,10 +21,12 @@
         stroke: width 55px !important;
         font-size: 1.5rem;
       } */
+       /* <php include('./css/dashboard.rtl.css') ?> */
     </style>
 
     
     <!-- Custom styles for this template -->
+   
     <!-- <link href="../dashboard/dashboard.rtl.css" rel="stylesheet"> -->
   </head>
   <body>
@@ -185,6 +187,6 @@
       <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.24.1/feather.min.js" integrity="sha384-EbSscX4STvYAC/DxHse8z5gEDaNiKAIGW+EpfzYTfQrgIlHywXXrM9SUIZ0BlyfF" crossorigin="anonymous"></script> -->
       <!-- <script src="../assets/dist/js/bootstrap.min.js" ></script> -->
       <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha384-i+dHPTzZw7YVZOx9lbH5l6lP74sLRtMtwN2XjVqjf3uAGAREAF4LMIUDTWEVs4LI" crossorigin="anonymous"></script> -->
-      <!-- <script src="dashboard.js"></script> -->
+      <script src="./js/dashboard.js></script>
   </body>
 </html>
