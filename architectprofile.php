@@ -5,7 +5,7 @@
 <head>
 
    <?php require_once("./parts/meta.php")?>
-   
+   <!-- <link rel="stylesheet" href="../assets/dist/css/bootstrap.min.css"> -->
     <title>Document</title>
 </head>
 
@@ -38,6 +38,7 @@
             </div>
             <h4>archtict naem</h4>
             <button class="conrol-btn">hire me</button>
+            <button type="button" class="btn btn-info">Info</button>
             <button class="conrol-btn">reviw my work</button>
          </div>
          <!-- //////// -->
@@ -156,7 +157,7 @@
  require_once("./parts/mainend.php");
  require_once("./parts/footer.php");
  require_once("./parts/layoutgridend.php");
-
+ require_once("./parts/jsincludes.php")
 ?>
 
     <!-- hello I'm javaScript -->
