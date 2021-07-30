@@ -14,7 +14,7 @@ if(isset($_POST['archSave'])){
     if($GLOBALS['archName'] && $GLOBALS['phoneNumber'] && $GLOBALS['password'] && $GLOBALS['address']){
    //call the save function
         createData("INSERT INTO `architect`(`name`,`phone`,`password`,`address`) VALUES ('$archName' ,' $phoneNumber',' $password','$address');");
-   }else{textNode('',"txtbox are emptey");}
+   }else{textNode('alert alert-danger',"txtbox are emptey");}
 }
 if(isset($_POST['udpateArch'])){
     
@@ -33,7 +33,7 @@ if (isset($_POST['orderUpdate'])){
 function createData($sql){
   
     if(mysqli_query($GLOBALS['con'],$sql)){
-        textNode("","تمت العملية بنجاح");
+        textNode("alert alert-success","تمت العملية بنجاح");
     }else{echo('record not saved'.mysqli_error($GLOBALS['con']));}
    
 }
@@ -72,7 +72,7 @@ function achtivateAccount($id){
         WHERE `architect number`='$id';
         ";
     if(mysqli_query($GLOBALS['con'],$sql)){
-        textNode("","updated scussesfully");
+        textNode("alert alert-success","updated scussesfully");
     }else{echo('record not saved'.mysqli_error($GLOBALS['con']));}
 }
 //update function for eding and publishing the order
@@ -89,7 +89,7 @@ function updateOrderFunction($id){
         WHERE `orderId`='$id';";
     }
     if(mysqli_query($GLOBALS['con'],$sql)){
-        textNode("","تمت العملية بنجاح");
+        textNode("alert alert-success","تمت العملية بنجاح");
     }else{echo('record not saved'.mysqli_error($GLOBALS['con']));}
 }
 //bring text of selected row to the input fiedls when clicking the edit button

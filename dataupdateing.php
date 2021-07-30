@@ -10,8 +10,9 @@
 <html lang="en">
 <head>
 
-   <?php
-    require_once("./parts/meta.php")?>
+    <?php
+    require_once("./parts/meta.php")
+    ?>
    
     <title>Document</title>
 </head>
@@ -27,10 +28,11 @@
      
      ?>
  
-   
+ 
     <!-- ////////////////////////////////////// -->
     <div class="form-container">
                 <div class="formdiv">
+
               <?php  if(isset($_GET['n'])): ?>
                 <!-- <button data-close-button class="close-button">&times;</button> -->
                 <?php 
@@ -71,7 +73,7 @@
                                 <div class="radio-div">
                                      <p>publish this order</p>
                                        <ul>
-                                            <?php if($architect['status']=='disabled'):?>
+                                            <?php if($orders['published']=='disabled'):?>
                                           <li><label for="publish">publish</label><input type="radio" name="publish" value="true" checked></li>
                                           <li><label for="publish">not publish</label><input type="radio" name="publish" value="false" ></li>
                                          <?php else: ?>
