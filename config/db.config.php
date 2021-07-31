@@ -3,7 +3,7 @@ function dbconnect(){
     $serverName='localhost';
     $userName='memarcomadmin';
     $passWrod='memarcom123';
-    $dbName='memarcom2';
+    $dbName='memarcom3';
     
     $con=mysqli_connect($serverName,$userName,$passWrod,$dbName);
     if($con){

@@ -46,6 +46,15 @@
                             <li><label for="phoneNumber">phoneNumber</label><input type="text" name="phoneNumber" id=""></li>
                             <li><label for="passwrod">passWrod</label><input type="password" name="password" id=""></li>
                             <li><label for="address">address</label><input type="text" name="address" id=""></li>
+                            <li>
+                                   
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label" for="gridCheck">
+        Check me out
+      </label>
+ 
+                            </li>
+                         
                             <input type="submit" class="conrol-btn" value="archSave" name="archSave">
                         </ul>
                     </form>
@@ -73,7 +82,7 @@
                                 <div class="radio-div">
                                      <p>publish this order</p>
                                        <ul>
-                                            <?php if($orders['published']=='disabled'):?>
+                                            <?php if($orders['published']=='false'):?>
                                           <li><label for="publish">publish</label><input type="radio" name="publish" value="true" checked></li>
                                           <li><label for="publish">not publish</label><input type="radio" name="publish" value="false" ></li>
                                          <?php else: ?>

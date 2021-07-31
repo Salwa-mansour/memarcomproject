@@ -609,7 +609,7 @@ a.inner-link{
     border-radius: inherit;
 }
 /* --------------- add form styilng------------ */
-div.formdiv form input,
+div.formdiv form  input:not([type='checkbox']),
 div.formdiv form textarea{
 	padding: .5rem;
 	/*margin: 1rem 2rem;*/
