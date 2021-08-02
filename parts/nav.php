@@ -20,8 +20,8 @@
         <a href="./allarchitects.php">مهندسونا</a>
         <a href="./Cpanel.php" >c panel </a>
         <!-- log in links -->
-        <a href="#1" class="goast-link " >sing in </a>
-        <a href="#1"  class="goast-link "  >sign up </a>
+        <a href="./dataupdateing.php?n=usersSignin" class="goast-link " >sing in </a>
+        <a href="#"  class="goast-link "  >sign up </a>
         <!-- loged in links -->
          <!-- <a href="#1" class="user-circle" style="background-image: url(./images/p2.jpg);"> -->
             <!-- <div class="user-circle" style="background-image: url(./images/p2.jpg);">
