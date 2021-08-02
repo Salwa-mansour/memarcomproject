@@ -14,7 +14,7 @@
     <title>قالب لوحة القيادة · Bootstrap v5.0</title>
 
     <!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard-rtl/"> -->
-
+    <!-- <link rel="stylesheet" href="./style.css"> -->
     <link rel="stylesheet" href="./fontawesome-free-5.15.3-web/css/all.css">
 
     <!-- Bootstrap core CSS -->
@@ -64,6 +64,34 @@
 #sidebarMenu{
   height: 100vh ;
 }
+/* nav logo styling */
+.nav-logo{
+    width: 8rem !important;
+   
+}
+.dropdown-menu{
+  position: absolute  !important;
+  min-width: 6rem !important;
+}
+a.inner-link{
+  /* color: white; */
+  text-decoration: none;
+}
+/* div.table-responsive table.table-responsive .checkbox-td{
+  background-color: red !important;
+  position: relative;
+} */
+.navbar-toggler.position-absolute{
+  top: 3px;
+  left: 3px;
+}
+.table-responsive tr input#gridCheck{
+ 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
       /* ----------- */
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
@@ -79,8 +107,11 @@
   </head>
   <body>
     
-<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">معماركوم</a>
+<header class="navbar navbar-dark  bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 " href="#">
+    <img class="nav-logo" src="./images/memarcomlogo3.png" alt="">
+    <!-- memarocm -->
+  </a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="تبديل التنقل">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -100,20 +131,29 @@
         </li>
    
 <!-- Basic dropdown -->
-<li class="nav-item">
+<!-- <li class="nav-item"> -->
   <!-- Basic dropdown -->
-  <div class="dropdown">
+  <!-- <div class="dropdown">
   <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
        <i class="fas fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Account</span>
   </a>
 
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+  <div class="dropdown-menu  dropdown-toggle" aria-labelledby="dropdownMenuLink">
     <a class="dropdown-item" href="#">logout</a>
   
-  </div>
-</div>
+  </div> -->
+  
+<!-- </div> -->
 <!-- Basic dropdown -->
+<li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fas fa-user"></i> Dropdown</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown01">
+              <li><a class="dropdown-item" href="#">logout</a></li>
+             
+            </ul>
+
 </li>
+
   </ul>
 </header>
 
@@ -132,18 +172,18 @@
         <ul class="nav flex-column mb-2">
           <li class="nav-item">
             <a class="nav-link" href="./control3.php?tab=archdata" >
-              <span data-feather="file-text"></span>
+            <i class="fas fa-user-tie"></i>
                المهندسين
             </a>
           </li>
             <a class="nav-link" href="./control3.php?tab=clientdata">
-              <span data-feather="file-text"></span>
+            <i class="fas fa-user"></i> 
                العملاء
             </a>
           </li>
           </li>
             <a class="nav-link" href="./control3.php?tab=ordersdata">
-              <span data-feather="file-text"></span>
+            <i class="fas fa-tasks"></i>
                طلبات العملاء
             </a>
           </li>
@@ -176,6 +216,7 @@
         <table class="table table-striped table-sm">
           <thead>
             <tr>
+              <th> </th>
              <th scope="col">order title</th>
                 <th scope="col">oreder details</th>
                 <th scope="col">orderType</th>
@@ -191,13 +232,14 @@
           
             <tr>
                <input type="hidden" name="id" value="<?php //echo $order['orderId']; ?>"> 
-                <td> <?php echo $order['orederTitle']; ?></td>
+               <td class="checkbox-td" style="position: relative; width:3rem; " ><input class="form-check-input" type="checkbox" id="gridCheck"></td>
+               <td> <?php echo $order['orederTitle']; ?></td>
                 <td><?php echo $order['orderDetails']; ?></td>
                <td><?php echo $order['orderType']; ?></td>
                 <td><?php echo $order['published']; ?></td>
-                <td><button class="btn btn-primary"><a href="./dataupdateing.php?n=ordersdata&orderId=<?php echo $order['orderId']; ?>" class="inner-link">edit</a> </button></td>
+                <td><a href="./dataupdateing.php?n=ordersdata&orderId=<?php echo $order['orderId']; ?>" class="inner-link"><i class="fas fa-edit"></i></a> </td>
               <!-- <td><button type="button" class="btn btn-primary">Primary</button></td> -->
-              <!-- <td><button class="btn btn-primary"><a href="./dataupdateing.php?n=updateArch&archId=<?php echo $architect['architect number']; ?>" class="inner-link">edit</a> تعديل</button></td> -->
+              <!-- <td><button class="btn btn-primary"><a href="./dataupdateing.php?n=updateArch&archId=<?php // echo $architect['architect number']; ?>" class="inner-link">edit</a> تعديل</button></td> -->
             </tr>
        <?php 
         endforeach; //foreach($orders as $order):
@@ -216,7 +258,7 @@
             <tr>
               <!-- <th>#</th> -->
             
-            
+              <th> </th>
                 <th scope="col">clint name</th>
                 <th scope="col">email</th>
                 <th scope="col">phone</th>
@@ -232,13 +274,13 @@
         
           
             <tr>
-       
+            <td class="checkbox-td" style="position: relative; width:3rem; " ><input class="form-check-input" type="checkbox" id="gridCheck"></td>
             <input type="hidden" name="clintId" value="<?php echo $client['client number']; ?>"> 
                 <td> <?php echo $client['name']; ?></td>
                 <td><?php echo $client['email']; ?></td>
                 <td><?php echo $client['phone']; ?></td>
                 <td><?php echo $client['state']; ?></td>
-                <td><button class="btn btn-primary">edit</button></td>
+                <td><a href="#" class="inner-link" ><i class="fas fa-edit"></a></td>
               <!-- <td><button type="button" class="btn btn-primary">Primary</button></td> -->
               <!-- <td><button class="btn btn-primary"><a href="./dataupdateing.php?n=updateArch&archId=<?php echo $architect['architect number']; ?>" class="inner-link">edit</a> تعديل</button></td> -->
             </tr>
@@ -254,8 +296,8 @@
          <table class="table table-striped table-sm">
            <thead>
              <tr>
-               <th>#</th>
-             
+               
+                <th> </th><th></th>
                  <th scope="col">architect name</th>
                  <th scope="col">email</th>
                  <th scope="col">phone</th>
@@ -272,13 +314,14 @@
            
              <tr>
              <th scope="row"> <input type="hidden" name="id" value="<?php echo $architect['architect number']; ?>"> </th>
+             <td class="checkbox-td" style="position: relative; width:3rem; " ><input class="form-check-input" type="checkbox" id="gridCheck"></td>
                  <td> <?php echo $architect['name']; ?></td>
                  <td><?php echo $architect['email']; ?></td>
                  <td><?php echo $architect['phone']; ?></td>
                  <td><a href="./cvfiles/<?php echo $architect['cv']; ?>" target="_blank">cv</a></td>
                  <td><?php echo $architect['status']; ?></td>
                <!-- <td><button type="button" class="btn btn-primary">Primary</button></td> -->
-               <td><button class="btn btn-primary"><a href="./dataupdateing.php?n=updateArch&archId=<?php echo $architect['architect number']; ?>" class="inner-link">edit</a> تعديل</button></td>
+               <td><a href="./dataupdateing.php?n=updateArch&archId=<?php echo $architect['architect number']; ?>" class="inner-link"><i class="fas fa-edit"></i> </a></td>
              </tr>
         <?php 
          endforeach; //end foreach ($architects as $architect): 
@@ -291,41 +334,43 @@
             // gettign the default value arch data
             // here
             $architects=getdata("SELECT `architect number`,`name`,`status`,`email`,`phone`,`cv` FROM `architect` ORDER BY `architect number` DESC");//
-           ?>
-             <h2>ادارة المهندسين </h2>
-      <div class="table-responsive">
-        <table class="table table-striped table-sm">
-          <thead>
-            <tr>
-              <th>#</th>
-            
-                <th scope="col">architect name</th>
-                <th scope="col">email</th>
-                <th scope="col">phone</th>
-                <th scope="col">cv</th>
-                <th scope="col">status</th>
-                <th scope="col">edit</th>
-            </tr>
-              </thead>
-              <tbody>
-            <?php
-            if(isset($architects)):
-             foreach($architects as $architect): ?>
-        
-          
-            <tr>
-            <th scope="row"> <input type="hidden" name="id" value="<?php echo $architect['architect number']; ?>"> </th>
-                <td> <?php echo $architect['name']; ?></td>
-                <td><?php echo $architect['email']; ?></td>
-                <td><?php echo $architect['phone']; ?></td>
-                <td><a href="./cvfiles/<?php echo $architect['cv']; ?>" target="_blank">cv</a></td>
-                <td><?php echo $architect['status']; ?></td>
-              <!-- <td><button type="button" class="btn btn-primary">Primary</button></td> -->
-              <td><button class="btn btn-primary"><a href="./dataupdateing.php?n=updateArch&archId=<?php echo $architect['architect number']; ?>" class="inner-link">edit</a> تعديل</button></td>
-            </tr>
-       <?php 
-        endforeach; //end foreach ($architects as $architect): 
-        endif; // end of isset($architects)
+            ?>
+              <h2>ادارة المهندسين </h2>
+       <div class="table-responsive">
+         <table class="table table-striped table-sm">
+           <thead>
+             <tr>
+               
+                <th> </th><th></th>
+                 <th scope="col">architect name</th>
+                 <th scope="col">email</th>
+                 <th scope="col">phone</th>
+                 <th scope="col">cv</th>
+                 <th scope="col">status</th>
+                 <th scope="col">edit</th>
+             </tr>
+               </thead>
+               <tbody>
+             <?php
+             if(isset($architects)):
+              foreach($architects as $architect): ?>
+         
+           
+             <tr>
+             <th scope="row"> <input type="hidden" name="id" value="<?php echo $architect['architect number']; ?>"> </th>
+             <td class="checkbox-td" style="position: relative; width:3rem; " ><input class="form-check-input" type="checkbox" id="gridCheck"></td>
+                 <td> <?php echo $architect['name']; ?></td>
+                 <td><?php echo $architect['email']; ?></td>
+                 <td><?php echo $architect['phone']; ?></td>
+                 <td><a href="./cvfiles/<?php echo $architect['cv']; ?>" target="_blank">cv</a></td>
+                 <td><?php echo $architect['status']; ?></td>
+               <!-- <td><button type="button" class="btn btn-primary">Primary</button></td> -->
+               <td><a href="./dataupdateing.php?n=updateArch&archId=<?php echo $architect['architect number']; ?>" class="inner-link"><i class="fas fa-edit"></i> </a></td>
+             </tr>
+        <?php 
+         endforeach; //end foreach ($architects as $architect): 
+         endif; // end of isset($architects)
+       
         ?>
           </tbody>
         </table>
