@@ -5,17 +5,68 @@ $con=dbconnect();
 
 
 // function calls
+// ///////////////----- architect signut -----------------//////////////
+if(isset($_POST['architect-signup-btn'])){
+  
+    $archName = textboxValue("architect-name");//article_title is the input field name
+    $phoneNumber = textboxValue("architect-phone");//article_title is the input field name
+    $email = textboxValue("architect-email");
+    $password = textboxValue("architect-password");
+    // echo('wht th hle si goni ign');
+    // echo$email;
+    //  print_r('hellow'.gitselectedrow("SELECT * FROM `architect` WHERE `email`='$email'"));
+                // if($GLOBALS['archName'] && $GLOBALS['phoneNumber'] && $GLOBALS['email'] && $GLOBALS['password']){
+                if($archName && $phoneNumber && $email&& $password){
+                    // if(gitselectedrow("SELECT * FROM `architect` WHERE `email`='$email'")==[]){
+                $sameEmailQuery= "SELECT * FROM `architect` WHERE TRIM(email) = '$email'";
+                $sameEmailResult =   mysqli_query($GLOBALS['con'], $sameEmailQuery)or die(mysqli_error($GLOBALS['con']));
+            //  echo(mysqli_num_rows($sameEmailResult));
+                if(mysqli_num_rows($sameEmailResult) === 0):
+            
+                if(createData("INSERT INTO `architect`(`name`,`phone`,`email`,`password`)
+                 VALUES ('$archName' ,' $phoneNumber',' $email','$password');")){
+                    header('Location:forms.php?n=userSignIn&userType=architect&msg=architectAdded');
 
-if(isset($_POST['archSave'])){
-    $archName = textboxValue("archName");//article_title is the input field name
-    $phoneNumber = textboxValue("phoneNumber");//article_title is the input field name
-    $password = textboxValue("password");
-    $address = textboxValue("address");
-    if($GLOBALS['archName'] && $GLOBALS['phoneNumber'] && $GLOBALS['password'] && $GLOBALS['address']){
-   //call the save function
-        createData("INSERT INTO `architect`(`name`,`phone`,`password`,`address`) VALUES ('$archName' ,' $phoneNumber',' $password','$address');");
-   }else{textNode('alert alert-danger',"txtbox are emptey");}
-}
+                } else{header('Location:forms.php?n=userSignIn&userType=architect&msg=accountAddFail');}
+          
+                // } 
+       else :  header('Location:forms.php?n=userSignIn&userType=architect&msg=emailExist');   
+            endif    ; 
+        //  else{ echo'what the hell is goning on';}
+
+                } else{ header('Location:forms.php?n=userSignIn&userType=architect&msg=emptytext');}
+               
+               
+            }
+ // /////////////////////----------client sign up-------------/////////////////////////////////////
+ if(isset($_POST['client-signup-btn'])){
+     $clientName = textboxValue('client-name');
+     $clientEmail = textboxValue('client-email');
+     $clientPhone = textboxValue('client-phone');
+     $clientPassword = textboxValue('client-password');
+     if($clientName && $clientEmail && $clientPhone && $clientPassword){
+        $sameEmailQuery= "SELECT * FROM `client` WHERE TRIM(email) = '$clientEmail'";
+        $sameEmailResult =   mysqli_query($GLOBALS['con'], $sameEmailQuery)or die(mysqli_error($GLOBALS['con']));
+    //  echo(mysqli_num_rows($sameEmailResult));
+                if(mysqli_num_rows($sameEmailResult) === 0):
+                            if(createData("INSERT INTO `client`(`name`,`phone`,`email`,`password`)
+                            VALUES ('$clientName' ,' $clientPhone',' $clientEmail','$clientPassword');")){
+                           
+                            $AddedClientRecord = mysqli_query($GLOBALS['con'], "SELECT * FROM `client` WHERE TRIM(email) = '$clientEmail' ; ")or die(mysqli_error($GLOBALS['con']));
+                            $AddedClientArray = mysqli_fetch_assoc( $AddedClientRecord);
+                            $_SESSION["clientId"] = $AddedClientArray['client number'];
+                            $_SESSION["clientPhoto"] = $AddedClientArray['photo'];
+                            header('Location:forms.php?n=userSignIn&userType=client&msg=clientAdded');
+                              } else{ //echo('walla ennah lagaja');
+                                  header('Location:forms.php?n=userSignIn&userType=client&msg=accountAddFail');}
+                else :  header('Location:forms.php?n=userSignIn&userType=client&msg=emailExist');   
+                endif; 
+     }else{header('Location:forms.php?n=userSignIn&userType=client&msg=emptytext');}
+
+       // loging in the user after account is created -start a sesstion-
+            //  userLogedin();
+ }
+// //////////////////////////////////////////////////////
 if(isset($_POST['udpateArch'])){
     
     achtivateAccount($_GET['archId']);
@@ -33,8 +84,14 @@ if (isset($_POST['orderUpdate'])){
 function createData($sql){
   
     if(mysqli_query($GLOBALS['con'],$sql)){
-        textNode("alert alert-success","تمت العملية بنجاح");
-    }else{echo('record not saved'.mysqli_error($GLOBALS['con']));}
+
+    //    textNode("alert alert-success","تمت العملية بنجاح");
+    return true;
+        
+    }else{
+        // echo('record not saved'.mysqli_error($GLOBALS['con']));
+        return false;
+    }
    
 }
 //getting the input feilds current value
@@ -102,3 +159,56 @@ function gitselectedrow($sql){
     $myResult=mysqli_fetch_array($result);
     return $myResult;
 }
+
+/////////////////////////////---------- login system ---------////////////////////////////////////////////
+if(isset($_POST['user-login-btn'])){
+    // $archName = textboxValue("archName");
+  userLogedin();
+}
+if(isset($_GET['log'])){
+    if($_GET['log']=='logout'){
+    // session_start();
+   // remove all session variables
+    session_unset(); 
+    session_destroy();
+    // echo('sessrion after destropy');
+    // print_r($_SESSION);
+}
+}
+function userLogedin(){
+    // session_start();
+      $userName = textboxValue('user-name');
+    $userpass =textboxValue(('user-password'));
+     $clientUser = gitselectedrow(" SELECT * FROM `client` WHERE `name` = '$userName' AND `password` = '$userpass' ; ");
+     $architectUser = gitselectedrow(" SELECT * FROM `architect` WHERE `name` = '$userName' AND `password` = '$userpass' ; ");
+//    echo($clientUser['name']);
+//  print_r($clientUser);
+//  print_r($architectUser).'//////////////////';
+   if(isset($clientUser)){
+      
+       $_SESSION["clientId"] = $clientUser['client number'];
+        $_SESSION["clientName"] = $clientUser['name'];
+       $_SESSION["clientPhoto"] = $clientUser['photo'];
+       header('Location:forms.php?n=userlogin&msg=userLogedin');
+   }elseif(isset($architectUser)){
+    $_SESSION["archId"] = $architectUser['architect number'];
+    $_SESSION["archName"] = $architectUser['name'];
+   $_SESSION["archPhoto"] = $architectUser['photo'];
+   header('Location:forms.php?n=userlogin&msg=userLogedin');
+   }else{
+    header('Location:forms.php?n=userlogin&msg=errLoginTxt');
+   }
+//    print_r($_SESSION);
+}
+
+
+
+
+
+
+
+
+
+
+
+

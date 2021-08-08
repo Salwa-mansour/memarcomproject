@@ -36,7 +36,7 @@
  
     <!-- ////////////////////////////////////// -->
     <div class="form-container">
-                <div class="formdiv">
+                <div class="">
 
               <?php  if(isset($_GET['n'])): ?>
                 <!-- <button data-close-button class="close-button">&times;</button> -->
@@ -53,10 +53,10 @@
                             <li><label for="address">address</label><input type="text" name="address" id=""></li>
                             <li>
                                    
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                      Check me out
+                    </label>
  
                             </li>
                          
@@ -99,6 +99,7 @@
                          
                           
                             <input type="submit" class="conrol-btn" value=" orderUpdate" name="orderUpdate">
+                            <button role="submit" class="conrol-btn" value="orderUpdate" name="orderUpdate" >hh</button>
                         </ul>
                     </form>
 
@@ -140,10 +141,30 @@
                         </ul>
                     </form>
                     <!-- /////////////////////////////////////////// -->
-                    elseif($from=='usersSignin'):
-                      
-                   echo('hleel')
+                   <?php elseif($from=='userlogin'):
 
+                       ?>
+
+                    <form>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                      </div>
+                      <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                      <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
+                      
+                   
+                      <!-- //////////////////////////////////////// -->
                     <?php  endif; //if($from=="addArch"):?>
                       
                     <?php   endif; //isset($_GET['n']))?>

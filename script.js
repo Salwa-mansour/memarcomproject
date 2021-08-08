@@ -16,3 +16,19 @@ function hidefrom(){
 // hidefrom();
 // console.log(hidenContainer.innerHTML)
 console.log(document.getElementsByClassName('show-btn'));
+let tabs=document.querySelector('.nav.nav-tabs ') ;
+// console.log(tabs)
+function tabChange(){
+   tabs.addEventListener('click',function(e){
+      tabLinks=Array.from(tabs.children );
+   
+    tabLinks.forEach(tab => {
+        tab.classList.remove('active');
+        console.log(tab)
+    });
+   e.target.classList.add('active');
+  
+} ) ;
+   
+}
+// tabChange();

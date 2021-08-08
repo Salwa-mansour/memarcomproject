@@ -23,7 +23,7 @@
                     <p>هنا افضل المعماريين لنقدم افضل التصاميم والخدمات الهندسية </p>
                    
                 </div>
-                <button  class="banner-btn emtycolor-btn ">سجل طلبك</button>
+               <a href="./forms.php?n=orderUplaod"> <button  class="banner-btn emtycolor-btn ">سجل طلبك</button></a>
             <!-- </div> -->
         </div>
      
@@ -73,7 +73,7 @@
             </button> -->
                 <button  class="banner-btn emtycolor-btn show-btn">
                     <!-- addarchitecht page redirect code -->
-                     <a href="./dataupdateing.php?n=addArch" class=" inner-link "> ابدأ الان
+                     <a href="./forms.php?n=userSignIn&userType=architect" class=" inner-link "> ابدأ الان
                      </a>
                     <!-- transperant div problem  -->
                      <!-- <a href="./defaultpage.php?n=addArch" class=" inner-link "> ابدأ الان
@@ -92,7 +92,7 @@
         <div class="container">
             <div class="user-review-item">
                 <div class="user-review">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia odit praesentium repellat aperiam aliquid incidunt, eum doloremque animi reprehenderit consequuntur rerum similique molestiae, voluptatem ad dolore dicta corporis iure recusandae.</p>
+                    <p>Lorem ipsum dolor sit usandae.</p>
                     <h4>person mame</h4>
                     <small>los anolos</small>
                     
@@ -101,7 +101,7 @@
             </div>
             <div class="user-review-item">
                 <div class="user-review">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia odit praesentium repellat aperiam aliquid incidunt, eum doloremque animi reprehenderit consequuntur rerum similique molestiae, voluptatem ad dolore dicta corporis iure recusandae.</p>
+                    <p>Lorem ipsum dolor sit usandae.</p>
                     <h4>person mame</h4>
                     <small>los anolos</small>
                     
@@ -110,7 +110,7 @@
             </div>
             <div class="user-review-item">
                 <div class="user-review">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia odit praesentium repellat aperiam aliquid incidunt, eum doloremque animi reprehenderit consequuntur rerum similique molestiae, voluptatem ad dolore dicta corporis iure recusandae.</p>
+                    <p>Lorem ipsum dolor sit usandae.</p>
                     <h4>person mame</h4>
                     <small>los anolos</small>
                     
@@ -121,7 +121,9 @@
     </section>
     <!-- ////////////////////////////////////// -->
 
-<?php require_once("./parts/footer.php")?>
+<?php require_once("./parts/footer.php");
+      include_once('./parts/jsincludes.php');
+?>
 
     <!-- hello I'm javaScript -->
     <script src="./script.js"></script>
