@@ -25,16 +25,16 @@ if(isset($_POST['architect-signup-btn'])){
             
                 if(createData("INSERT INTO `architect`(`name`,`phone`,`email`,`password`)
                  VALUES ('$archName' ,' $phoneNumber',' $email','$password');")){
-                    header('Location:forms.php?n=userSignIn&userType=architect&msg=architectAdded');
+                    header('Location:forms.php?n=userSignUp&userType=architect&msg=architectAdded');
 
-                } else{header('Location:forms.php?n=userSignIn&userType=architect&msg=accountAddFail');}
+                } else{header('Location:forms.php?n=userSignUp&userType=architect&msg=accountAddFail');}
           
                 // } 
-       else :  header('Location:forms.php?n=userSignIn&userType=architect&msg=emailExist');   
+       else :  header('Location:forms.php?n=userSignUp&userType=architect&msg=emailExist');   
             endif    ; 
         //  else{ echo'what the hell is goning on';}
 
-                } else{ header('Location:forms.php?n=userSignIn&userType=architect&msg=emptytext');}
+                } else{ header('Location:forms.php?n=userSignUp&userType=architect&msg=emptytext');}
                
                
             }
@@ -56,12 +56,12 @@ if(isset($_POST['architect-signup-btn'])){
                             $AddedClientArray = mysqli_fetch_assoc( $AddedClientRecord);
                             $_SESSION["clientId"] = $AddedClientArray['client number'];
                             $_SESSION["clientPhoto"] = $AddedClientArray['photo'];
-                            header('Location:forms.php?n=userSignIn&userType=client&msg=clientAdded');
+                            header('Location:forms.php?n=userSignUp&userType=client&msg=clientAdded');
                               } else{ //echo('walla ennah lagaja');
-                                  header('Location:forms.php?n=userSignIn&userType=client&msg=accountAddFail');}
-                else :  header('Location:forms.php?n=userSignIn&userType=client&msg=emailExist');   
+                                  header('Location:forms.php?n=userSignUp&userType=client&msg=accountAddFail');}
+                else :  header('Location:forms.php?n=userSignUp&userType=client&msg=emailExist');   
                 endif; 
-     }else{header('Location:forms.php?n=userSignIn&userType=client&msg=emptytext');}
+     }else{header('Location:forms.php?n=userSignUp&userType=client&msg=emptytext');}
 
        // loging in the user after account is created -start a sesstion-
             //  userLogedin();

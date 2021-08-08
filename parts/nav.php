@@ -43,7 +43,7 @@
           </li>
           <?php else: ?>
                 <li class="nav-item">
-                <a class="nav-link " href="./forms.php?n=userSignIn&userType=client">تسجيل حساب</a>
+                <a class="nav-link " href="./forms.php?n=userSignUp&userType=client">تسجيل حساب</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link " href="./forms.php?n=userlogin">الدخول</a>

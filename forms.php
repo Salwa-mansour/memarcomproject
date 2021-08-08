@@ -75,15 +75,15 @@
 
                 
                     <!-- //////////////////////////////////////// -->
-                <?php elseif($from=='userSignIn'): ?>
+                <?php elseif($from=='userSignUp'): ?>
                     <?php   if($userType=='client'):?>
                                 <form   action="" method="post" enctype="multipart/form-data" class="form-div">
                                 <ul class="nav nav-tabs">
                                 <li class="nav-item">
-                                    <a class="nav-link " aria-current="page" href="./forms.php?n=userSignIn&userType=client">عميل</a>
+                                    <a class="nav-link " aria-current="page" href="./forms.php?n=userSignUp&userType=client">عميل</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="./forms.php?n=userSignIn&userType=architect">مهندس</a>
+                                    <a class="nav-link" href="./forms.php?n=userSignUp&userType=architect">مهندس</a>
                                 </li>
                                 </ul>
                                 <h5 class="form-title" >التسجيل كعميل</h5>
@@ -122,10 +122,10 @@
                                 <form   action="" method="post" enctype="multipart/form-data" class="form-div">
                                 <ul class="nav nav-tabs">
                                 <li class="nav-item">
-                                    <a class="nav-link " aria-current="page" href="./forms.php?n=userSignIn&userType=client">عميل</a>
+                                    <a class="nav-link " aria-current="page" href="./forms.php?n=userSignUp&userType=client">عميل</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="./forms.php?n=userSignIn&userType=architect">مهندس</a>
+                                    <a class="nav-link" href="./forms.php?n=userSignUp&userType=architect">مهندس</a>
                                 </li>
                                 </ul>
                                 <h5 class="form-title" >التسجيل كمهندس</h5>
@@ -183,7 +183,7 @@
                                      </div>  
                    
                                         <div class="d-flex justify-content-center links">
-					        	        لا تمتلك حساب؟ <a href="./forms.php?n=userSignIn&userType=client" class="ml-2"> سجل الان</a>
+					        	        لا تمتلك حساب؟ <a href="./forms.php?n=userSignUp&userType=client" class="ml-2"> سجل الان</a>
 					                    </div>
                                     <div class="d-flex justify-content-center links">
                                      تمتلك حساب؟ <a href="./forms.php?n=userlogin" class="ml-2"> سجل الدخول</a>
