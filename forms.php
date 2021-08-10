@@ -69,7 +69,7 @@
 
 
                      <div class="d-flex justify-content-center links">
-						لا تمتلك حساب؟ <a href="./forms.php?n=userSignIn&userType=client" class="ml-2"> سجل الان</a>
+						لا تمتلك حساب؟ <a href="./forms.php?n=userSignUp&userType=client" class="ml-2"> سجل الان</a>
 					</div>    
                 </form>
 
@@ -78,6 +78,7 @@
                 <?php elseif($from=='userSignUp'): ?>
                     <?php   if($userType=='client'):?>
                                 <form   action="" method="post" enctype="multipart/form-data" class="form-div">
+                                
                                 <ul class="nav nav-tabs">
                                 <li class="nav-item">
                                     <a class="nav-link " aria-current="page" href="./forms.php?n=userSignUp&userType=client">عميل</a>
@@ -175,8 +176,21 @@
                     <!-- ///////////////////////////////////////// -->
                     <?php elseif($from=='orderUplaod'): ?>
                             <?php    if(isset($_SESSION["clientId"])): ?>
-                                <?php else:?>
-                                    
+                                    <form action="" method="post" class="form-div">
+
+                                    <label for="order-title"> order title</label>
+                                   <input require="require" type="text" class="form-control" id="order-title" aria-describedby="emailHelp" placeholder="oreder title" name="order-title" >
+                                   
+                                   <?php include('./parts/workTypelist.php') ?>
+                                   
+                                   <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Example textarea</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="order-details" placeholder="type order details" ></textarea>
+                                      </div>
+                                      <button type="submit" class="btn btn-primary" name="order-submit" >submit order </button>
+                                      <?php require('./parts/messeges.php') ?>
+                                    </form>
+                                    <?php else://if(isset($_SESSION["clientId"])) ?>
                                     <div class="form-div">
                                      <div class="alert alert-warning" role="alert">
                                       انت غير مسجل بحساب عميل  
@@ -190,6 +204,129 @@
                                         </div>   
                                    </div>     
                                 <?php endif;//isset($_SESSION["clientId"]) ?>
+              <!-- ///////////////////////////////////////////////////////////// -->
+                     <?php elseif($from=='workuplaod'): ?>
+                        <form   action="" method="post" enctype="multipart/form-data" class="form-div">
+                                
+                        <label for="order-title"> order title</label>
+                         <?php $archId=$_GET['archid']; ?>
+                                    <input type="hidden" name="arch-id" value="<?php echo($archId) ?>" >
+                                   <input require="require" type="text" class="form-control" id="order-title" aria-describedby="emailHelp" placeholder="oreder title" name="work-title" >
+                                   
+                                   <?php include('./parts/workTypelist.php') ?>
+                                   
+                                   <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Example textarea</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="work-details" placeholder="type work details" ></textarea>
+                                 </div>
+                                 <div class="form-group">
+                                     <label for="">uplaoud photo</label>
+                                     <input type="file" name="work-img" id=""  accept=".png , .jpg , .tftf" >
+                                     <button type="submit" class="btn btn-primary" name="work-submit" >submit work </button>
+                                    </div>
+                                  <?php  require('./parts/messeges.php'); ?>
+                                </form>
+<!-- title file deatila archid work -->
+              <!-- ///////////////////////////////////////////////////////////// -->
+                     <?php elseif($from=='workUpdate'):
+                            $workId=$_GET['workId'];
+                            $thisWork=gitselectedrow("select * from `previuasworks` where `workId`='$workId'")
+                         ?>
+                        <form   action="" method="post" enctype="multipart/form-data" class="form-div">
+                                
+                        <label for="order-title"> order title</label>
+                         <?php //$archId=$_SESSION['archId']; ?>
+                                    <input type="hidden" name="work-id" value="<?php echo($workId) ?>" >
+                                   <input require="require" type="text" class="form-control" id="order-title" 
+                                   aria-describedby="emailHelp" placeholder="oreder title" name="work-title" value="<?php echo($thisWork['workTitle']); ?>" >
+                                   
+                                   <?php include('./parts/workTypelist.php') ?>
+                                   
+                                   <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Example textarea</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="work-details" placeholder="type work details" ><?php echo($thisWork['workDescriptoin']); ?></textarea>
+                                 </div>
+                                 <div class="form-group">
+                                     <label for="">uplaoud photo</label>
+                                     <input type="file" name="work-img" id=""  accept=".png , .jpg , .tftf"  >
+                                     <button type="submit" class="btn btn-primary" name="work-update" value="" >submit work </button>
+                                    </div>
+                                  <?php  require('./parts/messeges.php'); ?>
+                                </form>
+              <!-- ///////////////////////////////////////////////////////////// -->
+                     <?php elseif($from=='reviwArch'): ?>
+                        <form   action="" method="post" enctype="multipart/form-data" class="form-div rivew-from " style="position: relative;">
+                                    <input type="hidden" name="work-id" value="<?php echo($workId) ?>" >
+                                  <!-- /////////////////////////// -->
+                                  <div class="radio-star-div" >
+                                      <!-- ***** -->
+                                    <input type="radio" id="contactChoice0" name="rivew" value="0" ">
+                                   <label for="contactChoice0"><button class="btn btn-primary">
+                                   <i class="far fa-star"></i>
+                                   <i class="far fa-star"></i>
+                                   <i class="far fa-star"></i>
+                                   <i class="far fa-star"></i>
+                                   <i class="far fa-star"></i>
+                                   </button> </label>
+                                      <!-- ***** -->
+                                    <input type="radio" id="contactChoice1" name="rivew" value="1" ">
+                                   <label for="contactChoice1"><button class="btn btn-primary">
+                                   <i class="fas fa-star"></i>
+                                   <i class="far fa-star"></i>
+                                   <i class="far fa-star"></i>
+                                   <i class="far fa-star"></i>
+                                   <i class="far fa-star"></i>
+                                   </button> </label>
+                                      <!-- ***** -->
+                                    <input type="radio" id="contactChoice2" name="rivew" value="2" ">
+                                   <label for="contactChoice2"><button class="btn btn-primary">
+                                   <i class="fas fa-star"></i>
+                                   <i class="fas fa-star"></i>
+                                   <i class="far fa-star"></i>
+                                   <i class="far fa-star"></i>
+                                   <i class="far fa-star"></i>
+                                   </button> </label>
+                                      <!-- ***** -->
+                                    <input type="radio" id="contactChoice3" name="rivew" value="3" ">
+                                   <label for="contactChoice3"><button class="btn btn-primary">
+                                   <i class="fas fa-star"></i>
+                                   <i class="fas fa-star"></i>
+                                   <i class="fas fa-star"></i>
+                                   <i class="far fa-star"></i>
+                                   <i class="far fa-star"></i>
+                                   </button> </label>
+                                      <!-- ***** -->
+                                    <input type="radio" id="contactChoice4" name="rivew" value="4" ">
+                                   <label for="contactChoice4"><button class="btn btn-primary">
+                                   <i class="fas fa-star"></i>
+                                   <i class="fas fa-star"></i>
+                                   <i class="fas fa-star"></i>
+                                   <i class="fas fa-star"></i>
+                                   <i class="far fa-star"></i>
+                                   </button> </label>
+                                      <!-- ***** -->
+                                    <input type="radio" id="contactChoice5" name="rivew" value="5" >
+                                   <label for="contactChoice5"><button class="btn btn-primary">
+                                   <i class="fas fa-star"></i>
+                                   <i class="fas fa-star"></i>
+                                   <i class="fas fa-star"></i>
+                                   <i class="fas fa-star"></i>
+                                   <i class="fas fa-star"></i>
+                                   </button> </label>
+                                      <!-- ***** -->
+                                    
+
+                                    
+                                </div>
+                                  <!-- ///////////////////////////// -->
+                                  <div class="form-group">
+                                    <label for="exampleFormControlTextarea1">Example textarea</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="reviw-text" placeholder="type feedback" ></textarea>
+                                 </div> 
+                                    <button type="submit" class="btn btn-primary" name="reviwArch-btn" value="" >submit </button>
+                                  <?php  require('./parts/messeges.php'); ?>
+                                </form>
+
                     <?php  endif; //from=='userlogin:?>
 
 

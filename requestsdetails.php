@@ -5,6 +5,20 @@
 <head>
 
    <?php require_once("./parts/meta.php")?>
+   <?php require_once("./config/opratoins.config.php")?>
+   <?php if(isset($_GET['orderId'])):
+        $orderId=$_GET['orderId'];
+       
+     ?>
+     <?php $order=gitselectedrow("SELECT * FROM `orders` WHERE `orderId`='$orderId' ");
+         $clientId=$order['custmerId'];
+         // echo $clientId;
+         $client=gitselectedrow("SELECT `client number`, `name`,`photo`, `state` FROM `client` WHERE `client number`='$clientId';");
+         // print_r($client);
+     ?>
+   <?php else:exit;//if(isset($_GET['orderId'])): ?>
+   <?php endif;//if(isset($_GET['orderId'])): ?>
+   <?php  ?>
    
     <title>Document</title>
 </head>
@@ -21,7 +35,7 @@
  
    
     <!-- ////////////////////////////////////// -->
-    <aside class="aside">
+    <!-- <aside class="aside">
            <ul>
                <li><a href="#">Lorem, ipsum.</a></li>
                <li><a href="#">Lorem, ipsum.</a></li>
@@ -30,16 +44,16 @@
                <li><a href="#">Lorem, ipsum.</a></li>
                <li><a href="#">Lorem, ipsum.</a></li>
            </ul>
-       </aside>
+       </aside> -->
        <section class="mian-section">
           <div class="requests-wraper">
               <div class="request-detail  wide-box">
-                       <h3>request detailes</h3>
+                       <h3 role="request title"> <?php echo($order['orederTitle']) ?> </h3>
                        <div class="custemr-n-div requst-custemr">
                         <i class="fas fa-user"></i>
-                        <span class="custmer-name">custemr name</span>
+                        <span class="custmer-name"><?php echo $client['name'] ?></span>
                       </div>
-                       <p class="prife-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente ipsa doloremque quo voluptates repellendus unde?</p>
+                       <p class="prife-description" role="order details" ><?php echo($order['orderDetails']) ?></p>
             </div>
               <div class="request-detail  wide-box">
                        <h3>do you want to apply an offer</h3>

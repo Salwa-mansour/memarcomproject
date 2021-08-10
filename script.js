@@ -15,7 +15,7 @@ function hidefrom(){
 // showform();
 // hidefrom();
 // console.log(hidenContainer.innerHTML)
-console.log(document.getElementsByClassName('show-btn'));
+// console.log(document.getElementsByClassName('show-btn'));
 let tabs=document.querySelector('.nav.nav-tabs ') ;
 // console.log(tabs)
 function tabChange(){

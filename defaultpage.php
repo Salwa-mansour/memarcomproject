@@ -71,10 +71,11 @@
                 <!-- <button  class="banner-btn emtycolor-btn show-btn">
                       ابدأ الان
             </button> -->
-                <button  class="banner-btn emtycolor-btn show-btn">
-                    <!-- addarchitecht page redirect code -->
-                     <a href="./forms.php?n=userSignUp&userType=architect" class=" inner-link "> ابدأ الان
-                     </a>
+              <a href="./forms.php?n=userSignUp&userType=architect" class=" inner-link ">
+                <button  class="banner-btn emtycolor-btn show-btn">  ابدأ الان
+                  
+                  </button>
+                    </a>
                     <!-- transperant div problem  -->
                      <!-- <a href="./defaultpage.php?n=addArch" class=" inner-link "> ابدأ الان
                      </a> -->
@@ -82,7 +83,7 @@
                      <!-- <a href="#?n=addArch" class=" inner-link "> ابدأ الان
                      </a> -->
                     
-            </button>
+            
             <!-- </div> -->
         </div>
     </section>

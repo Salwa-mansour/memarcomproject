@@ -4,6 +4,11 @@
                 اسم مستخدم او كلمة مرور غير صحيحة
                   </div>
                   <!-- **** -->
+             <?php    elseif($_GET['msg']=='workAdded'): ?>
+                <div class="alert alert-success" role="alert">
+              تمت العملية بنجاح
+                  </div>
+                  <!-- **** -->
              <?php    elseif($_GET['msg']=='userLogedin'): ?>
                 <div class="alert alert-success" role="alert">
                 تم تسجيل الدخول
@@ -19,6 +24,11 @@
                         تم تسجيل طلبك سيتم التواصل معك من اجل تحديد موعد المقابلة    
                         </div>
                         <!-- **** -->
+            <?php  elseif($_GET['msg']=='orderAdded'): ?>
+                         <div class="alert alert-success" role="alert">
+                        تم رفع طلبك سيتم مراجعته و نشره من قبل الادمن              
+                        </div>
+                        <!-- **** -->
             <?php  elseif($_GET['msg']=='clientAdded'): ?>
                          <div class="alert alert-success" role="alert">
                                 تم انشاء حسابك
@@ -29,11 +39,12 @@
                         <div class="alert alert-danger" role="alert">
                          الايمبل مستخدم مسبقاً  
                         </div>
-           <?php  elseif($_GET['msg']=='emailExist'): ?>
+           <?php  elseif($_GET['msg']=='addFail'): ?>
                         <div class="alert alert-danger" role="alert">
-                                حدث خطأ أثناء انشاء الحساب يرجى المحاولة مجدداً 
+                                حدث خطأ  يرجى المحاولة مجدداً 
                         </div>
 
             <?php        endif;//$_GET['msg']=='errLoginTxt'
  endif; //isset($_GET['msg'])
+
 ?>

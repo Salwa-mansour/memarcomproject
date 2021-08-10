@@ -2,7 +2,12 @@
      MEMARCOM PROJECT  -->
 <?php  
     include_once("./config/opratoins.config.php");
-    $architects=getdata("SELECT * FROM `architect` ORDER BY `architect number` limit  10;");
+    if(isset($_POST['arch-find'])):
+        $architects=archNameFilter();
+    else://(isset($_POST['arch-find'])):
+         $architects=getdata("SELECT * FROM `architect` ORDER BY `architect number` ;");
+    endif;//(isset($_POST['arch-find'])):
+   
    
 ?>
 
@@ -27,7 +32,7 @@
  
    
     <!-- ////////////////////////////////////// -->
-    <aside class="aside">
+    <!-- <aside class="aside">
            <ul>
                <li><a href="#">Lorem, ipsum.</a></li>
                <li><a href="#">Lorem, ipsum.</a></li>
@@ -36,14 +41,31 @@
                <li><a href="#">Lorem, ipsum.</a></li>
                <li><a href="#">Lorem, ipsum.</a></li>
            </ul>
-       </aside>
+       </aside> -->
        <section class="mian-section ">
-         
+                <!-- /////////////sagasu3//////////////// -->
+                <!-- <div class="requests-wraper">
+                
+                <div class="middleContainer">
+                        <div class=" ">
+                            <form action="" method="post" class="felx-form" >
+                            <div class="form-group">
+                                
+                                <input type="text" class="form-control"  placeholder="type architect name " name="architect-name" >
+                              
+                                </div>
+                          <button type="submit" class="btn btn-primary" name="arch-find" value="" ><li class="fa fa-search"></li> </button>
+                            </form>        
+                           </a>
+                        </div>
+                </div>
+            
+              </div> -->
         <div class="usersfeedback ">
             <div class="container feed">
                 <!-- <h1>uesers review</h1> -->
                 <?php foreach($architects as $architect): ?>
-            
+                  <a href="./architectprofile.php?archid=<?php echo($architect['architect number']); ?>" role="link button " style=" text-decoration: none ; color:inherit" >
                     <div class="user-review-item">
                         <div class="user-review">
                             <p><?php echo $architect["address"] ?></p>
@@ -51,9 +73,9 @@
                         
                             
                         </div>
-                        <img src="./images/<?php echo $architect["photo"] ?>" style="width: 60px; height: 60px;" alt="">
+                        <img src="<?php echo $architect["photo"] ?>" style="width: 60px; height: 60px;" alt="">
                     </div>
-                
+                </a>
                     
             
                 <?php endforeach; ?>

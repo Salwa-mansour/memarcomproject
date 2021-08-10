@@ -36,9 +36,17 @@
             </a>
            
             <ul class="dropdown-menu" aria-labelledby="dropdown03">
-              <li><a class="dropdown-item" href="#">my page</a></li>
+              <?php if(isset($_SESSION['archId'])): 
+                $archid=$_SESSION['archId']; ?>
+            
+                <li><a class="dropdown-item" href="architectprofile.php?archid=<?php echo $archid?>">my page</a></li>
               <li><a class="dropdown-item" href="forms.php?log=logout"> logout</a></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
+                <?php else://if(isset($_SESSION['archId'])): ?>
+
+              <li><a class="dropdown-item" href="forms.php?log=logout"> logout</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <?php endif;// if(isset($_SESSION['archId'])): ?>
             </ul>
           </li>
           <?php else: ?>
