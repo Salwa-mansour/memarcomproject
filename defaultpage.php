@@ -122,7 +122,9 @@
     </section>
     <!-- ////////////////////////////////////// -->
 
-<?php require_once("./parts/footer.php");
+<?php 
+    //   require_once("./parts/footer.php");
+     require_once("./parts/footer2.php");
       include_once('./parts/jsincludes.php');
 ?>
 

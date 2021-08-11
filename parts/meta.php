@@ -6,3 +6,6 @@
     <link rel="stylesheet" href="./fontawesome-free-5.15.3-web/css/all.css">
     <link rel="stylesheet" href="./assets/dist/css/bootstrap.min.css">
    
+
+  <!-- Template Main CSS File -->
+  <!-- <link href="assets2/css/style.css" rel="stylesheet"> -->

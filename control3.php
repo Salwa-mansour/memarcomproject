@@ -176,15 +176,22 @@ a.inner-link{
                المهندسين
             </a>
           </li>
+          <li>
             <a class="nav-link" href="./control3.php?tab=clientdata">
             <i class="fas fa-user"></i> 
                العملاء
             </a>
           </li>
-          </li>
+          <li>
             <a class="nav-link" href="./control3.php?tab=ordersdata">
             <i class="fas fa-tasks"></i>
                طلبات العملاء
+            </a>
+          </li>
+          <li>
+            <a class="nav-link" href="./control3forms.php?n=acceptedOffers">
+            <i class="fas fa-tasks"></i>
+               العروض المقبولة 
             </a>
           </li>
         
@@ -196,8 +203,11 @@ a.inner-link{
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">لوحة التحكم</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-         
-        </div>
+          <div class="btn-group me-2">
+          <a role="tab identfire" class="btn btn-sm btn-outline-secondary" href="control3.php?tab=archdata&state=achtive" ">archtivated account</a>
+          <a role="tab identfire" class="btn btn-sm btn-outline-secondary" href="control3.php?tab=archdata&state=disa" >disapled accouns</a>
+          </div>
+         </div>
       </div>
 
       <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
@@ -237,7 +247,7 @@ a.inner-link{
                 <td><?php echo $order['orderDetails']; ?></td>
                <td><?php echo $order['orderType']; ?></td>
                 <td><?php echo $order['published']; ?></td>
-                <td><a href="./dataupdateing.php?n=ordersdata&orderId=<?php echo $order['orderId']; ?>" class="inner-link"><i class="fas fa-edit"></i></a> </td>
+                <td><a href="./control3forms.php?n=ordersdata&orderId=<?php echo $order['orderId']; ?>" class="inner-link"><i class="fas fa-edit"></i></a> </td>
               <!-- <td><button type="button" class="btn btn-primary">Primary</button></td> -->
               <!-- <td><button class="btn btn-primary"><a href="./dataupdateing.php?n=updateArch&archId=<?php // echo $architect['architect number']; ?>" class="inner-link">edit</a> تعديل</button></td> -->
             </tr>
@@ -280,7 +290,7 @@ a.inner-link{
                 <td><?php echo $client['email']; ?></td>
                 <td><?php echo $client['phone']; ?></td>
                 <td><?php echo $client['state']; ?></td>
-                <td><a href="#" class="inner-link" ><i class="fas fa-edit"></a></td>
+                <td><a href="control3forms.php?n=clientData&clientId=<?php echo $client['client number']; ?>" class="inner-link" ><i class="fas fa-edit"></a></td>
               <!-- <td><button type="button" class="btn btn-primary">Primary</button></td> -->
               <!-- <td><button class="btn btn-primary"><a href="./dataupdateing.php?n=updateArch&archId=<?php echo $architect['architect number']; ?>" class="inner-link">edit</a> تعديل</button></td> -->
             </tr>
@@ -321,7 +331,7 @@ a.inner-link{
                  <td><a href="./cvfiles/<?php echo $architect['cv']; ?>" target="_blank">cv</a></td>
                  <td><?php echo $architect['status']; ?></td>
                <!-- <td><button type="button" class="btn btn-primary">Primary</button></td> -->
-               <td><a href="./dataupdateing.php?n=updateArch&archId=<?php echo $architect['architect number']; ?>" class="inner-link"><i class="fas fa-edit"></i> </a></td>
+               <td><a href="./control3forms.php?n=updateArch&archId=<?php echo $architect['architect number']; ?>" class="inner-link"><i class="fas fa-edit"></i> </a></td>
              </tr>
         <?php 
          endforeach; //end foreach ($architects as $architect): 
@@ -365,7 +375,7 @@ a.inner-link{
                  <td><a href="./cvfiles/<?php echo $architect['cv']; ?>" target="_blank">cv</a></td>
                  <td><?php echo $architect['status']; ?></td>
                <!-- <td><button type="button" class="btn btn-primary">Primary</button></td> -->
-               <td><a href="./dataupdateing.php?n=updateArch&archId=<?php echo $architect['architect number']; ?>" class="inner-link"><i class="fas fa-edit"></i> </a></td>
+               <td><a href="./control3forms.php?n=updateArch&archId=<?php echo $architect['architect number']; ?>" class="inner-link"><i class="fas fa-edit"></i> </a></td>
              </tr>
         <?php 
          endforeach; //end foreach ($architects as $architect): 

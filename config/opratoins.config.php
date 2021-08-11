@@ -265,30 +265,28 @@ function achtivateAccount($id){
     $accoutState=$_POST['activateAccount'];
     $cvFileName =time()."_". $_FILES['archfile']['name'];
     $target ='./cvfiles/'. $cvFileName;
+   
         move_uploaded_file($_FILES['archfile']['tmp_name'],$target);
         $sql = "
         UPDATE architect SET cv='$cvFileName',status=' $accoutState' 
         WHERE `architect number`='$id';
         ";
     if(mysqli_query($GLOBALS['con'],$sql)){
-        textNode("alert alert-success","updated scussesfully");
+       header('location:control3forms.php?n=updateArch&msg=workAdded&archId='.$id);exit;
     }else{echo('record not saved'.mysqli_error($GLOBALS['con']));}
 }
 //update function for eding and publishing the order
 function updateOrderFunction($id){
     $details=textboxValue("orderDetails");
-    $publish=$_POST['publish'];
+    $type=textboxValue('workType-list');
+    echo $type;
+    $publish=textboxValue('publish');
    // print_r($_POST);
-    if(isset($_POST['udpateArch'])){
-        $type=$_POST['workType'];
-      $sql= " UPDATE `orders` SET `orderDetails`='$details',`published`=' $publish',`orderType`='$type'
+       $sql= " UPDATE `orders` SET `orderDetails`='$details',`published`=' $publish',`orderType`='$type'
         WHERE `orderId`='$id';";
-    }else{
-        $sql= " UPDATE `orders` SET `orderDetails`='$details',`published`=' $publish'
-        WHERE `orderId`='$id';";
-    }
     if(mysqli_query($GLOBALS['con'],$sql)){
-        textNode("alert alert-success","تمت العملية بنجاح");
+       // textNode("alert alert-success","تمت العملية بنجاح");
+      // header('Location:control3forms.php?msg=workAdded&n=ordersdata&orderId='.$id);exit();
     }else{echo('record not saved'.mysqli_error($GLOBALS['con']));}
 }
 //bring text of selected row to the input fiedls when clicking the edit button

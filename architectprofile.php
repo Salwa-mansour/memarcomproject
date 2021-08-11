@@ -73,9 +73,9 @@
             ?>
                <a href=" " class="f-icons" > <i class="fa fa-edit"></i></a>
                <?php endif;// if(isset($_SESSION['archId']?>
-           <!-- </div> -->
+           </div>
             
- </div>
+
  
 <!-- //////////previas works -->
      
@@ -218,8 +218,8 @@
                
             </div>
         </div> -->
-        </div>
-        </div>
+        <!-- </div>
+        </div> -->
         <!-- ////////////////////////////////////////////////////////// -->
           <!-- ///////custemr revewes/////// -->
    <div class="requests-wraper">

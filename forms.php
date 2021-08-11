@@ -91,8 +91,8 @@
                                 <div class="form-group">
                                 <label for="exampleInputEmail1"> name</label>
                                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter naem" name="client-name" >
-                                <label for="exampleInputEmail1"> email</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter naem" name="client-name" >
+                                <label for="exampleInputEmail1"> phone</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter naem" name="client-phone" >
                               
                                 </div>
                                 <div class="form-group">
@@ -222,8 +222,9 @@
                                  <div class="form-group">
                                      <label for="">uplaoud photo</label>
                                      <input type="file" name="work-img" id=""  accept=".png , .jpg , .tftf" >
+                                     </div>
                                      <button type="submit" class="btn btn-primary" name="work-submit" >submit work </button>
-                                    </div>
+                                   
                                   <?php  require('./parts/messeges.php'); ?>
                                 </form>
 <!-- title file deatila archid work -->
