@@ -108,8 +108,8 @@ a.inner-link{
   <body>
     
 <header class="navbar navbar-dark  bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 " href="#">
-    <img class="nav-logo" src="./images/memarcomlogo3.png" alt="">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 " href="./default.php">
+    <img class="nav-logo" src="./images/lighthorisntallogo2.png" alt="">
     <!-- memarocm -->
   </a>
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="تبديل التنقل">

@@ -260,61 +260,49 @@
                                     <input type="hidden" name="work-id" value="<?php echo($workId) ?>" >
                                   <!-- /////////////////////////// -->
                                   <div class="radio-star-div" >
-                                      <!-- ***** -->
-                                    <input type="radio" id="contactChoice0" name="rivew" value="0" ">
-                                   <label for="contactChoice0"><button class="btn btn-primary">
-                                   <i class="far fa-star"></i>
-                                   <i class="far fa-star"></i>
-                                   <i class="far fa-star"></i>
-                                   <i class="far fa-star"></i>
-                                   <i class="far fa-star"></i>
-                                   </button> </label>
-                                      <!-- ***** -->
-                                    <input type="radio" id="contactChoice1" name="rivew" value="1" ">
-                                   <label for="contactChoice1"><button class="btn btn-primary">
+                                    
+                                  <!-- ***** -->
+                                 <input type="radio" id="contactChoice1" name="rivew" value="1" class="" style="display: none; width:30px">
+                                   <label for="contactChoice1" class="star-label" style="display: inline-block;" >
                                    <i class="fas fa-star"></i>
-                                   <i class="far fa-star"></i>
-                                   <i class="far fa-star"></i>
-                                   <i class="far fa-star"></i>
-                                   <i class="far fa-star"></i>
-                                   </button> </label>
-                                      <!-- ***** -->
-                                    <input type="radio" id="contactChoice2" name="rivew" value="2" ">
-                                   <label for="contactChoice2"><button class="btn btn-primary">
+                                   
+                                 </label>
+                                  <!-- ***** -->
+                                 <input type="radio" id="contactChoice2" name="rivew" value="2" class="" style="display: none; width:30px">
+                                   <label for="contactChoice2" class="star-label" style="display: inline-block;" >
                                    <i class="fas fa-star"></i>
                                    <i class="fas fa-star"></i>
-                                   <i class="far fa-star"></i>
-                                   <i class="far fa-star"></i>
-                                   <i class="far fa-star"></i>
-                                   </button> </label>
-                                      <!-- ***** -->
-                                    <input type="radio" id="contactChoice3" name="rivew" value="3" ">
-                                   <label for="contactChoice3"><button class="btn btn-primary">
+                                   
+                                 </label>
+                                  <!-- ***** -->
+                                 <input type="radio" id="contactChoice3" name="rivew" value="3" class="" style="display: none; width:30px">
+                                   <label for="contactChoice3" class="star-label" style="display: inline-block;" >
                                    <i class="fas fa-star"></i>
                                    <i class="fas fa-star"></i>
                                    <i class="fas fa-star"></i>
-                                   <i class="far fa-star"></i>
-                                   <i class="far fa-star"></i>
-                                   </button> </label>
-                                      <!-- ***** -->
-                                    <input type="radio" id="contactChoice4" name="rivew" value="4" ">
-                                   <label for="contactChoice4"><button class="btn btn-primary">
+                                   
+                                 </label>
+                                  <!-- ***** -->
+                                 <input type="radio" id="contactChoice4" name="rivew" value="4" class="" style="display: none; width:30px">
+                                   <label for="contactChoice4" class="star-label" style="display: inline-block;" >
                                    <i class="fas fa-star"></i>
                                    <i class="fas fa-star"></i>
                                    <i class="fas fa-star"></i>
                                    <i class="fas fa-star"></i>
-                                   <i class="far fa-star"></i>
-                                   </button> </label>
-                                      <!-- ***** -->
-                                    <input type="radio" id="contactChoice5" name="rivew" value="5" >
-                                   <label for="contactChoice5"><button class="btn btn-primary">
+                                   
+                                 </label>
+                                     
+                                  <!-- ***** -->
+                                 <input type="radio" id="contactChoice5" name="rivew" value="5" class="" style="display: none; width:30px">
+                                   <label for="contactChoice5" class="star-label" style="display: inline-block;" >
                                    <i class="fas fa-star"></i>
                                    <i class="fas fa-star"></i>
                                    <i class="fas fa-star"></i>
                                    <i class="fas fa-star"></i>
                                    <i class="fas fa-star"></i>
-                                   </button> </label>
-                                      <!-- ***** -->
+                                   
+                                 </label>
+                                     
                                     
 
                                     

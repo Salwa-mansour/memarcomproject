@@ -1,7 +1,7 @@
 <?php // $_GET['log']='' ?>
 <nav class="navbar navbar-expand-sm navbar-dark blue-background" aria-label="Third navbar example">
     <div class="container-fluid">
-      <a class="navbar-brand" href="./defaultpage.php">
+      <a class="navbar-brand" href="./default.php">
       <img class="nav-logo" src="./images/lighthorisntallogo2.png" alt="">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
