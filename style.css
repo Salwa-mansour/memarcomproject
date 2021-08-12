@@ -568,6 +568,7 @@ margin:5.5rem calc(2.5rem + .75vw) ;
      /* border: 3px solid blue; */
         display: flex;
         align-items: flex-start;
+        height: min-content;
  }
  .middle{
      position: absolute;
@@ -587,6 +588,12 @@ margin:5.5rem calc(2.5rem + .75vw) ;
  }
  .request-contianer .request-data{
      padding: .5rem;
+     flex: 1;
+ }
+ .request-contianer form,
+ .request-contianer a{
+    align-self: center;
+     margin-left: .5rem;
  }
  .request-contianer .prife-description{
      padding: .8rem  0rem;

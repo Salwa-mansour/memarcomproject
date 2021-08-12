@@ -5,7 +5,7 @@
     if(isset($_POST['arch-find'])):
         $architects=archNameFilter();
     else://(isset($_POST['arch-find'])):
-         $architects=getdata("SELECT * FROM `architect` ORDER BY `architect number` ;");
+         $architects=getdata("SELECT * FROM `architect` WHERE TRIM(`status`)='inable' ORDER BY `architect number` DESC;");
     endif;//(isset($_POST['arch-find'])):
    
    

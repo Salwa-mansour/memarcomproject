@@ -172,6 +172,61 @@ if(isset($_POST['architect-signup-btn'])){
         }else{echo("delete error".mysqli_error($GLOBALS['con']));}
      }
  }
+  /////////////////////----------offersave ------NN-------////////////////
+  if(isset($_POST['offer-apply-btn'])){
+    $orderId=textboxValue('order-id');
+ $offerDetails = textboxValue('offer-apply-txt');
+     $orderNumber =  textboxValue('order-id');
+     $architectNumber = $_SESSION["archId"];
+     if($offerDetails &&  $architectNumber):
+    
+  //   $sameofferQuery= "SELECT * FROM `offers` WHERE TRIM(offernumber) = '$architect number'";
+   //  $sameofferResult =   mysqli_query($GLOBALS['con'], $sameofferQuery)or die(mysqli_error($GLOBALS['con']));
+     //  echo(mysqli_num_rows($sameofferResult));
+                // if(mysqli_num_rows($sameofferResult) === 0):
+                      if(createData("INSERT INTO `offers`(`offer number`,`offerDetails`,`orderNumber`,`architectNumber`)
+                 
+                             VALUES ('$orderId','$offerDetails','$orderNumber ','$architectNumber ');")){
+                             header('Location:requestsdetails.php?msg=workAdded&orderId='.$orderId);exit();
+                              //   else :  header('Location:forms.php?n=userSignUp&userType=client&msg=emailExist');exit();  
+                           //   endif;
+                         } else{ //echo('walla ennah lagaja'); //echo('walla ennah lagaja');
+                          header('Location:requestsdetails.php?msg=notsaved&orderId='.$orderId);exit();
+                         }
+                         else://if($offerDetails &&  $architectNumber):
+                             header('Location:requestsdetails.php?msg=emptytext&orderId='.$orderId);exit();
+                         endif;////if($offerDetails &&  $architectNumber):
+          }
+
+//  /////////////////////////------------- offer accept  ------------///////////////////////////////
+if(isset($_POST['offer-accept-btn'])){
+    $archId=$_POST['archId'];
+    $orderId=$_POST['orderId'];
+    $sameArchOffer=gitselectedrow("SELECT * FROM offers WHERE `architectNumber`='$archId' AND `orderNumber`=$orderId 
+   ");
+    if($sameArchOffer==false):
+        echo('yee');
+    else://($sameArchOffer==false):
+        echo('meh');
+    endif;//($sameArchOffer==false):
+        
+    
+}
+//  /////////////////////////------------- feed back ------------///////////////////////////////
+//if(isset($_POST['reviwArch-btn'])){
+   // $archId=textboxValue('arch-id');
+    //$clientId=$_SESSION['clientId'];
+   // $starcount=$_POST['star-count'];
+   // $feedText=textboxValue('reviw-text');
+      //  if(isset($starcount)):
+        //     $sameEmailQuery= "SELECT * FROM `client` WHERE TRIM(email) = '$clientEmail'";
+        //     $sameEmailResult =   mysqli_query($GLOBALS['con'], $sameEmailQuery)or die(mysqli_error($GLOBALS['con']));
+        // //  echo(mysqli_num_rows($sameEmailResult));
+        //             if(mysqli_num_rows($sameEmailResult) === 0):
+      //  else://if(isset($starcount)):
+            //choose rateheader
+      //  endif;//if(isset($starcount)):
+       // }  
 // ////////////////////sagasu//////////////////////////////////
 
 function orderfilter(){
@@ -257,7 +312,7 @@ function getData($sql){
     else{
        
        // echo("table is empty");
-        return ;
+        return false;
     }
 }
 // the update function for architect account
@@ -296,8 +351,17 @@ function gitselectedrow($sql){
     // ";
     $result=mysqli_query($GLOBALS['con'],$sql)or die(mysqli_error($GLOBALS['con']));
    
-    $myResult=mysqli_fetch_array($result);
-    return $myResult;
+    //$myResult=mysqli_fetch_array($result);
+    //return $myResult;
+    if(mysqli_num_rows($result)>0){
+        $myResult = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        return $myResult;
+    }
+    else{
+       
+       // echo("no such record");
+        return false;
+    }
 }
 
 /////////////////////////////---------- login system ---------////////////////////////////////////////////
@@ -305,16 +369,16 @@ if(isset($_POST['user-login-btn'])){
     // $archName = textboxValue("archName");
   userLogedin();
 }
-if(isset($_GET['log'])){
-    if($_GET['log']=='logout'){
+// if(isset($_GET['log'])){
+    // if($_GET['log']=='logout'){
     // session_start();
    // remove all session variables
     session_unset(); 
     session_destroy();
     // echo('sessrion after destropy');
     // print_r($_SESSION);
-}
-}
+// }
+// }
 function userLogedin(){
     // session_start();
       $userName = textboxValue('user-name');

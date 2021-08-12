@@ -255,27 +255,36 @@
                                   <?php  require('./parts/messeges.php'); ?>
                                 </form>
               <!-- ///////////////////////////////////////////////////////////// -->
-                     <?php elseif($from=='reviwArch'): ?>
+                     <?php elseif($from=='reviwArch'): 
+                      //<!-- --- -->
+                        $archId=$_GET['archid'];
+                        $architect=gitselectedrow("SELECT * FROM `architect` WHERE `architect number`='$archId' ");
+                        ?>
+                      <!-- --- -->
                         <form   action="" method="post" enctype="multipart/form-data" class="form-div rivew-from " style="position: relative;">
-                                    <input type="hidden" name="work-id" value="<?php echo($workId) ?>" >
+                                  <h4 class="form-group">
+                                    قيم
+                                    <a href="architectprofile.php?archid=<?php echo$archId; ?>" ><?php echo($architect['name']); ?></a> 
+                                  </h4>
+                                    <input type="hidden" name="arch-id" value="<?php echo($archId) ?>" >
                                   <!-- /////////////////////////// -->
                                   <div class="radio-star-div" >
                                     
                                   <!-- ***** -->
-                                 <input type="radio" id="contactChoice1" name="rivew" value="1" class="" style="display: none; width:30px">
+                                 <input type="radio" id="contactChoice1" name="star-count" value="1" class="" style="display: none; width:30px">
                                    <label for="contactChoice1" class="star-label" style="display: inline-block;" >
                                    <i class="fas fa-star"></i>
                                    
                                  </label>
                                   <!-- ***** -->
-                                 <input type="radio" id="contactChoice2" name="rivew" value="2" class="" style="display: none; width:30px">
+                                 <input type="radio" id="contactChoice2" name="star-count" value="2" class="" style="display: none; width:30px">
                                    <label for="contactChoice2" class="star-label" style="display: inline-block;" >
                                    <i class="fas fa-star"></i>
                                    <i class="fas fa-star"></i>
                                    
                                  </label>
                                   <!-- ***** -->
-                                 <input type="radio" id="contactChoice3" name="rivew" value="3" class="" style="display: none; width:30px">
+                                 <input type="radio" id="contactChoice3" name="star-count" value="3" class="" style="display: none; width:30px">
                                    <label for="contactChoice3" class="star-label" style="display: inline-block;" >
                                    <i class="fas fa-star"></i>
                                    <i class="fas fa-star"></i>
@@ -283,7 +292,7 @@
                                    
                                  </label>
                                   <!-- ***** -->
-                                 <input type="radio" id="contactChoice4" name="rivew" value="4" class="" style="display: none; width:30px">
+                                 <input type="radio" id="contactChoice4" name="star-count" value="4" class="" style="display: none; width:30px">
                                    <label for="contactChoice4" class="star-label" style="display: inline-block;" >
                                    <i class="fas fa-star"></i>
                                    <i class="fas fa-star"></i>
@@ -293,7 +302,7 @@
                                  </label>
                                      
                                   <!-- ***** -->
-                                 <input type="radio" id="contactChoice5" name="rivew" value="5" class="" style="display: none; width:30px">
+                                 <input type="radio" id="contactChoice5" name="star-count" value="5" class="" style="display: none; width:30px">
                                    <label for="contactChoice5" class="star-label" style="display: inline-block;" >
                                    <i class="fas fa-star"></i>
                                    <i class="fas fa-star"></i>
@@ -302,20 +311,20 @@
                                    <i class="fas fa-star"></i>
                                    
                                  </label>
-                                     
-                                    
-
-                                    
-                                </div>
-                                  <!-- ///////////////////////////// -->
+                                   </div>   
+                                     <!-- ///////////////////////////// -->
                                   <div class="form-group">
                                     <label for="exampleFormControlTextarea1">Example textarea</label>
                                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="reviw-text" placeholder="type feedback" ></textarea>
                                  </div> 
-                                    <button type="submit" class="btn btn-primary" name="reviwArch-btn" value="" >submit </button>
+                                    <button type="submit" class="btn btn-primary" name="reviwArch-btn" " >submit </button>
                                   <?php  require('./parts/messeges.php'); ?>
                                 </form>
 
+
+                                    
+                               
+                                 
                     <?php  endif; //from=='userlogin:?>
 
 

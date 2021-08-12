@@ -51,8 +51,9 @@
             </div>
             <h4><?php echo($architect['name']); ?></h4>
             <?php if(isset($_SESSION['clientId'])): ?>
-            <button class="btn btn-primary">conact me</button>
-            <a href="./forms.php?n=reviwArch&archid=<?php echo($archId); ?>&clientid=<?php echo($_SESSION['clientId']); ?>"><button type="button" class="btn btn-info">feed back</button></a>
+            <button class="btn btn-info">conact me</button>
+            <!-- <a  href="./forms.php?n=reviwArch&archid=<?//php echo($archId); ?>&clientid=<?php //echo($_SESSION['clientId']); ?>">
+            <button type="button" class="btn btn-info">feed back</button></a> -->
             
             <?php endif; //if(isset($_SESSION['clientId'])): ?>
          </div>

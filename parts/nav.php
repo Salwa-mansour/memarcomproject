@@ -44,7 +44,7 @@
               <li><a class="dropdown-item" href="#">Something else here</a></li>
                 <?php else://if(isset($_SESSION['archId'])): ?>
 
-              <li><a class="dropdown-item" href="forms.php?log=logout"> logout</a></li>
+              <li><a class="dropdown-item" href="default.php?log=logout"> logout</a></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             <?php endif;// if(isset($_SESSION['archId'])): ?>
             </ul>
