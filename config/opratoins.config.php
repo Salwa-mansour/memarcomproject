@@ -174,25 +174,30 @@ if(isset($_POST['architect-signup-btn'])){
  }
   /////////////////////----------offersave ------NN-------////////////////
   if(isset($_POST['offer-apply-btn'])){
+      echo('helle');
     $orderId=textboxValue('order-id');
  $offerDetails = textboxValue('offer-apply-txt');
-     $orderNumber =  textboxValue('order-id');
+    
      $architectNumber = $_SESSION["archId"];
      if($offerDetails &&  $architectNumber):
     
-  //   $sameofferQuery= "SELECT * FROM `offers` WHERE TRIM(offernumber) = '$architect number'";
-   //  $sameofferResult =   mysqli_query($GLOBALS['con'], $sameofferQuery)or die(mysqli_error($GLOBALS['con']));
-     //  echo(mysqli_num_rows($sameofferResult));
-                // if(mysqli_num_rows($sameofferResult) === 0):
-                      if(createData("INSERT INTO `offers`(`offer number`,`offerDetails`,`orderNumber`,`architectNumber`)
+  
+                    $rowExist=checkRowExist("SELECT * FROM `offers` WHERE TRIM(orderNumber) = '$orderId' AND TRIM(architectNumber) = '$architectNumber';");
+                      if($rowExist==false):
+                        if(createData("INSERT INTO `offers`(`offerDetails`,`orderNumber`,`architectNumber`)
                  
-                             VALUES ('$orderId','$offerDetails','$orderNumber ','$architectNumber ');")){
-                             header('Location:requestsdetails.php?msg=workAdded&orderId='.$orderId);exit();
-                              //   else :  header('Location:forms.php?n=userSignUp&userType=client&msg=emailExist');exit();  
-                           //   endif;
-                         } else{ //echo('walla ennah lagaja'); //echo('walla ennah lagaja');
-                          header('Location:requestsdetails.php?msg=notsaved&orderId='.$orderId);exit();
-                         }
+                        VALUES ('$offerDetails','$orderId','$architectNumber ');")){
+                                header('Location:requestsdetails.php?msg=workAdded&orderId='.$orderId);exit();
+                                //   else :  header('Location:forms.php?n=userSignUp&userType=client&msg=emailExist');exit();  
+                            //   endif;
+                            } else{ //echo('walla ennah lagaja'); //echo('walla ennah lagaja');
+                           // header('Location:requestsdetails.php?msg=notsaved&orderId='.$orderId);exit();
+                            }
+                      else://if($rowExist==false):
+                       // echo('battel hawarah');
+                       header('location:requestsdetails.php?msg=offeredallreaddy&orderId='.$orderId);
+                      endif;//if($rowExist==false):
+                      
                          else://if($offerDetails &&  $architectNumber):
                              header('Location:requestsdetails.php?msg=emptytext&orderId='.$orderId);exit();
                          endif;////if($offerDetails &&  $architectNumber):
@@ -202,12 +207,17 @@ if(isset($_POST['architect-signup-btn'])){
 if(isset($_POST['offer-accept-btn'])){
     $archId=$_POST['archId'];
     $orderId=$_POST['orderId'];
-    $sameArchOffer=gitselectedrow("SELECT * FROM offers WHERE `architectNumber`='$archId' AND `orderNumber`=$orderId 
+    $sameArchOffer=checkRowExist("SELECT * FROM offers WHERE `isAccepted`='yes'
    ");
     if($sameArchOffer==false):
-        echo('yee');
+            $sql="UPDATE offers SET `isAccepted`='yes' WHERE `architectNumber`=$archId AND `orderNumber`=$orderId; ";
+            if(mysqli_query($GLOBALS['con'],$sql)):
+                header('location:requestsdetails.php?msg=wellcallyouback&orderId='.$orderId);
+            else://if(mysqli_query($GLOBALS['con'],$sql)):
+                /////////////qury error
+            endif;//if(mysqli_query($GLOBALS['con'],$sql)):
     else://($sameArchOffer==false):
-        echo('meh');
+        header('location:requestsdetails.php?msg=hasAccepted&orderId='.$orderId);
     endif;//($sameArchOffer==false):
         
     
@@ -346,16 +356,20 @@ function updateOrderFunction($id){
 }
 //bring text of selected row to the input fiedls when clicking the edit button
 function gitselectedrow($sql){
+    
     // $sql="
     // SELECT * FROM articles WHERE articleId='$id';
     // ";
     $result=mysqli_query($GLOBALS['con'],$sql)or die(mysqli_error($GLOBALS['con']));
    
-    //$myResult=mysqli_fetch_array($result);
-    //return $myResult;
+    $myResult=mysqli_fetch_array($result);
+    return $myResult;
+}
+function checkRowExist($sql){
+    $result=mysqli_query($GLOBALS['con'],$sql)or die(mysqli_error($GLOBALS['con']));
     if(mysqli_num_rows($result)>0){
-        $myResult = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        return $myResult;
+     //   $myResult = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        return true;
     }
     else{
        
@@ -366,34 +380,36 @@ function gitselectedrow($sql){
 
 /////////////////////////////---------- login system ---------////////////////////////////////////////////
 if(isset($_POST['user-login-btn'])){
-    // $archName = textboxValue("archName");
+ 
   userLogedin();
 }
-// if(isset($_GET['log'])){
-    // if($_GET['log']=='logout'){
-    // session_start();
+  if(isset($_GET['log'])){
+ if($_GET['log']=='logout'){
+      //session_start();
    // remove all session variables
     session_unset(); 
     session_destroy();
-    // echo('sessrion after destropy');
+    header('location:default.php');
+    //echo('sessrion after destropy');
     // print_r($_SESSION);
-// }
-// }
+  }
+ }
 function userLogedin(){
     // session_start();
       $userName = textboxValue('user-name');
     $userpass =textboxValue(('user-password'));
      $clientUser = gitselectedrow(" SELECT * FROM `client` WHERE `name` = '$userName' AND `password` = '$userpass' ; ");
      $architectUser = gitselectedrow(" SELECT * FROM `architect` WHERE `name` = '$userName' AND `password` = '$userpass' ; ");
-//    echo($clientUser['name']);
+    // $adminUser = gitselectedrow(" SELECT * FROM `admin` WHERE `name` = '$userName' AND `password` = '$userpass' ; ");
+     //    echo($clientUser['name']);
 //  print_r($clientUser);
 //  print_r($architectUser).'//////////////////';
    if(isset($clientUser)){
-      
+     
        $_SESSION["clientId"] = $clientUser['client number'];
         $_SESSION["clientName"] = $clientUser['name'];
        $_SESSION["clientPhoto"] = $clientUser['photo'];
-       header('Location:forms.php?n=userlogin&msg=userLogedin');exit();
+      header('Location:orders.php');exit();
    }elseif(isset($architectUser)){
     $_SESSION["archId"] = $architectUser['architect number'];
     // $archId=$_SESSION["archId"];
@@ -403,9 +419,28 @@ function userLogedin(){
    }else{
     header('Location:forms.php?n=userlogin&msg=errLoginTxt');exit();
    }
-//    print_r($_SESSION);
-}
 
+}
+// /////////////////admin login////////////////
+if(isset($_POST['admin-login-btn'])){
+    adminLogin();
+}
+function adminLogin(){
+    $userName = textboxValue('user-name');
+    $userpass =textboxValue(('user-password'));
+   // echo($userName);echo($userpass);
+    $adminUser = gitselectedrow(" SELECT * FROM `admin` WHERE `name` = '$userName' AND `password` = '$userpass' ; ");
+    if(isset($adminUser)):
+    $_SESSION['adminId']=$adminUser['number'];
+    $_SESSION['adminName']=$adminUser['name'];
+  //echo($_SESSION['adminId']);
+    header('location:orders.php');
+   else://(isset($adminUser)):
+   endif;//(isset($adminUser)):
+//    print_r($_SESSION);
+
+}
+ 
 
 
 

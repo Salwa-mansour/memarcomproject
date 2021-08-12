@@ -28,7 +28,7 @@
         </div>
      
            <!--///////////////////// the popup windwo for input form markup ///////////////////////-->
-          <?php include("./parts/transpertntcontainer.php") ?>
+          <?php //include("./parts/transpertntcontainer.php") ?>
     </section>
    
 

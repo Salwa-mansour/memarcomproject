@@ -67,12 +67,14 @@
                         <textarea name="offer-apply-txt" id="" cols="0" rows="10" class="details-texteara"></textarea>
                         <input type="hidden" name="order-id" value="<?php echo($order['orderId']);?>"/>
                       <button  name="offer-apply-btn"  class="btn btn-primary">apply</button>
-                      <?php require('./parts/messeges.php'); ?> 
+                      <?php //require('./parts/messeges.php'); ?> 
                      
                        </form>
                      
             </div>
-           <?php else://(isset($_SESSION['archId'])):?>
+           <?php elseif(isset($_SESSION['clientId']))://(isset($_SESSION['archId'])):?>
+           <!-- not to disply any of the containers for logged in client -->
+            <?php else://(isset($_SESSION['archId'])):?>
             <div class="request-detail  wide-box">
                        <h3>do you want to apply an offer</h3>
                        <div class="buttons-div">
@@ -112,8 +114,9 @@
                              </div>
                             <?php if(isset($_SESSION['clientId'])): 
                                 $logedClient=$_SESSION['clientId']?>
-                                <?php if($logedClient==$clientId): ?>
-                                           <?php if(isset($_POST['offer-accept-btn'])): ?>
+                                <?php if($logedClient==$clientId):  ?>
+
+                                           <?php if( $offer['isAccepted']=='yes' ):  ?>
                                             <a  href="./forms.php?n=reviwArch&archid=<?php echo($architect['architect number']); ?>&clientid=<?php echo($_SESSION['clientId']); ?>">
                                     <button type="button" class="btn btn-info">feed back</button></a>
                                            <?php else://(isset($_POST['offer-accept-btn'])): ?>

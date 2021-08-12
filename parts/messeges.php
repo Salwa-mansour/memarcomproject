@@ -14,9 +14,24 @@
                 تم تسجيل الدخول
                   </div>
                   <!-- **** -->
+             <?php    elseif($_GET['msg']=='wellcallyouback'): ?>
+                <div id="msg"  class="alert alert-success" role="alert">
+                  تم ارسال طلبك سيتم التواصل معك لاعطائك بيانات المهندس
+                  </div>
+                  <!-- **** -->
              <?php  elseif($_GET['msg']=='emptytext'): ?>
                     <div id="msg"  class="alert alert-warning" role="alert">
                     يرجى ملاء الحقول الفارغة    
+                     </div>
+                  <!-- **** -->
+             <?php  elseif($_GET['msg']=='offeredallreaddy'): ?>
+                    <div id="msg"  class="alert alert-warning" role="alert">
+                    لقد قدمت عرض لهذا الطلب من قبل   
+                     </div>
+                  <!-- **** -->
+             <?php  elseif($_GET['msg']=='hasAccepted'): ?>
+                    <div id="msg"  class="alert alert-warning" role="alert">
+                    لايمكنك قبول اكثر من عرض  
                      </div>
                         <!-- **** -->
             <?php  elseif($_GET['msg']=='architectAdded'): ?>

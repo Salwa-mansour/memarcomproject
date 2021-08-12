@@ -1,6 +1,11 @@
 <?php 
+ session_start();
  include('./config/opratoins.config.php');
-
+  print_r($_SESSION);
+ if(isset($_SESSION['adminId'])):
+  echo('ffsds');
+  // header('location:adminlogin.php');exit;
+ endif;
 
 ?>
 <!doctype html>

@@ -1,7 +1,9 @@
 <?php 
  include('./config/opratoins.config.php');
-
-
+// session_start();
+// if(empty($_SESSION['adminId'])):
+//   header('location:adminlogin.php');exit;
+// endif;
 ?>
 <!doctype html>
 <html lang="ar" dir="rtl">

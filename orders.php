@@ -2,11 +2,29 @@
      MEMARCOM PROJECT  -->
      <?php  
     include_once("./config/opratoins.config.php");
-    if(isset($_POST['work-search'])){
-        $orders=orderfilter();
-     
-    }else{
-    $orders=getdata("SELECT * FROM `orders` ORDER BY `orderId` DESC ;");}
+   
+    if(isset($_GET['filter']))://if($_GET['filter']=='me'):
+       // echo('1:');
+        if(isset($_POST['work-search'])){
+           // echo('1.1');
+            $orders=orderfilter();
+         
+        }else{
+          //  echo('1.2');
+            $clientId=$_GET['clientid'];
+        $orders=getdata("SELECT * FROM `orders`WHERE `custmerId`='$clientId' ORDER BY `orderId` DESC ;");}
+         //   print_r($orders);
+    else://(isset($_GET['filter'])):if($_GET['filter']=='me'):
+       // echo('2:');
+        if(isset($_POST['work-search'])){
+          //  echo('2.1');
+            $orders=orderfilter();//show all not just mine
+         
+        }else{
+        //    echo('2.2');
+        $orders=getdata("SELECT * FROM `orders` ORDER BY `orderId` DESC ;");}
+    endif;//(isset($_GET['filter'])):if($_GET['filter']=='me'):
+    
   
 ?>
 
@@ -14,7 +32,9 @@
 <html lang="en">
 <head>
 
-   <?php require_once("./parts/meta.php")?>
+   <?php require_once("./parts/meta.php");
+   print_r($_SESSION);
+   ?>
    
     <title>Document</title>
 </head>
