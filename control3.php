@@ -228,7 +228,7 @@ a.inner-link{
       if($tab=='ordersdata'):
     // gettign order data when order tab is clicked
             // here
-            $orders=getdata("SELECT `orderId`,`orederTitle`,`orderDetails`,`orderType`,`published` FROM `orders` ORDER BY `orderDate` DESC");//
+            $orders=getdata("SELECT `orderId`,`orederTitle`,`orderDetails`,`orderType`,`published` FROM `orders` ORDER BY `orderId` DESC");//
            
            ?>
              <h2>ادارة طلبات العملاء </h2>

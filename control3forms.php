@@ -1,5 +1,5 @@
 <?php 
- include('./config/opratoins.config.php');
+
 // session_start();
 // if(empty($_SESSION['adminId'])):
 //   header('location:adminlogin.php');exit;
@@ -8,6 +8,19 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
   <head>
+  <?php 
+ if(session_start()){
+ // echo('ssteon stsrated');
+ }
+ include('./config/opratoins.config.php');
+  //print_r($_SESSION);
+ if(isset($_SESSION['adminId'])):
+ // echo('ffsds');//shwo controlpanel
+ else:
+   header('location:adminlogin.php');exit;
+ endif;
+
+?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -202,7 +215,8 @@ a.inner-link{
 <!-- </div> -->
 <!-- Basic dropdown -->
 <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fas fa-user"></i> Dropdown</a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
+             aria-expanded="false"> <i class="fas fa-user"></i> <?php echo($_SESSION['adminName']); ?></a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
               <li><a class="dropdown-item" href="#">logout</a></li>
              
@@ -287,9 +301,9 @@ a.inner-link{
               <div class="card-header">بطاقة المهندس</div>
             <div class="card-body text-primary">
              
-              <p class="card-text"><span>اسم المهندس</span>: <?php //echo($architect['name']); ?> </p>
-               <p class="card-text"><span>هاتف المهندس</span>: <?php //echo($architect['phone']); ?> </p>
-              <p class="card-text"><span>بريد المهندس</span>: <?php //echo($architect['email']); ?> </p>
+              <p class="card-text"><span><i class="fa fa-user"></i> </span>: <?php //echo($architect['name']); ?> </p>
+               <p class="card-text"><span><i class="fas fa-phone"></i> </span>: <?php //echo($architect['phone']); ?> </p>
+              <p class="card-text"><span><i class="fas fa-envelope"></i> </span>: <?php //echo($architect['email']); ?> </p>
               
               
             </div>
@@ -299,43 +313,16 @@ a.inner-link{
           <div class="card-header">بطاقة العميل</div>
             <div class="card-body text-primary">
              
-              <p class="card-text"><span>اسم العميل</span>: <?php //echo($clientData['name']); ?> </p>
-               <p class="card-text"><span>هاتف العميل</span>: <?php //echo($clientData['phone']); ?> </p>
-              <p class="card-text"><span>بريد العميل</span>: <?php //echo($clientData['email']); ?> </p>
+              <p class="card-text"><span><i class="fa fa-user"></i> </span>: <?php //echo($clientData['name']); ?> </p>
+               <p class="card-text"><span><i class="fas fa-phone"></i> </span>: <?php //echo($clientData['phone']); ?> </p>
+              <p class="card-text"><span><i class="fas fa-envelope"></i> </span>: <?php //echo($clientData['email']); ?> </p>
   </div>
 </div>
 </div>
 <!-- ***** -->
            <h5> <a href=""class="form-group" >تصفح الطلب</a></h5>
        </div> 
-          <!-- &&&&&2 -->
-          <div class="form-div cards-div">
-            <div style="height:200px;">
-          <div class="card border border-primary shadow-0 mb-3 " style="max-width: 18rem;">
-              <div class="card-header">بطاقة المهندس</div>
-            <div class="card-body text-primary">
-             
-              <p class="card-text"><span>اسم المهندس</span>: <?php //echo($architect['name']); ?> </p>
-               <p class="card-text"><span>هاتف المهندس</span>: <?php //echo($architect['phone']); ?> </p>
-              <p class="card-text"><span>بريد المهندس</span>: <?php //echo($architect['email']); ?> </p>
-              
-              
-            </div>
-          </div>  
-          <!-- **** -->
-          <div class="card border border-success shadow-0 mb-3" style="max-width: 18rem ;  " id="scond-card">
-          <div class="card-header">بطاقة العميل</div>
-            <div class="card-body text-primary">
-             
-              <p class="card-text"><span>اسم العميل</span>: <?php //echo($clientData['name']); ?> </p>
-               <p class="card-text"><span>هاتف العميل</span>: <?php //echo($clientData['phone']); ?> </p>
-              <p class="card-text"><span>بريد العميل</span>: <?php //echo($clientData['email']); ?> </p>
-  </div>
-</div>
-</div>
-<!-- ***** -->
-           <h5> <a href=""class="form-group" >تصفح الطلب</a></h5>
-       </div>    
+    
            <!--  ************************************ -->             
                <?php        elseif($from=="ordersdata"):
                         $orderId=$_GET['orderId'];
@@ -375,9 +362,9 @@ a.inner-link{
               <div class="card-header">بطاقة العميل</div>
             <div class="card-body text-primary">
              
-              <p class="card-text"><span>اسم العميل</span>: <?php echo($clientData['name']); ?> </p>
-               <p class="card-text"><span>هاتف العميل</span>: <?php echo($clientData['phone']); ?> </p>
-              <p class="card-text"><span>بريد العميل</span>: <?php echo($clientData['email']); ?> </p>
+              <p class="card-text"><span><i class="fa fa-user"></i> </span>: <?php echo($clientData['name']); ?> </p>
+               <p class="card-text"><span><i class="fas fa-phone"></i> </span>: <?php echo($clientData['phone']); ?> </p>
+              <p class="card-text"><span><i class="fas fa-envelope"></i> </span>: <?php echo($clientData['email']); ?> </p>
               
               
             </div>
@@ -422,12 +409,12 @@ a.inner-link{
                 </form>
                    <!-- architect contact data client card -->
              <div class="card border border-primary shadow-0 mb-3 " style="max-width: 18rem;">
-              <div class="card-header">بطاقة المهندس</div>
+              <div class="card-header">بطاقة المهندس </div>
             <div class="card-body text-primary">
              
-              <p class="card-text"><span>اسم المهندس</span>: <?php echo($architect['name']); ?> </p>
-               <p class="card-text"><span>هاتف المهندس</span>: <?php echo($architect['phone']); ?> </p>
-              <p class="card-text"><span>بريد المهندس</span>: <?php echo($architect['email']); ?> </p>
+              <p class="card-text"><span><i class="fa fa-user"></i> </span>: <?php echo($architect['name']); ?> </p>
+               <p class="card-text"><span><i class="fas fa-phone"></i> </span>: <?php echo($architect['phone']); ?> </p>
+              <p class="card-text"><span><i class="fas fa-envelope"></i> </span>: <?php echo($architect['email']); ?> </p>
               
               
             </div>

@@ -54,9 +54,15 @@
                         <div class="alert alert-danger" role="alert">
                          الايمبل مستخدم مسبقاً  
                         </div>
+                   <!-- *** -->
            <?php  elseif($_GET['msg']=='addFail'): ?>
                         <div class="alert alert-danger" role="alert">
                                 حدث خطأ  يرجى المحاولة مجدداً 
+                        </div>
+                   <!-- *** -->
+           <?php  elseif($_GET['msg']=='notRunning'): ?>
+                        <div class="alert alert-danger" role="alert">
+                                لقد قام العميل باختيار عرض بالفعل      
                         </div>
 
             <?php        endif;//$_GET['msg']=='errLoginTxt'

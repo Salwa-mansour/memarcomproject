@@ -1,4 +1,4 @@
-<?php // $_GET['log']='' ?>
+<?php //print_r($_SESSION); ?>
 <nav class="navbar navbar-expand-sm navbar-dark blue-background" aria-label="Third navbar example">
     <div class="container-fluid">
       <a class="navbar-brand" href="./default.php">
@@ -28,7 +28,7 @@
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li> -->
-          <?php if($_SESSION != []): ?>
+          <?php if(isset($_SESSION['clientId']) || (isset($_SESSION['archId'])) )://not to be confused with multi user type login ?>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">
             <div class="user-circle" style="background-image: url(./images/userplaceholder.jpg);">
@@ -41,11 +41,12 @@
             
                 <li><a class="dropdown-item" href="architectprofile.php?archid=<?php echo $archid?>">my page</a></li>
               <li><a class="dropdown-item" href="forms.php?log=logout"> logout</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <?php else://if(isset($_SESSION['archId'])): ?>
+             
+                <?php elseif(isset($_SESSION['clientId']))://if(isset($_SESSION['archId'])):?>
+
               <li><a href="orders.php?filter=me&clientid=<?php echo($_SESSION["clientId"]); ?>" class="dropdown-item">my orders</a></li>
               <li><a class="dropdown-item" href="forms.php?log=logout"> logout</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            
             <?php endif;// if(isset($_SESSION['archId'])): ?>
             </ul>
           </li>

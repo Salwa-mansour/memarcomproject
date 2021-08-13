@@ -174,30 +174,30 @@ if(isset($_POST['architect-signup-btn'])){
  }
   /////////////////////----------offersave ------NN-------////////////////
   if(isset($_POST['offer-apply-btn'])){
-      echo('helle');
     $orderId=textboxValue('order-id');
  $offerDetails = textboxValue('offer-apply-txt');
     
      $architectNumber = $_SESSION["archId"];
-     if($offerDetails &&  $architectNumber):
-    
-  
-                    $rowExist=checkRowExist("SELECT * FROM `offers` WHERE TRIM(orderNumber) = '$orderId' AND TRIM(architectNumber) = '$architectNumber';");
-                      if($rowExist==false):
+     if($offerDetails ):
+            $isOrderRunning=gitselectedrow("SELECT `isRunning` FROM orders WHERE `orderId`='$orderId'");
+            if($isOrderRunning['isRunning']==true):
+                        $rowExist=checkRowExist("SELECT * FROM `offers` WHERE TRIM(orderNumber) = '$orderId' AND TRIM(architectNumber) = '$architectNumber';");
+                        if($rowExist==false):
                         if(createData("INSERT INTO `offers`(`offerDetails`,`orderNumber`,`architectNumber`)
-                 
                         VALUES ('$offerDetails','$orderId','$architectNumber ');")){
                                 header('Location:requestsdetails.php?msg=workAdded&orderId='.$orderId);exit();
-                                //   else :  header('Location:forms.php?n=userSignUp&userType=client&msg=emailExist');exit();  
-                            //   endif;
-                            } else{ //echo('walla ennah lagaja'); //echo('walla ennah lagaja');
-                           // header('Location:requestsdetails.php?msg=notsaved&orderId='.$orderId);exit();
+                            } else{ 
+                                //a data base error
                             }
-                      else://if($rowExist==false):
-                       // echo('battel hawarah');
-                       header('location:requestsdetails.php?msg=offeredallreaddy&orderId='.$orderId);
-                      endif;//if($rowExist==false):
-                      
+                        else://if($rowExist==false):
+                        // echo('battel hawarah');
+                        header('location:requestsdetails.php?msg=offeredallreaddy&orderId='.$orderId);
+                        endif;//if($rowExist==false):
+            else://if($isOrderRunning==true):
+                header('Location:requestsdetails.php?msg=notRunning&orderId='.$orderId);exit();
+            endif;//if($isOrderRunning==true):
+                   
+                        // ////////////////////////////////////
                          else://if($offerDetails &&  $architectNumber):
                              header('Location:requestsdetails.php?msg=emptytext&orderId='.$orderId);exit();
                          endif;////if($offerDetails &&  $architectNumber):
@@ -210,8 +210,9 @@ if(isset($_POST['offer-accept-btn'])){
     $sameArchOffer=checkRowExist("SELECT * FROM offers WHERE `isAccepted`='yes'
    ");
     if($sameArchOffer==false):
-            $sql="UPDATE offers SET `isAccepted`='yes' WHERE `architectNumber`=$archId AND `orderNumber`=$orderId; ";
-            if(mysqli_query($GLOBALS['con'],$sql)):
+            $sql="UPDATE offers SET `isAccepted`='yes' WHERE `architectNumber`=$archId AND `orderNumber`=$orderId; 
+                  UPDATE orders SET `isRunning`=false;  ";
+            if(mysqli_multi_query($GLOBALS['con'],$sql)):
                 header('location:requestsdetails.php?msg=wellcallyouback&orderId='.$orderId);
             else://if(mysqli_query($GLOBALS['con'],$sql)):
                 /////////////qury error
@@ -240,12 +241,23 @@ if(isset($_POST['offer-accept-btn'])){
 // ////////////////////sagasu//////////////////////////////////
 
 function orderfilter(){
-    $wrokType = textboxValue('workType-list');
-    
-   if($wrokType){
-     $result=getData("SELECT * FROM `orders`  `orderId` WHERE TRIM(`orderType`)='$wrokType' ORDER BY orderId DESC ;");
-}   
-  
+    $wrokType = $_POST['workType-list'];
+    $runnigState = $_POST['is-running'];
+  // if($wrokType){
+  //   $result=getData("SELECT * FROM `orders`  `orderId` WHERE TRIM(`orderType`)='$wrokType' AND TRIM(`published`)='true' ORDER BY orderId DESC ;");
+  //   if(isset($runnigState)):
+  //   else://if(isset($runnigState)):
+  //   endif;//if(isset($runnigState)):
+  //  }   
+     if(isset($wrokType) && isset($runnigState)):
+        $result=getData("SELECT * FROM `orders`  `orderId` WHERE TRIM(`orderType`)='$wrokType' AND `isRunning`=$runnigState AND TRIM(`published`)='true' ORDER BY orderId DESC ;");
+     elseif(isset($wrokType) || isset($runnigState))://(isset($wrokType) && isset($runnigState)):
+                if(isset($wrokType))://workType only set
+                    $result=getData("SELECT * FROM `orders`  `orderId` WHERE TRIM(`orderType`)='$wrokType' AND TRIM(`published`)='true' ORDER BY orderId DESC ;");
+                else://if(isset($wrokType)):-means $runningstate olny set be couse one of them has to be set in side \\ condtion
+                    $result=getData("SELECT * FROM `orders`  `orderId` WHERE  `isRunning`=$runnigState AND TRIM(`published`)='true' ORDER BY orderId DESC ;");
+                endif;  //(isset($wrokType) || isset($runnigState)):
+     endif;//(isset($wrokType) && isset($runnigState))://non of the select is set-do nothing-
         return $result;
     
 }
@@ -253,8 +265,9 @@ function orderfilter(){
 
 function prevWorkFilter(){
     $wrokType = textboxValue('workType-list');
-    
+   
    if($wrokType){
+       
      $result=getData("SELECT * FROM `previuasworks`  `workId` WHERE TRIM(`workType`)='$wrokType' ORDER BY workId DESC ;");
 }
   return $result;
@@ -265,7 +278,7 @@ function archNameFilter(){
     $name = textboxValue('architect-name');
     
    if($name){
-     $result=getData("SELECT * FROM `architect` WHERE `name` LIKE '%$name%' ORDER BY `architect number` DESC;");
+     $result=getData("SELECT * FROM `architect` WHERE TRIM(`status`)='inable' AND `name` LIKE '%$name%'  ORDER BY `architect number` DESC;");
 }
   return $result;
 }
@@ -320,7 +333,7 @@ function getData($sql){
         return $allresults;
     }
     else{
-       
+       // $allresults = mysqli_fetch_all($result, MYSQLI_ASSOC);
        // echo("table is empty");
         return false;
     }
@@ -328,12 +341,13 @@ function getData($sql){
 // the update function for architect account
 function achtivateAccount($id){
     $accoutState=$_POST['activateAccount'];
+    $adminId=$_SESSION['adminId'];
     $cvFileName =time()."_". $_FILES['archfile']['name'];
     $target ='./cvfiles/'. $cvFileName;
    
         move_uploaded_file($_FILES['archfile']['tmp_name'],$target);
         $sql = "
-        UPDATE architect SET cv='$cvFileName',status=' $accoutState' 
+        UPDATE architect SET cv='$cvFileName',status=' $accoutState' ,adminId='$adminId'
         WHERE `architect number`='$id';
         ";
     if(mysqli_query($GLOBALS['con'],$sql)){
@@ -344,14 +358,15 @@ function achtivateAccount($id){
 function updateOrderFunction($id){
     $details=textboxValue("orderDetails");
     $type=textboxValue('workType-list');
-    echo $type;
-    $publish=textboxValue('publish');
+    //echo $type;
+    $publish=$_POST['publish'];
+    $adminId=$_SESSION['adminId'];
    // print_r($_POST);
-       $sql= " UPDATE `orders` SET `orderDetails`='$details',`published`=' $publish',`orderType`='$type'
+       $sql= " UPDATE `orders` SET `orderDetails`='$details',`published`=' $publish',`orderType`='$type' ,`adminId`='$adminId'
         WHERE `orderId`='$id';";
     if(mysqli_query($GLOBALS['con'],$sql)){
        // textNode("alert alert-success","تمت العملية بنجاح");
-      // header('Location:control3forms.php?msg=workAdded&n=ordersdata&orderId='.$id);exit();
+     header('Location:control3forms.php?msg=workAdded&n=ordersdata&orderId='.$id);exit();
     }else{echo('record not saved'.mysqli_error($GLOBALS['con']));}
 }
 //bring text of selected row to the input fiedls when clicking the edit button
@@ -384,14 +399,14 @@ if(isset($_POST['user-login-btn'])){
   userLogedin();
 }
   if(isset($_GET['log'])){
-      echo('log');
+    //   echo('log');
  if($_GET['log']=='logout'){
       //session_start();
    // remove all session variables
     session_unset(); 
     session_destroy();
    // echo('sseon disrop');
-   // header('location:default.php?log=logout');
+   header('location:default.php?log=logout');
     //echo('sessrion after destropy');
     // print_r($_SESSION);
   }

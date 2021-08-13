@@ -17,6 +17,7 @@
          // print_r($client);
     // //////////////////getting offers data
     $offers=getData("SELECT * FROM `offers` WHERE `orderNumber`='$orderId' ORDER BY `offer number` DESC; ");
+   // print_r ($offers);
     ?>
    <?php else:exit;//if(isset($_GET['orderId'])): ?>
    <?php endif;//if(isset($_GET['orderId'])): ?>
@@ -57,6 +58,12 @@
                       </div>
                        <p class="prife-description" role="order details" ><?php echo($order['orderDetails']) ?></p>
                     <?php include('./parts/messeges.php'); ?>
+                    <?php if($order['isRunning']==true):  ?>
+                             
+                              <span class="badge badge-success" style="background-color: #00c851;">Running Order</span>
+                             <?php else:/*if($order['asRunning']==true) */?> 
+                              <span class="badge badge-warning" style="background-color: #fb3;" >Cachted Order</span>
+                             <?php endif;//if($order['asRunning']==true) ?>
                     <!-- <a  href="./forms.php?n=reviwArch&archid=<?php //echo($architect['architect number']); ?>&clientid=<?php echo($_SESSION['clientId']); ?>">
                                     <button type="button" class="btn btn-info">قيم المهندس</button></a> -->
                 </div>
@@ -90,7 +97,8 @@
        
              <ul>
                  <h3 class="offers-list-title">offers for this request</h3>
-                <?php foreach($offers as $offer):
+                 <?php if($offers!=false):?>
+                    <?php foreach($offers as $offer):
                         $archId=$offer['architectNumber'];
                     $architect=gitselectedrow("SELECT * FROM `architect` where `architect number`=$archId ;");
                     ?>
@@ -138,6 +146,10 @@
                       </div>
                   </li>
                 <?php endforeach;// foreach($offers as $offer):?>
+                 <?php else://if($offers!=false):?>
+                    <h3>no offers yet</h3>
+                 <?php endif;//if($offers!=false):?>
+       
                  
                  
                   <!-- <li  class="wide-box">

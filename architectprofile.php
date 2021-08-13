@@ -107,7 +107,8 @@
          </a>
       
         <!-- //////////1////// -->
-        <?php foreach($previousWroks as $previousWrok): ?>
+        <?php if($previousWroks!=false): ?>
+            <?php foreach($previousWroks as $previousWrok): ?>
         <div class="main-f-box">
             <div class="feature-box">
                 <div class="feature-img">
@@ -132,7 +133,12 @@
                
             </div>
         </div>
-        <?php endforeach;//foreach($previousWroks as $previousWrok): ?>
+         <?php endforeach;//foreach($previousWroks as $previousWrok): ?>
+        <?php else://if($previousWroks!=false) ?>
+            <h3>no such architect</h3>
+        <?php endif;//if($previousWroks!=false) ?>
+        
+       
     </div>
 </div>
 

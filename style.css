@@ -200,9 +200,9 @@ div.feature-img img{
      margin: .5rem .5rem;
     font-size: 1.2rem;
 }
-.feed{
-    /* padding-top: 4rem; */
-}
+/* .feed{
+   padding-top: 4rem; 
+} */
 /* ----------------gallury section ------------- */
 .gallery{
     position: relative;
@@ -546,6 +546,11 @@ margin:5.5rem calc(2.5rem + .75vw) ;
     margin:3rem auto;
     
  }
+  /* @media screen and (min-width:600px) {
+    .requests-wraper{
+        width:90%vw;
+    } */
+ /* } */
  .requests-wraper ul{
      list-style: none;
  }
@@ -767,4 +772,14 @@ footer.footer2{
 }
 input[type="radio"]:checked + label{
     background-color: rgb(156, 197, 252);
+}
+.request-contianer.wide-box a.inner-link{
+    flex: 1;
+    position: relative;
+}
+
+.request-contianer.wide-box .badge{
+position: absolute;
+top: .5rem;
+left: .5rem;
 }

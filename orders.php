@@ -3,29 +3,28 @@
      <?php  
     include_once("./config/opratoins.config.php");
    
-    if(isset($_GET['filter']))://if($_GET['filter']=='me'):
-       // echo('1:');
+    if(isset($_GET['filter']))://if($_GET['filter']=='me')://show the loged user orders only(my page) drop down link
+      //echo('1:');
         if(isset($_POST['work-search'])){
            // echo('1.1');
             $orders=orderfilter();
          
         }else{
-          //  echo('1.2');
+          // echo('1.2');
             $clientId=$_GET['clientid'];
-        $orders=getdata("SELECT * FROM `orders`WHERE `custmerId`='$clientId' ORDER BY `orderId` DESC ;");}
+        $orders=getdata("SELECT * FROM `orders`WHERE `custmerId`='$clientId'AND TRIM(`published`)='true' ORDER BY `orderId` DESC ;");}
          //   print_r($orders);
     else://(isset($_GET['filter'])):if($_GET['filter']=='me'):
-       // echo('2:');
+   // echo('2:');
         if(isset($_POST['work-search'])){
-          //  echo('2.1');
+      //echo('2.1');
             $orders=orderfilter();//show all not just mine
          
         }else{
-        //    echo('2.2');
-        $orders=getdata("SELECT * FROM `orders` ORDER BY `orderId` DESC ;");}
+      //    echo('2.2');
+        $orders=getdata("SELECT * FROM `orders` WHERE TRIM(`published`)='true'  ORDER BY `orderId` DESC ;");}
     endif;//(isset($_GET['filter'])):if($_GET['filter']=='me'):
-    
-  
+  // *****************************
 ?>
 
      <!DOCTYPE html>
@@ -66,15 +65,22 @@
        <div class="requests-wraper">
               <ul>
                   <!-- /////////////sagasu//////////////// -->
-              <!-- <li class="middleContainer">
+              <li class="middleContainer">
                       <div class=" ">
                           <form action="" method="post" class="felx-form" >
-                        <?php //include('./parts/workTypelist.php') ?>
+                        <?php include('./parts/workTypelist.php') ?>
+                        <div class="form-group">
+                        <select class="form-control" id="exampleFormControlSelect1" name="is-running"  >
+                        <option disabled selected value> -- select running state -- </option>
+                        <option value="1"> Runnig Orders</option>
+                          <option value="0"> Cached Orders</option>
+                        </select>
+                        </div>
                         <button type="submit" class="btn btn-primary" name="work-search" value="" ><li class="fa fa-search"></li> </button>
                           </form>        
                          </a>
                       </div>
-                  </li> -->
+                  </li>
               <li class="middleContainer">
                       <div class="request-contianer wide-box">
                         
@@ -87,7 +93,8 @@
                       </div>
                   </li>
               <?php  if(isset($orders)): ?>
-              <?php
+                <?php if($orders!=false):?>
+                    <?php
                foreach($orders as $order):
                     $clientId=$order['custmerId'];
                     // echo $clientId;
@@ -106,27 +113,40 @@
                                   <h3 class="request-title"> <?php echo($order['orederTitle']) ?></h3>
                                   <div class="custemr-n-div">
                                     <i class="fas fa-user"></i>
+                                    <span class="custmer-name"><?php echo($order['orderType']) ?></span>
+                                  <i class="fas fa-landmark"></i>
                                     <span class="custmer-name"><?php echo($client['name']) ?></span>
+                                    
                                   </div>
                                   <p class="prife-description"><?php echo($order['orderDetails']) ?></p>
                              </div>
+                             <?php if($order['isRunning']==true): ?>
+                          
+                              <span class="badge badge-success" style="background-color: #00c851;">Running Order</span>
+                             <?php else:/*if($order['asRunning']==true) */?> 
+                              <span class="badge badge-warning" style="background-color: #fb3;" >Cachted Order</span>
+                             <?php endif;//if($order['asRunning']==true) ?>
+                           
+                        
                          </a>
+                         
                       </div>
                   </li>
                   <?php endforeach; ?>
-                 
-                  <?php else:// if(isset($orders)): ?>
+                <?php else://if($orders!=fale):?>
                     <li class="middleContainer">
                       <div class="request-contianer wide-box">
                         
                           
-                                  <h5 class="request-title middle"> no results exist
+                                  <h5 class="request-title middle"> no orders yet
                                       
                                   </h5>
                                  
                          </a>
                       </div>
                   </li>
+                <?php endif;//if($orders!=fale):?>
+             
                   <?php endif;// if(isset($orders)): ?>
               </ul>
           </div>

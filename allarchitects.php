@@ -44,7 +44,7 @@
        </aside> -->
        <section class="mian-section ">
                 <!-- /////////////sagasu3//////////////// -->
-                <!-- <div class="requests-wraper">
+                <div class="requests-wraper">
                 
                 <div class="middleContainer">
                         <div class=" ">
@@ -60,10 +60,11 @@
                         </div>
                 </div>
             
-              </div> -->
+              </div>
         <div class="usersfeedback ">
             <div class="container feed">
                 <!-- <h1>uesers review</h1> -->
+               <?php if($architects!=false):?>
                 <?php foreach($architects as $architect): ?>
                   <a href="./architectprofile.php?archid=<?php echo($architect['architect number']); ?>" role="link button " style=" text-decoration: none ; color:inherit" >
                     <div class="user-review-item">
@@ -76,9 +77,13 @@
                         <img src="<?php echo $architect["photo"] ?>" style="width: 60px; height: 60px;" alt="">
                     </div>
                 </a>
-                    
+                    <?php endforeach; ?>
+               <?php else://if($architects!=false):?>
+                <h3>no works yet</h3>
+               <?php endif;//if($architects!=false):?>
+                
             
-                <?php endforeach; ?>
+                
             </div>
         </div>
        </section>

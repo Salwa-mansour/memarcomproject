@@ -44,24 +44,24 @@
            <div class="features">
             
               <!-- /////////////sagasu2//////////////// -->
-                 <!-- <div class="requests-wraper">
+                 <div class="requests-wraper">
                 
               <div class="middleContainer">
                       <div class=" ">
                           <form action="" method="post" class="felx-form" >
-                        <?php //include('./parts/workTypelist.php') ?>
+                        <?php include('./parts/workTypelist.php') ?>
                         <button type="submit" class="btn btn-primary" name="previousWork-find" value="" ><li class="fa fa-search"></li> </button>
                           </form>        
                          </a>
                       </div>
                 </div>
           
-            </div> -->
+            </div>
           
             <!-- <h1>featured destiantions</h1> -->
             <div class="container feed">
                 <!-- //////////1////// -->
-               <?php if(isset($previuasWorks)): ?>
+               <?php if($previuasWorks!=false): ?>
                    <?php foreach($previuasWorks as $previuasWork): ?>
                     <div class="main-f-box">
                     <div class="feature-box">
@@ -80,6 +80,7 @@
                 </div>
                    <?php endforeach;//foreach($previuasWorks as $previuasWork): ?>
                <?php else://if(isset($previuasWorks)): ?>
+                        <h3>no prieus works yet</h3>
                <?php endif;//if(isset($previuasWorks)): ?>
               
                 <!-- //////////2////// -->
