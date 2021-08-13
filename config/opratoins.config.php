@@ -384,12 +384,14 @@ if(isset($_POST['user-login-btn'])){
   userLogedin();
 }
   if(isset($_GET['log'])){
+      echo('log');
  if($_GET['log']=='logout'){
       //session_start();
    // remove all session variables
     session_unset(); 
     session_destroy();
-    header('location:default.php');
+   // echo('sseon disrop');
+   // header('location:default.php?log=logout');
     //echo('sessrion after destropy');
     // print_r($_SESSION);
   }
@@ -433,9 +435,12 @@ function adminLogin(){
     if(isset($adminUser)):
     $_SESSION['adminId']=$adminUser['number'];
     $_SESSION['adminName']=$adminUser['name'];
-  //echo($_SESSION['adminId']);
-    header('location:orders.php');
+  echo($_SESSION['adminId']);
+  echo($_SESSION['adminName']);
+  print_r($_SESSION);
+ header('location:control3.php');exit;
    else://(isset($adminUser)):
+    header('location:adminlogin.php?msg=errLoginTxt');
    endif;//(isset($adminUser)):
 //    print_r($_SESSION);
 

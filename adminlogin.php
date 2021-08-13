@@ -1,9 +1,15 @@
-<?php require_once('./config/opratoins.config.php');
-      session_start();
-  ?>
+
 <!doctype html>
 <html lang="en">
   <head>
+  <?php 
+  // session_start();
+    session_start();
+    //  echo('stston started');
+      require_once('./config/opratoins.config.php');
+      
+  
+  ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -42,7 +48,7 @@
     
 <main class="form-signin">
   <form action="" method="post">
-    <img class="mb-4" src="./images/lighthorisntallogo2.png" alt="" width="200px" >
+    <a href="default.php"><img class="mb-4" src="./images/lighthorisntallogo2.png" alt="" width="200px" ></a>
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
     <label for="inputEmail" class="visually-hidden">Email address</label>
     <input name="user-name" type="text" id="inputEmail" class="form-control" placeholder="enter user name" required autofocus>
@@ -54,6 +60,7 @@
       </label> 
     </div> -->
     <button class="w-100 btn btn-lg btn-primary" type="submit" name="admin-login-btn" >Sign in</button>
+   <?php include('./parts/messeges.php') ?>
     <p class="mt-5 mb-3 text-muted">&copy;Memarcom Team 2020-2021</p>
   </form>
 </main>

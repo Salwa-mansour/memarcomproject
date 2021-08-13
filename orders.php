@@ -33,7 +33,7 @@
 <head>
 
    <?php require_once("./parts/meta.php");
-   print_r($_SESSION);
+//   print_r($_SESSION);
    ?>
    
     <title>Document</title>

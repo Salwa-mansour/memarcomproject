@@ -1,22 +1,26 @@
-<?php 
- session_start();
- include('./config/opratoins.config.php');
-  print_r($_SESSION);
- if(isset($_SESSION['adminId'])):
-  echo('ffsds');
-  // header('location:adminlogin.php');exit;
- endif;
 
-?>
 <!doctype html>
 <html lang="ar" dir="rtl">
   <head>
+  <?php 
+ if(session_start()){
+ // echo('ssteon stsrated');
+ }
+ include('./config/opratoins.config.php');
+  //print_r($_SESSION);
+ if(isset($_SESSION['adminId'])):
+ // echo('ffsds');//shwo controlpanel
+ else:
+   header('location:adminlogin.php');exit;
+ endif;
+
+?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.79.0">
-    <title>قالب لوحة القيادة · Bootstrap v5.0</title>
+    <title>  لوحة التحكم </title>
 
     <!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard-rtl/"> -->
     <!-- <link rel="stylesheet" href="./style.css"> -->
@@ -151,9 +155,10 @@ a.inner-link{
 <!-- </div> -->
 <!-- Basic dropdown -->
 <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false"> <i class="fas fa-user"></i> Dropdown</a>
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
+             aria-expanded="false"> <i class="fas fa-user"></i> <?php echo($_SESSION['adminName']); ?></a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
-              <li><a class="dropdown-item" href="#">logout</a></li>
+              <li><a class="dropdown-item" href="control3.php?log=logout">logout</a></li>
              
             </ul>
 
