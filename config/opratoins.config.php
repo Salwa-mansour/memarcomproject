@@ -78,7 +78,7 @@ if(isset($_POST['architect-signup-btn'])){
              //  echo('ofrder added');
         }
 
-        else{header('Location:forms.php?n=orderUplaod&msg=addFail');exit();
+        else{//header('Location:forms.php?n=orderUplaod&msg=addFail');exit();
           //  echo('addfial');
         }
           
@@ -207,7 +207,7 @@ if(isset($_POST['architect-signup-btn'])){
 if(isset($_POST['offer-accept-btn'])){
     $archId=$_POST['archId'];
     $orderId=$_POST['orderId'];
-    $sameArchOffer=checkRowExist("SELECT * FROM offers WHERE `isAccepted`='yes'
+    $sameArchOffer=checkRowExist("SELECT * FROM offers WHERE `isAccepted`='yes' AND architectNumber=$archId AND `orderNumber`=$orderId
    ");
     if($sameArchOffer==false):
             $sql="UPDATE offers SET `isAccepted`='yes' WHERE `architectNumber`=$archId AND `orderNumber`=$orderId; 
@@ -224,20 +224,21 @@ if(isset($_POST['offer-accept-btn'])){
     
 }
 //  /////////////////////////------------- feed back ------------///////////////////////////////
-//if(isset($_POST['reviwArch-btn'])){
-   // $archId=textboxValue('arch-id');
-    //$clientId=$_SESSION['clientId'];
-   // $starcount=$_POST['star-count'];
-   // $feedText=textboxValue('reviw-text');
-      //  if(isset($starcount)):
-        //     $sameEmailQuery= "SELECT * FROM `client` WHERE TRIM(email) = '$clientEmail'";
-        //     $sameEmailResult =   mysqli_query($GLOBALS['con'], $sameEmailQuery)or die(mysqli_error($GLOBALS['con']));
-        // //  echo(mysqli_num_rows($sameEmailResult));
-        //             if(mysqli_num_rows($sameEmailResult) === 0):
-      //  else://if(isset($starcount)):
-            //choose rateheader
-      //  endif;//if(isset($starcount)):
-       // }  
+if(isset($_POST['reviwArch-btn'])){
+        $starCount=$_POST['star-count'];
+        $feedText=$_POST['reviw-text'];
+        $archId=$_POST['arch-id'];
+        $orderId=$_POST['order-id'];
+        echo($starCount.":");
+        echo($feedText.":");
+        echo($archId.":");
+        echo($orderId.":");
+       if(createData("INSERT INTO `feedback`(`starcount`, feedbackText, `archId`, `orderId`) /*`feedbackText`,*/
+       VALUES('$starCount','$feedText','$archId','$orderId'); ")){ /*$feedText,*/
+header("location:requestsdetails.php?msg=thankyou&btn=disabled&orderId=".$orderId);exit;
+     }
+     else{/*data base error*/};
+       }  
 // ////////////////////sagasu//////////////////////////////////
 
 function orderfilter(){
@@ -301,7 +302,7 @@ function createData($sql){
   
     if(mysqli_query($GLOBALS['con'],$sql)){
 
-      textNode("alert alert-success","تمت العملية بنجاح");
+     // textNode("alert alert-success","تمت العملية بنجاح");
     return true;
         
     }else{

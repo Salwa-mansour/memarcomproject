@@ -135,7 +135,7 @@
         </div>
          <?php endforeach;//foreach($previousWroks as $previousWrok): ?>
         <?php else://if($previousWroks!=false) ?>
-            <h3>no such architect</h3>
+            <h3>no works yet</h3>
         <?php endif;//if($previousWroks!=false) ?>
         
        

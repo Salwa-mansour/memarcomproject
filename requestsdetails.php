@@ -50,7 +50,14 @@
        </aside> -->
        <section class="mian-section">
           <div class="requests-wraper">
+         <?php //echo($order['isRunning']);?>
               <div class="request-detail  wide-box">
+              <?php if($order['isRunning']==true):  
+              ?>
+                              <span class="badge badge-success" style="background-color: #00c851;">Running Order</span>
+                             <?php else:/*if($order['asRunning']==true) */  ?> 
+                              <span class="badge badge-warning" style="background-color: #fb3;" >Cachted Order</span>
+                             <?php endif;//if($order['asRunning']==true) ?>
                        <h3 role="request title"> <?php echo($order['orederTitle']) ?> </h3>
                        <div class="custemr-n-div requst-custemr">
                         <i class="fas fa-user"></i>
@@ -58,12 +65,6 @@
                       </div>
                        <p class="prife-description" role="order details" ><?php echo($order['orderDetails']) ?></p>
                     <?php include('./parts/messeges.php'); ?>
-                    <?php if($order['isRunning']==true):  ?>
-                             
-                              <span class="badge badge-success" style="background-color: #00c851;">Running Order</span>
-                             <?php else:/*if($order['asRunning']==true) */?> 
-                              <span class="badge badge-warning" style="background-color: #fb3;" >Cachted Order</span>
-                             <?php endif;//if($order['asRunning']==true) ?>
                     <!-- <a  href="./forms.php?n=reviwArch&archid=<?php //echo($architect['architect number']); ?>&clientid=<?php echo($_SESSION['clientId']); ?>">
                                     <button type="button" class="btn btn-info">قيم المهندس</button></a> -->
                 </div>
@@ -105,11 +106,11 @@
 
                     <li class="wide-box">
                       <div class="request-contianer">
-                             <a href="./architectprofile.phparchid=<?php echo($architect['architect number']); ?>">
+                             <a href="./architectprofile.php?archid=<?php echo($architect['architect number']); ?>">
                               <div class="request-img-div" style="background-image: url(<?php echo($architect['photo']);  ?>);"> </div>
                              </a>
                               <div class="request-data">
-                             <a class="inner-link" href="./architectprofile.phparchid=<?php echo($architect['architect number']); ?>">
+                             <a class="inner-link" href="./architectprofile.php?archid=<?php echo($architect['architect number']); ?>">
 
                                  <h5>
                                       <div class="custemr-n-div">
@@ -125,8 +126,15 @@
                                 <?php if($logedClient==$clientId):  ?>
 
                                            <?php if( $offer['isAccepted']=='yes' ):  ?>
-                                            <a  href="./forms.php?n=reviwArch&archid=<?php echo($architect['architect number']); ?>&clientid=<?php echo($_SESSION['clientId']); ?>">
-                                    <button type="button" class="btn btn-info">feed back</button></a>
+                                                        <?php $feedbefor= checkRowExist("SELECT * from feedback where orderId=$orderId and `archId`=$archId") ?>
+                                                        <?php if($feedbefor==true):?>
+                                                            <a  href="#" title="reviw sent orredy" ><button type="button" class="btn btn-info disabled" >feed back</button></a>
+                                                        <?php //include('./parts/messeges.php'); ?>
+                                                        <?php else://if($feedbefor==true):?>
+                                                              <a  href="./forms.php?n=reviwArch&archid=<?php echo($architect['architect number']); ?>&orderId=<?php echo($orderId); ?>">
+                                                        <button type="button" class="btn btn-info " >feed back</button></a>
+                                                        <?php endif;//if($feedbefor==true):?>
+                                                      
                                            <?php else://(isset($_POST['offer-accept-btn'])): ?>
                                             <form action="" method="post">
                                         <input type="hidden" name='archId' value="<?php echo($architect['architect number']); ?>">

@@ -257,6 +257,7 @@
               <!-- ///////////////////////////////////////////////////////////// -->
                      <?php elseif($from=='reviwArch'): 
                       //<!-- --- -->
+                        $orderId=$_GET['orderId'];
                         $archId=$_GET['archid'];
                         $architect=gitselectedrow("SELECT * FROM `architect` WHERE `architect number`='$archId' ");
                         ?>
@@ -267,6 +268,7 @@
                                     <a href="architectprofile.php?archid=<?php echo$archId; ?>" ><?php echo($architect['name']); ?></a> 
                                   </h4>
                                     <input type="hidden" name="arch-id" value="<?php echo($archId) ?>" >
+                                    <input type="hidden" name="order-id" value="<?php  echo($orderId) ?>" >
                                   <!-- /////////////////////////// -->
                                   <div class="radio-star-div" >
                                     
@@ -317,8 +319,13 @@
                                     <label for="exampleFormControlTextarea1">Example textarea</label>
                                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="reviw-text" placeholder="type feedback" ></textarea>
                                  </div> 
-                                    <button type="submit" class="btn btn-primary" name="reviwArch-btn" " >submit </button>
-                                  <?php  require('./parts/messeges.php'); ?>
+                                    <?php if(isset($_GET['btn'])):?>
+                                      <a href="#" class="btn btn-primary disabled" title="feedback sent" >feed back</a>
+                                       <?php  require('./parts/messeges.php'); ?>
+                                    <?php else://if(isset($_GET['btn'])):?>
+                                      <button type="submit" class="btn btn-primary" name="reviwArch-btn" " >feed back </button>
+                                    <?php endif;//if(isset($_GET['btn'])):?>
+                                 
                                 </form>
 
 

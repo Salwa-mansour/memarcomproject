@@ -9,6 +9,11 @@
               تمت العملية بنجاح
                   </div>
                   <!-- **** -->
+             <?php    elseif($_GET['msg']=='thankyou'): ?>
+                <div id="msg"  class="alert alert-success" role="alert">
+                شكرا للتقييم <i class="fa fa-smile"></i>  
+                  </div>
+                  <!-- **** -->
              <?php    elseif($_GET['msg']=='userLogedin'): ?>
                 <div id="msg"  class="alert alert-success" role="alert">
                 تم تسجيل الدخول
