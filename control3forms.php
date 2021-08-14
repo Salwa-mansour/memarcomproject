@@ -309,6 +309,7 @@ a.inner-link{
             </div>
           </div>  
           <!-- **** -->
+        
           <div class="card border border-success shadow-0 mb-3" style="max-width: 18rem ;  " id="scond-card">
           <div class="card-header">بطاقة العميل</div>
             <div class="card-body text-primary">
@@ -358,6 +359,7 @@ a.inner-link{
                   <?php require('./parts/messeges.php') ?>  
              </form>
              <!-- clinet contact data client card -->
+             <a href="orders.php?filter=me&clientid=<?php echo($clientId); ?>" class="inner-link">
              <div class="card border border-primary shadow-0 mb-3 " style="max-width: 18rem;">
               <div class="card-header">بطاقة العميل</div>
             <div class="card-body text-primary">
@@ -365,11 +367,9 @@ a.inner-link{
               <p class="card-text"><span><i class="fa fa-user"></i> </span>: <?php echo($clientData['name']); ?> </p>
                <p class="card-text"><span><i class="fas fa-phone"></i> </span>: <?php echo($clientData['phone']); ?> </p>
               <p class="card-text"><span><i class="fas fa-envelope"></i> </span>: <?php echo($clientData['email']); ?> </p>
-              
-              
-            </div>
-          </div>   
-          
+                </div>
+          </div>  
+          </a>
          <!-- **************************************** -->
                 <?php        elseif($from=="updateArch"):
                             $id=$_GET['archId'];

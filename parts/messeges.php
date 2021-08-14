@@ -29,6 +29,11 @@
                     يرجى ملاء الحقول الفارغة    
                      </div>
                   <!-- **** -->
+             <?php  elseif($_GET['msg']=='accountNotAchtivated'): ?>
+                    <div id="msg"  class="alert alert-warning" role="alert">
+                   لم يتم تفعيل الحساب بعد   
+                     </div>
+                  <!-- **** -->
              <?php  elseif($_GET['msg']=='offeredallreaddy'): ?>
                     <div id="msg"  class="alert alert-warning" role="alert">
                     لقد قدمت عرض لهذا الطلب من قبل   

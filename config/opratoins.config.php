@@ -421,7 +421,7 @@ function userLogedin(){
     // $adminUser = gitselectedrow(" SELECT * FROM `admin` WHERE `name` = '$userName' AND `password` = '$userpass' ; ");
      //    echo($clientUser['name']);
 //  print_r($clientUser);
-//  print_r($architectUser).'//////////////////';
+//  print_r($architectUser).'//////////////////';`status`='inable'
    if(isset($clientUser)){
      
        $_SESSION["clientId"] = $clientUser['client number'];
@@ -429,11 +429,16 @@ function userLogedin(){
        $_SESSION["clientPhoto"] = $clientUser['photo'];
       header('Location:orders.php');exit();
    }elseif(isset($architectUser)){
-    $_SESSION["archId"] = $architectUser['architect number'];
-    // $archId=$_SESSION["archId"];
-    $_SESSION["archName"] = $architectUser['name'];
-   $_SESSION["archPhoto"] = $architectUser['photo'];
-   header("Location:architectprofile.php?archid=".$_SESSION["archId"]);exit();
+             if(trim($architectUser['status'])=='inable'):
+              $_SESSION["archId"] = $architectUser['architect number'];
+            // $archId=$_SESSION["archId"];
+               $_SESSION["archName"] = $architectUser['name'];
+               $_SESSION["archPhoto"] = $architectUser['photo'];
+                header("Location:architectprofile.php?archid=".$_SESSION["archId"]);exit();
+              else://if($architectUser['status']=='inable'): 
+                header('location:forms.php?n=userlogin&msg=accountNotAchtivated');exit(); 
+              endif;//if($architectUser['status']=='inable'):
+               
    }else{
     header('Location:forms.php?n=userlogin&msg=errLoginTxt');exit();
    }
