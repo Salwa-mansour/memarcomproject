@@ -162,12 +162,12 @@
                                      تمتلك حساب؟ <a href="./forms.php?n=userlogin" class="ml-2"> سجل الدخول</a>
                                 </div>    
                             </form>
-                            <?php else://  if(empty( $_SESSION["archId"])): ?>
+                            <!-- <?php //else://  if(empty( $_SESSION["archId"])): ?>
                                 <div class="form-div">
                                      <div class="alert alert-warning" role="alert">
                                    ! انت جاي تستهبل علينا        
                                      </div>  
-                   
+                    -->
                                         
                                    </div>  
                                 

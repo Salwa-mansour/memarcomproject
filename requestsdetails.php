@@ -86,8 +86,8 @@
             <div class="request-detail  wide-box">
                        <h3>do you want to apply an offer</h3>
                        <div class="buttons-div">
-                            <button class="btn btn-primary">sign up</button>
-                      <button class="btn btn-primary">sign in</button>
+                           <a href="forms.php?n=userSignUp&userType=architect"><button class="btn btn-primary">sign up</button></a> 
+                            <a href="forms.php?n=userlogin"><button class="btn btn-primary">sign in</button></a>
                        </div>
            
                 </div>      

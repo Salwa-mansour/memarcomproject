@@ -42,135 +42,8 @@
 <link href="./assets/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
 <script src="./assets/jquey/jquery.min.js"></script>
       <script src="./assets/dist/js/bootstrap.min.js"></script>
-    <style>
-      *{
-        direction: rtl !important;
-      }
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-      tbody, td, tfoot, th, thead, tr{
-        line-height: 3 !important;
-      }
-     
+    <link rel="stylesheet" href="./controlpanel.css">
 
-#basic-text1{
- background-color: #0d6efd;
-  height: 100%;
-  cursor: pointer;
-  border: none;
-}
-#basic-text1:hover{
-   background-color: blue;
-}
-.navbar-brand{
-  color:blue !important;
-  font-size: 1.5rem !important;
-  font-weight: bold;
-
-}
-#user-item{
-  white-space: nowrap;
-}
-.nav-link.dropdown-toggle{
-  display: inline !important;
-}
-#sidebarMenu{
-  height: 100vh ;
-}
-/* nav logo styling */
-.nav-logo{
-    width: 8rem !important;
-   
-}
-.dropdown-menu{
-  position: absolute  !important;
-  min-width: 6rem !important;
-}
-a.inner-link{
-  /* color: white; */
-  text-decoration: none;
-}
-/* div.table-responsive table.table-responsive .checkbox-td{
-  background-color: red !important;
-  position: relative;
-} */
-.navbar-toggler.position-absolute{
-  top: 3px;
-  left: 3px;
-}
-.table-responsive tr input#gridCheck{
- 
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-}
-      /* ----------- */
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-      .form-div{
-         display: inline-block;
-        width: 50%;
-        margin:4rem 1 0;
-        min-height: 300px;
-       position: relative;
-      }
-     .form-div .form-group{
-       margin: 1rem ;
-      
-     }
-     .table-responsive{
-       position: relative;
-     }
-     .table-responsive .card{
-       position: absolute;
-       top: 1rem;
-       left: 1rem;
-       width: 300px;
-     }
-     .form-div.cards-div{
-       display: inline-block;
-       width: 90%;
-       margin:.5rem auto;
-       border: 1px #c0c0c0 solid;
-      border-radius: 6px;
-     }
-     .table-responsive #scond-card{
-       right: 1rem;
-     }
-     .card .card-header{
-       color:  #0d6efd ;
-     }
-     #scond-card .card-header{
-       color: #198754;
-     }
-    
-     .card .card-text,
-     #scond-card .card-text{
-       color: black;
-     }
-     .input-group-text{
-       height: 100%;
-     }
-     .form-group.bordred-input{
-       border: 1px #c0c0c0 solid;
-       padding: .25rem;
-       width: 100% !important;
-       margin: .25rem !important;
-       box-sizing: border-box;
-       border-radius: 3px;
-     }
-    </style>
-
-    
     <!-- Custom styles for this template -->
     <!-- <link href="../dashboard/dashboard.rtl.css" rel="stylesheet"> -->
   </head>
@@ -218,7 +91,7 @@ a.inner-link{
             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
              aria-expanded="false"> <i class="fas fa-user"></i> <?php echo($_SESSION['adminName']); ?></a>
             <ul class="dropdown-menu" aria-labelledby="dropdown01">
-              <li><a class="dropdown-item" href="#">logout</a></li>
+              <li><a class="dropdown-item" href="control3.php?log=logout">logout</a></li>
              
             </ul>
 
@@ -295,8 +168,8 @@ a.inner-link{
         <!-- **************************************** -->
          <!-- architect contact data client card -->
           <!-- architect contact data client card -->
-          <div class="form-div cards-div">
-            <div style="height:200px;">
+          <div class=" cards-div">
+            <!-- <div> -->
           <div class="card border border-primary shadow-0 mb-3 " style="max-width: 18rem;">
               <div class="card-header">بطاقة المهندس</div>
             <div class="card-body text-primary">
@@ -319,9 +192,11 @@ a.inner-link{
               <p class="card-text"><span><i class="fas fa-envelope"></i> </span>: <?php //echo($clientData['email']); ?> </p>
   </div>
 </div>
-</div>
+<!-- </div> -->
 <!-- ***** -->
-           <h5> <a href=""class="form-group" >تصفح الطلب</a></h5>
+          
+             <a href=""class="btn btn-primary order-btn form-group" >تصفح الطلب</a>
+     
        </div> 
     
            <!--  ************************************ -->             
@@ -333,7 +208,19 @@ a.inner-link{
                         ?>
           <!-- ****** -->     
             
-
+                  <!-- clinet contact data client card -->
+             <a href="orders.php?filter=me&clientid=<?php echo($clientId); ?>" class="inner-link">
+             <div class="card border border-primary shadow-0 mb-3 " style="max-width: 18rem;">
+              <div class="card-header">بطاقة العميل</div>
+            <div class="card-body text-primary">
+             
+              <p class="card-text"><span><i class="fa fa-user"></i> </span>: <?php echo($clientData['name']); ?> </p>
+               <p class="card-text"><span><i class="fas fa-phone"></i> </span>: <?php echo($clientData['phone']); ?> </p>
+              <p class="card-text"><span><i class="fas fa-envelope"></i> </span>: <?php echo($clientData['email']); ?> </p>
+                </div>
+          </div>  
+          </a>
+          <!-- //****************client data card end */ -->
           <form   action="" method="post" enctype="multipart/form-data" class="form-div">
                 <h5 class="form-group"><?php echo $orders['orederTitle'] ?></h5>
                 <!-- /// -->
@@ -358,18 +245,7 @@ a.inner-link{
                   <!-- masseges for user  -->
                   <?php require('./parts/messeges.php') ?>  
              </form>
-             <!-- clinet contact data client card -->
-             <a href="orders.php?filter=me&clientid=<?php echo($clientId); ?>" class="inner-link">
-             <div class="card border border-primary shadow-0 mb-3 " style="max-width: 18rem;">
-              <div class="card-header">بطاقة العميل</div>
-            <div class="card-body text-primary">
-             
-              <p class="card-text"><span><i class="fa fa-user"></i> </span>: <?php echo($clientData['name']); ?> </p>
-               <p class="card-text"><span><i class="fas fa-phone"></i> </span>: <?php echo($clientData['phone']); ?> </p>
-              <p class="card-text"><span><i class="fas fa-envelope"></i> </span>: <?php echo($clientData['email']); ?> </p>
-                </div>
-          </div>  
-          </a>
+           
          <!-- **************************************** -->
                 <?php        elseif($from=="updateArch"):
                             $id=$_GET['archId'];
@@ -378,6 +254,18 @@ a.inner-link{
                         //     echo $architect['architect number'];
                             ?>
                  <!-- **************************************** -->
+                   <!-- architect contact data client card -->
+             <div class="card border border-primary shadow-0 mb-3 " style="max-width: 18rem;">
+              <div class="card-header">بطاقة المهندس </div>
+            <div class="card-body text-primary">
+             
+              <p class="card-text"><span><i class="fa fa-user"></i> </span>: <?php echo($architect['name']); ?> </p>
+               <p class="card-text"><span><i class="fas fa-phone"></i> </span>: <?php echo($architect['phone']); ?> </p>
+              <p class="card-text"><span><i class="fas fa-envelope"></i> </span>: <?php echo($architect['email']); ?> </p>
+              
+              
+            </div>
+          </div>  
                  <form   action="" method="post" enctype="multipart/form-data" class="form-div">
                  <div class="form-group">
                       <label for="">uplaoud Document</label>
@@ -407,18 +295,7 @@ a.inner-link{
                   <!-- masseges for user  -->
                   <?php require('./parts/messeges.php') ?>  
                 </form>
-                   <!-- architect contact data client card -->
-             <div class="card border border-primary shadow-0 mb-3 " style="max-width: 18rem;">
-              <div class="card-header">بطاقة المهندس </div>
-            <div class="card-body text-primary">
-             
-              <p class="card-text"><span><i class="fa fa-user"></i> </span>: <?php echo($architect['name']); ?> </p>
-               <p class="card-text"><span><i class="fas fa-phone"></i> </span>: <?php echo($architect['phone']); ?> </p>
-              <p class="card-text"><span><i class="fas fa-envelope"></i> </span>: <?php echo($architect['email']); ?> </p>
-              
-              
-            </div>
-          </div>  
+                 
                               <!-- //////////////////////////////////////// -->
                             <?php  endif; //if($from=="clientData"):?>
                               

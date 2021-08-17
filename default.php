@@ -57,7 +57,7 @@
     </section>
   
     <!-- ///////////////////// ////////////////-->
-    <section class="banner">
+    <section class="banner s2nd">
         <div class="banner-highlights">
             <!-- <div class="container"> -->
             
@@ -71,11 +71,18 @@
                 <!-- <button  class="banner-btn emtycolor-btn show-btn">
                       ابدأ الان
             </button> -->
-              <a href="./forms.php?n=userSignUp&userType=architect" class=" inner-link ">
+            <?php   if(empty( $_SESSION["archId"])): ?>
+                <a href="./forms.php?n=userSignUp&userType=architect" class=" inner-link ">
                 <button  class="banner-btn emtycolor-btn show-btn">  ابدأ الان
-                  
-                  </button>
-                    </a>
+                   </button></a>
+            <?php   else://if(empty( $_SESSION["archId"])): ?>
+                <a href="" class=" inner-link " title="you logged in ">
+                <button  class="banner-btn emtycolor-btn show-btn " style="background-color: gray; cursor:default" >  ابدأ الان
+                   </button></a>
+            <?php   endif;//if(empty( $_SESSION["archId"])): ?>
+              
+                 
+                    
                     <!-- transperant div problem  -->
                      <!-- <a href="./defaultpage.php?n=addArch" class=" inner-link "> ابدأ الان
                      </a> -->

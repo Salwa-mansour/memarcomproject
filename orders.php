@@ -105,7 +105,12 @@
                
                   <li>
                       <div class="request-contianer wide-box">
-                        
+                      <?php if($order['isRunning']==true): ?>
+                          
+                          <span class="badge badge-success" style="background-color: #00c851;">Running Order</span>
+                         <?php else:/*if($order['asRunning']==true) */?> 
+                          <span class="badge badge-warning" style="background-color: #fb3;" >Cachted Order</span>
+                         <?php endif;//if($order['asRunning']==true) ?>
                               <div class="request-img-div" style="background-image: url(<?php echo($client['photo']) ?>);"> </div>
                              
                           <a href="./requestsdetails.php?orderId=<?php echo($order['orderId']) ?>" class="inner-link">
@@ -120,12 +125,7 @@
                                   </div>
                                   <p class="prife-description"><?php echo($order['orderDetails']) ?></p>
                              </div>
-                             <?php if($order['isRunning']==true): ?>
                           
-                              <span class="badge badge-success" style="background-color: #00c851;">Running Order</span>
-                             <?php else:/*if($order['asRunning']==true) */?> 
-                              <span class="badge badge-warning" style="background-color: #fb3;" >Cachted Order</span>
-                             <?php endif;//if($order['asRunning']==true) ?>
                            
                         
                          </a>

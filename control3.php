@@ -36,80 +36,7 @@
 <link href="./assets/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
 <script src="./assets/jquey/jquery.min.js"></script>
       <script src="./assets/dist/js/bootstrap.min.js"></script>
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-      tbody, td, tfoot, th, thead, tr{
-        line-height: 3 !important;
-      }
-     
-
-#basic-text1{
- background-color: #0d6efd;
-  height: 100%;
-  cursor: pointer;
-  border: none;
-}
-#basic-text1:hover{
-   background-color: blue;
-}
-.navbar-brand{
-  color:blue !important;
-  font-size: 1.5rem !important;
-  font-weight: bold;
-
-}
-#user-item{
-  white-space: nowrap;
-}
-.nav-link.dropdown-toggle{
-  display: inline !important;
-}
-#sidebarMenu{
-  height: 100vh ;
-}
-/* nav logo styling */
-.nav-logo{
-    width: 8rem !important;
-   
-}
-.dropdown-menu{
-  position: absolute  !important;
-  min-width: 6rem !important;
-}
-a.inner-link{
-  /* color: white; */
-  text-decoration: none;
-}
-/* div.table-responsive table.table-responsive .checkbox-td{
-  background-color: red !important;
-  position: relative;
-} */
-.navbar-toggler.position-absolute{
-  top: 3px;
-  left: 3px;
-}
-.table-responsive tr input#gridCheck{
- 
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-}
-      /* ----------- */
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-     
-    </style>
-
+      <link rel="stylesheet" href="./controlpanel.css">
     
     <!-- Custom styles for this template -->
     <!-- <link href="../dashboard/dashboard.rtl.css" rel="stylesheet"> -->
@@ -236,10 +163,10 @@ a.inner-link{
         <table class="table table-striped table-sm">
           <thead>
             <tr>
-              <th> </th>
+              <!-- <th> </th> -->
              <th scope="col">order title</th>
-                <th scope="col">oreder details</th>
-                <th scope="col">orderType</th>
+                <!-- <th scope="col">oreder details</th> -->
+                <!-- <th scope="col">orderType</th> -->
                 <th scope="col">published?</th>
                 <th scope="col">edit</th>
             </tr>
@@ -252,10 +179,10 @@ a.inner-link{
           
             <tr>
                <input type="hidden" name="id" value="<?php //echo $order['orderId']; ?>"> 
-               <td class="checkbox-td" style="position: relative; width:3rem; " ><input class="form-check-input" type="checkbox" id="gridCheck"></td>
+               <!-- <td class="checkbox-td" style="position: relative; width:3rem; " ><input class="form-check-input" type="checkbox" id="gridCheck"></td> -->
                <td> <?php echo $order['orederTitle']; ?></td>
-                <td><?php echo $order['orderDetails']; ?></td>
-               <td><?php echo $order['orderType']; ?></td>
+                <!-- <td><?php // echo $order['orderDetails']; ?></td> -->
+               <!-- <td><?php // echo $order['orderType']; ?></td> -->
                 <td><?php echo $order['published']; ?></td>
                 <td><a href="./control3forms.php?n=ordersdata&orderId=<?php echo $order['orderId']; ?>" class="inner-link"><i class="fas fa-edit"></i></a> </td>
               <!-- <td><button type="button" class="btn btn-primary">Primary</button></td> -->
@@ -278,10 +205,10 @@ a.inner-link{
             <tr>
               <!-- <th>#</th> -->
             
-              <th> </th>
+              <!-- <th> </th> -->
                 <th scope="col">clint name</th>
-                <th scope="col">email</th>
-                <th scope="col">phone</th>
+                <!-- <th scope="col">email</th> -->
+                <!-- <th scope="col">phone</th> -->
               
                 <th scope="col">status</th>
                 <th scope="col">edit</th>
@@ -294,11 +221,11 @@ a.inner-link{
         
           
             <tr>
-            <td class="checkbox-td" style="position: relative; width:3rem; " ><input class="form-check-input" type="checkbox" id="gridCheck"></td>
+            <!-- <td class="checkbox-td" style="position: relative; width:3rem; " ><input class="form-check-input" type="checkbox" id="gridCheck"></td> -->
             <input type="hidden" name="clintId" value="<?php echo $client['client number']; ?>"> 
                 <td> <?php echo $client['name']; ?></td>
-                <td><?php echo $client['email']; ?></td>
-                <td><?php echo $client['phone']; ?></td>
+                <!-- <td><?php // echo $client['email']; ?></td> -->
+                <!-- <td><?php // echo $client['phone']; ?></td> -->
                 <td><?php echo $client['state']; ?></td>
                 <td><a href="control3forms.php?n=clientData&clientId=<?php echo $client['client number']; ?>" class="inner-link" ><i class="fas fa-edit"></a></td>
               <!-- <td><button type="button" class="btn btn-primary">Primary</button></td> -->
@@ -317,10 +244,11 @@ a.inner-link{
            <thead>
              <tr>
                
-                <th> </th><th></th>
+                <th> </th>
+             <!--    <th></th> -->
                  <th scope="col">architect name</th>
-                 <th scope="col">email</th>
-                 <th scope="col">phone</th>
+                 <!-- <th scope="col">email</th> -->
+                 <!-- <th scope="col">phone</th> -->
                  <th scope="col">cv</th>
                  <th scope="col">status</th>
                  <th scope="col">edit</th>
@@ -334,10 +262,10 @@ a.inner-link{
            
              <tr>
              <th scope="row"> <input type="hidden" name="id" value="<?php echo $architect['architect number']; ?>"> </th>
-             <td class="checkbox-td" style="position: relative; width:3rem; " ><input class="form-check-input" type="checkbox" id="gridCheck"></td>
+             <!-- <td class="checkbox-td" style="position: relative; width:3rem; " ><input class="form-check-input" type="checkbox" id="gridCheck"></td> -->
                  <td> <?php echo $architect['name']; ?></td>
-                 <td><?php echo $architect['email']; ?></td>
-                 <td><?php echo $architect['phone']; ?></td>
+                 <!-- <td><?php //echo $architect['email']; ?></td> -->
+                 <!-- <td><?php //echo $architect['phone']; ?></td> -->
                  <td><a href="./cvfiles/<?php echo $architect['cv']; ?>" target="_blank">cv</a></td>
                  <td><?php echo $architect['status']; ?></td>
                <!-- <td><button type="button" class="btn btn-primary">Primary</button></td> -->
@@ -361,10 +289,10 @@ a.inner-link{
            <thead>
              <tr>
                
-                <th> </th><th></th>
+                <!-- <th> </th><th></th> -->
                  <th scope="col">architect name</th>
-                 <th scope="col">email</th>
-                 <th scope="col">phone</th>
+                 <!-- <th scope="col">email</th> -->
+                 <!-- <th scope="col">phone</th> -->
                  <th scope="col">cv</th>
                  <th scope="col">status</th>
                  <th scope="col">edit</th>
@@ -378,10 +306,10 @@ a.inner-link{
            
              <tr>
              <th scope="row"> <input type="hidden" name="id" value="<?php echo $architect['architect number']; ?>"> </th>
-             <td class="checkbox-td" style="position: relative; width:3rem; " ><input class="form-check-input" type="checkbox" id="gridCheck"></td>
+             <!-- <td class="checkbox-td" style="position: relative; width:3rem; " ><input class="form-check-input" type="checkbox" id="gridCheck"></td> -->
                  <td> <?php echo $architect['name']; ?></td>
-                 <td><?php echo $architect['email']; ?></td>
-                 <td><?php echo $architect['phone']; ?></td>
+                 <!-- <td><?php //echo $architect['email']; ?></td> -->
+                 <!-- <td><?php //echo $architect['phone']; ?></td> -->
                  <td><a href="./cvfiles/<?php echo $architect['cv']; ?>" target="_blank">cv</a></td>
                  <td><?php echo $architect['status']; ?></td>
                <!-- <td><button type="button" class="btn btn-primary">Primary</button></td> -->
