@@ -27,6 +27,9 @@
         //  $archKey=$architect['architect number'];
          // echo $clientId;
          $previousWroks=getData("SELECT * FROM `previuasworks` WHERE `architectNumber`='$archId';");
+         $feedbacks = getData("SELECT * FROM `feedback` WHERE `archId`='$archId';");
+       
+       
         //  print_r($previousWroks);
      ?>
    <?php else://if(isset($_GET['orderId'])): ?>
@@ -194,82 +197,62 @@
               </div>
               </div>
         <?php endif// if(isset($_SESSION['archId']) && $archId==$_SESSION['archId']):?>
-        <!-- //////////2////// -->
-        <!-- <div class="main-f-box">
-            <div class="feature-box">
-                <div class="feature-img">
-                    <img src="../imgs/1.jpg" style="max-width: 100%;" alt="">
-                </div>
-            </div>
-          
-          
-            <div class="feature-details">
-                <h4>los ansulos</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente illo vel eveniet, fugiat inventore eius? Tempora impedit fugiat, praesentium ipsam beatae fugit excepturi dignissimos earum eius architecto vero in qui.</p>
-               
-            </div>
-        </div>
-         -->
-        <!-- //////////3////// -->
-        <!-- <div class="main-f-box">
-            <div class="feature-box">
-                <div class="feature-img">
-                    <img src="../imgs/1.jpg" style="max-width: 100%;" alt="">
-                </div>
-            </div>
-          
-          
-            <div class="feature-details">
-                <h4>los ansulos</h4>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente illo vel eveniet, fugiat inventore eius? Tempora impedit fugiat, praesentium ipsam beatae fugit excepturi dignissimos earum eius architecto vero in qui.</p>
-               
-            </div>
-        </div> -->
-        <!-- </div>
-        </div> -->
+       
         <!-- ////////////////////////////////////////////////////////// -->
           <!-- ///////custemr revewes/////// -->
    <div class="requests-wraper">
     <h3>custemr revwoes</h3>
     <ul>
-        <li>
-            <div class="request-contianer wide-box">
-                    <div class="request-img-div" style="background-image: url(./images/p1.jpg);">
+      <?php  if( $feedbacks!=false ): ?>
+        <?php foreach($feedbacks as $feedback): 
+             $stars= $feedback['starcount'];// echo $stars; ?>
+            <?php $orderId=$feedback['orderId']; ?>
+            <li>
+            <div class="request-contianer wide-box custmer-reviw">
+                    <div class="request-img-div" style="background-image: url(./images/userplaceholder.jpg);">
                     <!-- <img src="./images/p1.jpg" alt="" class="request-img"> -->
                     </div>
                 
                     <div class="request-data">
-                        <h3 class="request-title">reuwest titel</h3>
+                        <span class="custmer-name">costemr name</span>
                         <div class="custemr-n-div">
-                          <i class="fas fa-star"></i>
-                          <i class="fas fa-star"></i>
-                          <i class="fas fa-star"></i>
-                          <!-- <span class="custmer-name">costemr name</span> -->
+                          <?php  for($i=0;$i<$stars;$i++): ?>
+                            <i class="fas fa-star"></i>
+                          <?php  endfor;//($i=0;$i<$stars;$i++): ?>
+                          
+                        
+                        
                         </div>
-                        <p class="prife-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente ipsa doloremque quo voluptates repellendus unde?</p>
+                        <p class="prife-description"><?php echo($feedback['feedbackText']); ?></p>
                    </div>
             </div>
         </li>
+        <?php endforeach;//($feedbacks as $feedback): ?>
+      
+      <?php else:// if( $feedbacks!=false ): ?>
+        <h3>no feed back yet</h3>
+      <?php endif;// if( $feedbacks!=false ): ?>
+     
        
-        <li>
+        <!-- <li>
             <div class="request-contianer wide-box">
                     <div class="request-img-div" style="background-image: url(./images/userplacehoder.jpg);">
-                    <!-- <img src="./images/p1.jpg" alt="" class="request-img"> -->
+                
                     </div>
                 
                     <div class="request-data">
-                        <h3 class="request-title">reuwest titel</h3>
+                     <span class="custmer-name">costemr name</span>
                         <div class="custemr-n-div">
                           <i class="fas fa-star"></i>
                           <i class="fas fa-star"></i>
                           <i class="fas fa-star"></i>
                           <i class="fas fa-star"></i>
-                          <!-- <span class="custmer-name">costemr name</span> -->
+                       
                         </div>
                         <p class="prife-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente ipsa doloremque quo voluptates repellendus unde?</p>
                    </div>
             </div>
-        </li>
+        </li> -->
        
     </ul>
 </div>

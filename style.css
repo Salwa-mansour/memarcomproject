@@ -841,6 +841,10 @@ left: .5rem;
         justify-content: center;
        
     }
+    .request-contianer.custmer-reviw{
+        flex-wrap: unset;
+        justify-content: unset;
+    }
     .request-contianer.request-data{
         flex-basis: 100%;
       
@@ -853,4 +857,5 @@ left: .5rem;
         padding:1rem;
     }
  }
+ 
  /* /////////////////////////////////// */

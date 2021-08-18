@@ -289,7 +289,8 @@
            <thead>
              <tr>
                
-                <!-- <th> </th><th></th> -->
+                <th> </th>
+               <!--  <th></th> -->
                  <th scope="col">architect name</th>
                  <!-- <th scope="col">email</th> -->
                  <!-- <th scope="col">phone</th> -->
@@ -310,7 +311,12 @@
                  <td> <?php echo $architect['name']; ?></td>
                  <!-- <td><?php //echo $architect['email']; ?></td> -->
                  <!-- <td><?php //echo $architect['phone']; ?></td> -->
-                 <td><a href="./cvfiles/<?php echo $architect['cv']; ?>" target="_blank">cv</a></td>
+                 <?php if(trim($architect['cv'])!=''): ?>
+                  <td><a href="./cvfiles/<?php echo $architect['cv']; ?>" target="_blank">cv</a></td>
+                 <?php else://if(trim($architect['cv'])!=''): ?>
+                  <td><a href="#"  style="cursor:default; color:gray; text-decoration:none;" >cv</a></td>
+                 <?php endif;//if(trim($architect['cv'])!=''): ?>
+               
                  <td><?php echo $architect['status']; ?></td>
                <!-- <td><button type="button" class="btn btn-primary">Primary</button></td> -->
                <td><a href="./control3forms.php?n=updateArch&archId=<?php echo $architect['architect number']; ?>" class="inner-link"><i class="fas fa-edit"></i> </a></td>
